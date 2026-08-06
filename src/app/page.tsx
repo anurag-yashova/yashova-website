@@ -2,9 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
-import HeroChart from "@/components/HeroChart";
 import VideoTestimonial from "@/components/VideoTestimonial";
-import LiveOpsFeed from "@/components/LiveOpsFeed";
+import LedgerHero from "@/components/LedgerHero";
 import ProofBar from "@/components/ProofBar";
 import FunnelDiagram from "@/components/FunnelDiagram";
 import LeakFunnel from "@/components/LeakFunnel";
@@ -191,45 +190,7 @@ export default function Home() {
             </div>
 
             <div className="rise-3 relative">
-              <div className="breathe-glow" />
-              <LiveOpsFeed />
-              <div className="glass relative rounded-lg p-6 md:p-8">
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-widest text-ink-muted">
-                    Campaign Revenue
-                  </span>
-                  <span className="rounded-md bg-signal/10 px-2.5 py-0.5 text-xs font-semibold text-signal">
-                    ▲ Live systems
-                  </span>
-                </div>
-                <HeroChart />
-                <div className="mt-5 grid grid-cols-3 gap-2 border-t border-surface-line pt-5 text-center sm:gap-3">
-                  <div>
-                    <div className="font-mono-num text-lg font-semibold text-gold"><CountUp value="₹1.02Cr" /></div>
-                    <div className="text-[10px] text-ink-muted">Revenue (TAL)</div>
-                  </div>
-                  <div>
-                    <div className="font-mono-num text-lg font-semibold text-gold"><CountUp value="5.5X" /></div>
-                    <div className="text-[10px] text-ink-muted">ROAS</div>
-                  </div>
-                  <div>
-                    <div className="font-mono-num text-lg font-semibold text-gold"><CountUp value="11,246" /></div>
-                    <div className="text-[10px] text-ink-muted">Payments Captured</div>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -bottom-5 -right-3 hidden md:block">
-                <div className="relative h-24 w-24 overflow-hidden rounded-md border-[3px] border-gold bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
-                  <Image
-                    src="/images/anurag-profile.png"
-                    alt="Anurag from Yashova"
-                    fill
-                    sizes="96px"
-                    className="object-cover object-top"
-                    priority
-                  />
-                </div>
-              </div>
+              <LedgerHero />
             </div>
           </div>
         </div>

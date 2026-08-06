@@ -76,6 +76,14 @@ The site went through several redesigns. The **current and final** direction is
 - **Huge type.** Headlines up to `text-8xl`, `tracking-tighter`.
 - **Asymmetric but balanced.** Swiss grid, lots of whitespace.
 
+### The hero is a LEDGER, not a dashboard
+Anurag explicitly rejected the glass-card + line-chart + floating-avatar hero as
+"the design every AI website has." The homepage hero is now `LedgerHero.tsx`: a
+statement of account that prints itself line by line, with dotted leaders, a debit
+column, a ruled total, a signature and a "Verified" stamp. **Do not reintroduce a
+dashboard-style chart hero.** If a new visual is needed, it must come from the
+language of documents, print and accounting — not SaaS analytics UI.
+
 ### Typography
 - Display: **Space Grotesk** (`--font-display`) — 700 weight for headings
 - Body: **Inter** (`--font-body`) — 400
@@ -106,9 +114,10 @@ src/app/
   about|case-studies|for-colleges|roi-calculator|strategy-call|blog|refund-policy/
   ai-audit/                markup.html + audit.css + page.tsx (see §6)
 src/components/
-  Nav, Footer, PageHero, Reveal, CountUp, HeroChart, ProofBar, FunnelDiagram,
+  Nav, Footer, PageHero, Reveal, CountUp, LedgerHero, ProofBar, FunnelDiagram,
   LeakFunnel, BeforeAfter, VideoTestimonial, ProofGallery, ContactForm,
-  ThemeToggle, CursorGlow, LiveOpsFeed, MetaPixel, WhatsAppFloat, icons.tsx
+  ThemeToggle, CursorGlow, MetaPixel, WhatsAppFloat, icons.tsx
+  (HeroChart / LiveOpsFeed are retired — see the hero rule below)
 src/lib/
   case-studies.ts          all case study data + metrics (source of truth)
   posts.ts                 markdown loader + scheduled publishing
