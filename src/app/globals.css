@@ -59,6 +59,10 @@ html.light {
 
 * { scroll-behavior: smooth; }
 
+/* No element may create horizontal scroll. `clip` rather than `hidden`
+   so the sticky nav keeps working. */
+html, body { overflow-x: clip; max-width: 100%; }
+
 body {
   background: var(--void);
   color: var(--ink);
@@ -223,7 +227,7 @@ strong, b { font-weight: 600; }
 
 /* scan line — gold pulse along section top borders */
 @keyframes scanX { 0% { transform: translateX(-100%); } 100% { transform: translateX(1300%); } }
-.scan-top { position: relative; }
+.scan-top { position: relative; overflow: hidden; }
 .scan-top::before {
   content: ""; position: absolute; top: -1px; left: 0;
   height: 1px; width: 8%;
