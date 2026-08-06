@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -6,9 +7,14 @@ export const metadata: Metadata = {
 
 export default function RefundPolicy() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-20">
-      <h1 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">Refund Policy</h1>
-      <div className="mt-8 space-y-8 text-sm leading-relaxed text-ink-muted">
+    <>
+    <PageHero
+      eyebrow="Policy"
+      title="Refund Policy"
+      index="07"
+    />
+    <section className="mx-auto max-w-3xl px-6 py-16">
+      <div className="space-y-8 text-sm leading-relaxed text-ink-muted">
         <p>
           At Yashova, we are committed to providing high-quality digital
           marketing, advertising, and lead generation services. By purchasing
@@ -65,9 +71,9 @@ export default function RefundPolicy() {
           <h2 className="text-lg font-semibold text-ink">Contact Information</h2>
           <p className="mt-2">For refund-related inquiries, please contact:</p>
           <p className="mt-2">
-            Email: <a href="mailto:anurag@yashova.com" className="text-gold hover:text-gold-bright">anurag@yashova.com</a>
+            Email: <a href="mailto:anurag@yashova.com" className="link-line text-ink">anurag@yashova.com</a>
             <br />
-            Website: <a href="https://yashova.com" className="text-gold hover:text-gold-bright">https://yashova.com</a>
+            Website: <a href="https://yashova.com" className="link-line text-ink">https://yashova.com</a>
           </p>
         </div>
 
@@ -77,5 +83,6 @@ export default function RefundPolicy() {
         </p>
       </div>
     </section>
+    </>
   );
 }

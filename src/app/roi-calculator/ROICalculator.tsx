@@ -23,7 +23,7 @@ export default function ROICalculator() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-2">
-      <div className="space-y-6 rounded-2xl border border-surface-line/60 bg-surface p-7">
+      <div className="space-y-6 rounded-lg border border-surface-line/60 bg-surface p-7">
         <Field
           label="Monthly Ad Spend"
           prefix="₹"
@@ -62,7 +62,7 @@ export default function ROICalculator() {
         />
       </div>
 
-      <div className="rounded-2xl border border-surface-line/60 bg-void p-7">
+      <div className="rounded-lg border border-surface-line/60 bg-void p-7">
         <h3 className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Projected Outcome</h3>
         <div className="mt-6 grid grid-cols-2 gap-5">
           <Result label="Estimated Clicks" value={fmt(results.clicks)} />
@@ -70,7 +70,7 @@ export default function ROICalculator() {
           <Result label="Cost per Conversion" value={`₹${fmt(results.costPerConversion)}`} />
           <Result label="Projected Revenue" value={`₹${fmt(results.revenue)}`} />
         </div>
-        <div className="mt-6 rounded-xl border border-gold/30 bg-gold/5 p-5">
+        <div className="mt-6 rounded-md border border-gold/30 bg-ink/5 p-5">
           <div className="font-mono-num text-3xl font-semibold text-gold">
             {results.roas.toFixed(2)}x
           </div>

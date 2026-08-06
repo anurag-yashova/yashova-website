@@ -27,7 +27,7 @@ export default function VideoTestimonial({
   }
 
   return (
-    <figure className="glass card-hover flex h-full flex-col overflow-hidden rounded-2xl">
+    <figure className="glass card-hover flex h-full flex-col overflow-hidden rounded-lg">
       <button
         type="button"
         onClick={toggle}
@@ -44,7 +44,7 @@ export default function VideoTestimonial({
         />
         {!playing && (
           <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors group-hover:bg-black/20">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gold shadow-lg">
+            <span className="flex h-14 w-14 items-center justify-center rounded-md bg-ink shadow-lg">
               <svg viewBox="0 0 24 24" fill="#212428" className="ml-1 h-6 w-6" aria-hidden>
                 <path d="M8 5v14l11-7z" />
               </svg>

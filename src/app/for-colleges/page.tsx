@@ -19,6 +19,7 @@ export default function ForColleges() {
     <>
       <PageHero
         eyebrow="For Colleges & Institutions"
+        index="03"
         title={<>We partner with colleges to create <span className="hl">lasting impact</span> and new opportunities</>}
         lead="From placement marketing to certification-program enrollment, we build the acquisition systems that education institutions normally can't build in-house."
       />
@@ -27,7 +28,7 @@ export default function ForColleges() {
         <div className="grid gap-6 sm:grid-cols-3">
           {pillars.map((p, i) => (
             <Reveal key={p.title} delay={i * 110}>
-            <div className="glass card-hover h-full rounded-2xl p-6">
+            <div className="glass card-hover h-full rounded-lg p-6">
               <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.body}</p>
             </div>
@@ -43,9 +44,9 @@ export default function ForColleges() {
           </h2>
           <Link
             href="/strategy-call"
-            className="mt-6 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-on-gold hover:bg-gold-bright focus-ring"
+            className="mt-6 inline-block rounded-md bg-ink px-8 py-3.5 text-sm font-semibold text-void hover:bg-gold focus-ring"
           >
-            Collaborate With Us →
+            Collaborate With Us
           </Link>
         </div>
       </section>

@@ -35,11 +35,11 @@ export default async function CaseStudyPage({
     <>
       <section className="border-b border-glass-border">
         <div className="mx-auto max-w-4xl px-6 py-20">
-          <Link href="/case-studies" className="text-sm font-semibold text-gold hover:text-gold-bright">
-            ← All case studies
+          <Link href="/case-studies" className="link-line font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted">
+            Back to all case studies
           </Link>
           <div className="mt-6 flex items-center gap-4">
-            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-white/90">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-white/90">
               <Image src={cs.logo} alt={`${cs.name} logo`} fill sizes="56px" className="object-contain p-1.5" />
             </div>
             <span className="text-sm font-semibold uppercase tracking-widest text-ink-muted">{cs.name}</span>
@@ -80,14 +80,14 @@ export default async function CaseStudyPage({
         <p className="eyebrow text-gold">Campaign Performance</p>
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
           {cs.stats.map((s) => (
-            <div key={s.label} className="card-hover rounded-xl border border-surface-line/60 bg-surface p-5">
+            <div key={s.label} className="card-hover rounded-md border border-surface-line/60 bg-surface p-5">
               <div className="font-mono-num text-2xl font-semibold text-gold"><CountUp value={s.value} /></div>
               <div className="mt-1 text-sm text-ink-muted">{s.label}</div>
             </div>
           ))}
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-2xl border border-glass-border">
+        <div className="mt-10 overflow-hidden rounded-lg border border-glass-border">
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-surface text-left">
@@ -133,9 +133,9 @@ export default async function CaseStudyPage({
           <h2 className="text-2xl font-semibold text-ink">Want results like this?</h2>
           <Link
             href="/strategy-call"
-            className="mt-6 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-on-gold hover:bg-gold-bright focus-ring"
+            className="mt-6 inline-block rounded-md bg-ink px-8 py-3.5 text-sm font-medium text-void hover:bg-gold focus-ring"
           >
-            Book My Free Strategy Call →
+            Book My Free Strategy Call
           </Link>
         </div>
       </section>

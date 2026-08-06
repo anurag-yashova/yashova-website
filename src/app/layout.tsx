@@ -1,27 +1,27 @@
 import type { Metadata } from "next";
-import { Montserrat, Poppins, IBM_Plex_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import CursorGlow from "@/components/CursorGlow";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+  variable: "--font-body",
 });
 
 const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${montserrat.variable} ${poppins.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-void text-ink">
         <script

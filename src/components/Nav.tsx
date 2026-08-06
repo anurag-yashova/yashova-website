@@ -57,7 +57,7 @@ export default function Nav() {
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="nav-link text-sm font-medium text-ink-muted transition-colors hover:text-ink focus-ring rounded"
+                className="nav-link font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted transition-colors hover:text-ink focus-ring rounded"
               >
                 {l.label}
               </a>
@@ -65,7 +65,7 @@ export default function Nav() {
               <Link
                 key={l.href}
                 href={l.href}
-                className="nav-link text-sm font-medium text-ink-muted transition-colors hover:text-ink focus-ring rounded"
+                className="nav-link font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted transition-colors hover:text-ink focus-ring rounded"
               >
                 {l.label}
               </Link>
@@ -77,7 +77,7 @@ export default function Nav() {
           <ThemeToggle />
           <Link
             href="/strategy-call"
-            className="rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring"
+            className="rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
           >
             Book a Strategy Call
           </Link>
@@ -113,7 +113,7 @@ export default function Nav() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="text-sm font-medium text-ink-muted hover:text-ink"
+                  className="font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted hover:text-ink"
                 >
                   {l.label}
                 </a>
@@ -122,7 +122,7 @@ export default function Nav() {
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-medium text-ink-muted hover:text-ink"
+                  className="font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted hover:text-ink"
                 >
                   {l.label}
                 </Link>
@@ -131,7 +131,7 @@ export default function Nav() {
             <Link
               href="/strategy-call"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-gold px-5 py-2.5 text-center text-sm font-medium text-on-gold"
+              className="mt-2 rounded-md bg-ink px-5 py-2.5 text-center text-sm font-medium text-void"
             >
               Book a Strategy Call
             </Link>

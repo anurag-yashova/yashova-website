@@ -22,24 +22,24 @@ export default function HeroChart() {
       >
         <defs>
           <linearGradient id="goldFade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#D7AF37" stopOpacity="0.28" />
-            <stop offset="100%" stopColor="#D7AF37" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
           </linearGradient>
         </defs>
 
         {/* grid */}
         {[40, 80, 120, 160].map((y) => (
-          <line key={y} x1="0" y1={y} x2="360" y2={y} stroke="rgba(196,207,222,0.08)" strokeWidth="1" />
+          <line key={y} x1="0" y1={y} x2="360" y2={y} stroke="var(--surface-line)" opacity="0.55" strokeWidth="1" />
         ))}
         {[72, 144, 216, 288].map((x) => (
-          <line key={x} x1={x} y1="0" x2={x} y2="200" stroke="rgba(196,207,222,0.05)" strokeWidth="1" />
+          <line key={x} x1={x} y1="0" x2={x} y2="200" stroke="var(--surface-line)" opacity="0.3" strokeWidth="1" />
         ))}
 
         <path d={fill} fill="url(#goldFade)" className="chart-fill" />
         <path
           d={line}
           fill="none"
-          stroke="#D7AF37"
+          stroke="var(--gold)"
           strokeWidth="2.5"
           strokeLinecap="round"
           className="chart-line"
@@ -51,8 +51,8 @@ export default function HeroChart() {
             cx={d.cx}
             cy={d.cy}
             r="4.5"
-            fill="#212428"
-            stroke="#D7AF37"
+            fill="var(--void)"
+            stroke="var(--gold)"
             strokeWidth="2.5"
             className="chart-dot"
             style={{ animationDelay: d.delay }}
@@ -61,8 +61,8 @@ export default function HeroChart() {
 
         {/* ROAS label at the peak */}
         <g className="chart-dot" style={{ animationDelay: "2.5s" }}>
-          <rect x="288" y="4" rx="6" width="64" height="22" fill="rgba(215,175,55,0.12)" stroke="rgba(215,175,55,0.5)" strokeWidth="1" />
-          <text x="320" y="19" textAnchor="middle" fill="#F0CC6B" fontSize="11" fontWeight="600" fontFamily="var(--font-montserrat), sans-serif">
+          <rect x="288" y="4" rx="6" width="64" height="22" fill="var(--gold)" fillOpacity="0.1" stroke="var(--gold)" strokeOpacity="0.5" strokeWidth="1" />
+          <text x="320" y="19" textAnchor="middle" fill="var(--gold-bright)" fontSize="11" fontWeight="600" fontFamily="var(--font-display), sans-serif">
             5.5X ROAS
           </text>
         </g>

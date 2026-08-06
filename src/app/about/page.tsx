@@ -29,6 +29,7 @@ export default function About() {
     <>
       <PageHero
         eyebrow="About Yashova"
+        index="01"
         title={<>We build marketing systems that drive <span className="hl">real business growth</span></>}
         lead="From strategy to execution — social media, paid ads, funnels, and brand building — all under one roof."
       />
@@ -56,7 +57,7 @@ export default function About() {
         <h3 className="mt-14 text-xl font-semibold text-ink">How We&apos;re Different</h3>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {differentiators.map((d) => (
-            <li key={d} className="glass card-hover flex gap-3 rounded-2xl p-5 text-sm leading-relaxed text-ink-muted">
+            <li key={d} className="glass card-hover flex gap-3 rounded-lg p-5 text-sm leading-relaxed text-ink-muted">
               <span className="text-gold">»</span>
               {d}
             </li>
@@ -67,7 +68,7 @@ export default function About() {
       <section className="border-y border-glass-border bg-surface/40">
         <div className="mx-auto max-w-4xl px-6 py-20">
           <div className="flex flex-col items-start gap-8 sm:flex-row">
-            <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-full border border-surface-line/60">
+            <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-md border border-surface-line/60">
               <Image
                 src="/images/anurag-profile.png"
                 alt="Anurag Sharma, founder of Yashova"
@@ -100,7 +101,7 @@ export default function About() {
         <p className="eyebrow text-gold">How We Work</p>
         <ol className="mt-10 grid gap-8 sm:grid-cols-2">
           {process.map((p) => (
-            <li key={p.n} className="rounded-xl border border-surface-line/60 bg-surface p-6">
+            <li key={p.n} className="rounded-md border border-surface-line/60 bg-surface p-6">
               <div className="font-mono-num text-sm text-gold">{p.n}</div>
               <h3 className="mt-2 text-lg font-semibold text-ink">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.body}</p>
@@ -115,7 +116,7 @@ export default function About() {
         </h2>
         <Link
           href="/strategy-call"
-          className="mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-on-gold transition-colors hover:bg-gold-bright focus-ring"
+          className="mt-8 inline-block rounded-md bg-ink px-8 py-3.5 text-sm font-semibold text-void transition-colors hover:bg-gold focus-ring"
         >
           Book a Strategy Call
         </Link>

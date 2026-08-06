@@ -17,6 +17,7 @@ export default function CaseStudiesIndex() {
     <>
     <PageHero
       eyebrow="Case Studies"
+      index="02"
       title={<>Real campaigns. <span className="hl">Real numbers.</span></>}
       lead="We partner with ambitious businesses ready to scale profitably. No manufactured results."
     />
@@ -26,10 +27,10 @@ export default function CaseStudiesIndex() {
           <Reveal key={cs.slug} delay={i * 110}>
           <Link
             href={`/case-studies/${cs.slug}`}
-            className="card-hover group flex flex-col rounded-2xl border border-surface-line/60 bg-surface p-7 focus-ring"
+            className="card-hover group flex flex-col rounded-lg border border-surface-line/60 bg-surface p-7 focus-ring"
           >
             <div className="flex items-center gap-3">
-              <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white/90">
+              <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-md bg-white/90">
                 <Image src={cs.logo} alt={`${cs.name} logo`} fill sizes="44px" className="object-contain p-1" />
               </div>
               <h2 className="text-xl font-semibold text-ink group-hover:text-gold">{cs.name}</h2>
@@ -44,7 +45,7 @@ export default function CaseStudiesIndex() {
               ))}
             </div>
             <p className="mt-6 text-xs text-ink-muted">Strategy: {cs.strategy}</p>
-            <span className="mt-5 text-sm font-semibold text-gold">Read case study →</span>
+            <span className="link-line mt-5 self-start font-mono-num text-xs uppercase tracking-[0.14em] text-ink">Read case study</span>
           </Link>
           </Reveal>
         ))}

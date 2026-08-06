@@ -16,8 +16,8 @@ export default async function BlogPostPage({
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-20">
-      <Link href="/blog" className="text-sm font-semibold text-gold hover:text-gold-bright">
-        ← Blog
+      <Link href="/blog" className="link-line font-mono-num text-xs uppercase tracking-[0.14em] text-ink">
+        Blog
       </Link>
       <h1 className="mt-6 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
         {post.title}

@@ -13,6 +13,7 @@ export default function StrategyCall() {
     <>
       <PageHero
         eyebrow="Get In Touch"
+        index="06"
         title={<>Let&apos;s discuss your <span className="hl">growth</span></>}
         lead="Tell us where you're losing money on ads — we'll come back with a clear read on what to fix first."
       />
@@ -21,19 +22,19 @@ export default function StrategyCall() {
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal>
             <div className="space-y-8">
-              <div className="glass card-hover rounded-2xl p-6">
+              <div className="glass card-hover rounded-lg p-6">
                 <h3 className="eyebrow">Call Anytime</h3>
                 <a href="tel:+919818086846" className="mt-1 block text-xl font-medium text-ink hover:text-gold">
                   +91 981 808 6846
                 </a>
               </div>
-              <div className="glass card-hover rounded-2xl p-6">
+              <div className="glass card-hover rounded-lg p-6">
                 <h3 className="eyebrow">E-Mail Us</h3>
                 <a href="mailto:anurag@yashova.com" className="mt-1 block text-xl font-medium text-ink hover:text-gold">
                   anurag@yashova.com
                 </a>
               </div>
-              <div className="glass card-hover rounded-2xl p-6">
+              <div className="glass card-hover rounded-lg p-6">
                 <h3 className="eyebrow">Visit Us. We&apos;re Here</h3>
                 <p className="mt-1 text-xl font-medium text-ink">741, Sector-23, Faridabad</p>
               </div>

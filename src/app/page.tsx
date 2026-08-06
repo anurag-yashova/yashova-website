@@ -6,6 +6,7 @@ import HeroChart from "@/components/HeroChart";
 import VideoTestimonial from "@/components/VideoTestimonial";
 import MetricsTicker from "@/components/MetricsTicker";
 import LiveOpsFeed from "@/components/LiveOpsFeed";
+import OutlineMarquee from "@/components/OutlineMarquee";
 import {
   CoachIcon,
   HealthIcon,
@@ -116,7 +117,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-14 md:grid-cols-2">
             <div>
-              <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
+              <h1 className="text-5xl font-bold leading-[0.98] tracking-tighter text-ink md:text-7xl lg:text-8xl">
                 <span className="clip-line"><span>No Hype.</span></span>
                 <span className="clip-line"><span>Just <span className="hl">Revenue.</span></span></span>
               </h1>
@@ -131,9 +132,9 @@ export default function Home() {
               <div className="rise-3 mt-8 flex flex-wrap gap-4">
                 <Link
                   href="/ai-audit"
-                  className="cta-pulse rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring"
+                  className="cta-pulse rounded-md bg-ink px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
                 >
-                  Get My Free Audit →
+                  Get My Free Audit
                 </Link>
                 <Link
                   href="/case-studies"
@@ -161,12 +162,12 @@ export default function Home() {
             <div className="rise-3 relative">
               <div className="breathe-glow" />
               <LiveOpsFeed />
-              <div className="glass relative rounded-3xl p-6 md:p-8">
+              <div className="glass relative rounded-lg p-6 md:p-8">
                 <div className="mb-4 flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-widest text-ink-muted">
                     Campaign Revenue
                   </span>
-                  <span className="rounded-full bg-signal/10 px-2.5 py-0.5 text-xs font-semibold text-signal">
+                  <span className="rounded-md bg-signal/10 px-2.5 py-0.5 text-xs font-semibold text-signal">
                     ▲ Live systems
                   </span>
                 </div>
@@ -187,7 +188,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute -bottom-5 -right-3 hidden md:block">
-                <div className="relative h-24 w-24 overflow-hidden rounded-full border-[3px] border-gold bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+                <div className="relative h-24 w-24 overflow-hidden rounded-md border-[3px] border-gold bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
                   <Image
                     src="/images/anurag-profile.png"
                     alt="Anurag from Yashova"
@@ -203,6 +204,8 @@ export default function Home() {
         </div>
       </section>
 
+      <OutlineMarquee words={["Performance", "Revenue", "Systems"]} goldEvery={3} />
+
       {/* ===== Who we work with ===== */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <Reveal>
@@ -216,7 +219,7 @@ export default function Home() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map((a, i) => (
             <Reveal key={a.title} delay={i * 90}>
-              <div className="glass card-hover h-full rounded-2xl p-6">
+              <div className="glass card-hover h-full rounded-lg p-6">
                 <a.icon className="text-gold" />
                 <h3 className="mt-4 text-lg font-semibold text-ink">{a.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-muted">{a.body}</p>
@@ -237,7 +240,7 @@ export default function Home() {
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {capabilities.map((c, i) => (
               <Reveal key={c.title} delay={i * 110} from={i === 0 ? "left" : i === 2 ? "right" : "up"}>
-                <div className="card-hover h-full rounded-2xl border border-surface-line/60 bg-void p-7">
+                <div className="card-hover h-full rounded-lg border border-surface-line/60 bg-void p-7">
                   <c.icon className="text-gold" />
                   <h3 className="mt-4 text-xl font-semibold text-ink">{c.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink-muted">{c.body}</p>
@@ -263,8 +266,8 @@ export default function Home() {
               </h2>
               <p className="mt-3 text-ink-muted">Real campaigns. Real numbers. No manufactured results.</p>
             </div>
-            <Link href="/case-studies" className="text-sm font-semibold text-gold hover:text-gold-bright">
-              View all case studies →
+            <Link href="/case-studies" className="link-line font-mono-num text-xs uppercase tracking-[0.14em] text-ink">
+              View all case studies
             </Link>
           </div>
         </Reveal>
@@ -273,10 +276,10 @@ export default function Home() {
             <Reveal key={cs.slug} delay={i * 110} from="zoom">
               <Link
                 href={`/case-studies/${cs.slug}`}
-                className="card-hover group block h-full rounded-2xl border border-surface-line/60 bg-surface p-7 focus-ring"
+                className="card-hover group block h-full rounded-lg border border-surface-line/60 bg-surface p-7 focus-ring"
               >
                 <div className="flex items-center gap-3">
-                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white/90 p-1">
+                  <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-md bg-white/90 p-1">
                     <Image src={cs.logo} alt={`${cs.name} logo`} fill sizes="44px" className="object-contain p-1" />
                   </div>
                   <h3 className="text-lg font-semibold text-ink group-hover:text-gold">{cs.name}</h3>
@@ -350,7 +353,7 @@ export default function Home() {
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {beliefs.map((b, i) => (
               <Reveal key={b} delay={i * 100} from="left">
-                <div className="glass card-hover flex h-full items-center gap-4 rounded-2xl p-6">
+                <div className="glass card-hover flex h-full items-center gap-4 rounded-lg p-6">
                   <NoEqualIcon className="shrink-0 text-gold" />
                   <p className="text-lg font-medium text-ink">{b}</p>
                 </div>
@@ -366,6 +369,8 @@ export default function Home() {
         </div>
       </section>
 
+      <OutlineMarquee words={["Scale", "Profit", "Growth"]} goldEvery={3} />
+
       {/* ===== Final CTA ===== */}
       <section className="relative mx-auto max-w-6xl overflow-hidden px-6 py-20 text-center">
         <div className="dot-grid pointer-events-none absolute inset-0" />
@@ -379,9 +384,9 @@ export default function Home() {
           </p>
           <Link
             href="/strategy-call"
-            className="cta-pulse mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring"
+            className="cta-pulse mt-8 inline-block rounded-md bg-ink px-8 py-3.5 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
           >
-            Book My Free Strategy Call →
+            Book My Free Strategy Call
           </Link>
         </Reveal>
       </section>
@@ -398,7 +403,7 @@ export default function Home() {
             {[...clients, ...clients].map((c, i) => (
               <span
                 key={`${c}-${i}`}
-                className="whitespace-nowrap rounded-full border border-glass-border px-5 py-2 text-sm font-bold italic text-ink-muted"
+                className="whitespace-nowrap rounded-md border border-glass-border px-5 py-2 text-sm font-bold italic text-ink-muted"
               >
                 {c}
               </span>

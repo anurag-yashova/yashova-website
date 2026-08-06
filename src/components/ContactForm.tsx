@@ -20,7 +20,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="glass space-y-5 rounded-2xl p-8">
+    <form onSubmit={submit} className="glass space-y-5 rounded-lg p-8">
       <div>
         <label htmlFor="name" className="text-sm font-medium text-ink-muted">Name</label>
         <input
@@ -54,9 +54,9 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="cta-pulse w-full rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring"
+        className="cta-pulse w-full rounded-md bg-ink px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
       >
-        Send on WhatsApp →
+        Send on WhatsApp
       </button>
       <p className="text-xs text-ink-muted">
         Opens WhatsApp with your message pre-filled — we reply within a few hours.

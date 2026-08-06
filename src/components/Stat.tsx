@@ -8,7 +8,7 @@ export default function Stat({
   accent?: "gold" | "signal";
 }) {
   return (
-    <div className="rounded-xl border border-surface-line/60 bg-surface p-5">
+    <div className="rounded-md border border-surface-line/60 bg-surface p-5">
       <div
         className={`font-mono-num text-3xl font-semibold ${
           accent === "signal" ? "text-signal" : "text-gold"

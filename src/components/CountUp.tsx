@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /** Animates the numeric part of a stat string, keeping prefix/suffix intact.
- *  "₹30.1L+" → counts 0→30.1 with ₹ prefix and L+ suffix.
+ *  "₹30.1L+" counts 030.1 with ₹ prefix and L+ suffix.
  *  Renders the final value by default (SSR-safe, reduced-motion-safe);
  *  the animation only kicks in client-side once the element scrolls into view. */
 export default function CountUp({
