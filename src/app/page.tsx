@@ -4,9 +4,9 @@ import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import HeroChart from "@/components/HeroChart";
 import VideoTestimonial from "@/components/VideoTestimonial";
-import MetricsTicker from "@/components/MetricsTicker";
 import LiveOpsFeed from "@/components/LiveOpsFeed";
-import OutlineMarquee from "@/components/OutlineMarquee";
+import ProofBar from "@/components/ProofBar";
+import FunnelDiagram from "@/components/FunnelDiagram";
 import {
   CoachIcon,
   HealthIcon,
@@ -110,7 +110,6 @@ export default function Home() {
   return (
     <>
       {/* ===== Hero ===== */}
-      <MetricsTicker />
       <section className="relative overflow-hidden border-b border-glass-border">
         <div className="dot-grid pointer-events-none absolute inset-0" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(215,175,55,0.08),transparent_60%)]" />
@@ -204,7 +203,7 @@ export default function Home() {
         </div>
       </section>
 
-      <OutlineMarquee words={["Performance", "Revenue", "Systems"]} goldEvery={3} />
+      <ProofBar />
 
       {/* ===== Who we work with ===== */}
       <section className="mx-auto max-w-6xl px-6 py-20">
@@ -369,7 +368,35 @@ export default function Home() {
         </div>
       </section>
 
-      <OutlineMarquee words={["Scale", "Profit", "Growth"]} goldEvery={3} />
+      {/* ===== One real funnel, to scale ===== */}
+      <section className="scan-top border-y border-surface-line">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+            <Reveal from="left">
+              <div className="lg:sticky lg:top-28">
+                <p className="eyebrow">One campaign, to scale</p>
+                <h2 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tighter text-ink md:text-5xl">
+                  Where the money <span className="hl">actually goes</span>
+                </h2>
+                <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-muted">
+                  Every stage below is drawn to scale from one real account &mdash;
+                  120 days, ₹18.6L spent, ₹1.02Cr returned. Most agencies show you
+                  the first line. The business is decided by the last one.
+                </p>
+                <Link
+                  href="/case-studies/theaudiolearning"
+                  className="link-line mt-8 inline-block font-mono-num text-xs uppercase tracking-[0.14em] text-ink"
+                >
+                  Read the full breakdown
+                </Link>
+              </div>
+            </Reveal>
+            <Reveal from="right" delay={120}>
+              <FunnelDiagram />
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* ===== Final CTA ===== */}
       <section className="relative mx-auto max-w-6xl overflow-hidden px-6 py-20 text-center">

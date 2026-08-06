@@ -87,8 +87,8 @@ export default async function CaseStudyPage({
           ))}
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-lg border border-glass-border">
-          <table className="w-full text-sm">
+        <div className="mt-10 overflow-x-auto rounded-lg border border-glass-border">
+          <table className="w-full min-w-[420px] text-sm">
             <thead>
               <tr className="bg-surface text-left">
                 <th className="px-5 py-3 font-semibold text-ink">Metric</th>

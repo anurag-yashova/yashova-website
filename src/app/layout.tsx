@@ -28,18 +28,39 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://yashova.com"),
   title: {
-    default: "Performance Marketing Agency | Meta & Google Ads Experts | Yashova",
+    default: "Yashova — Performance Marketing Agency in Delhi NCR",
     template: "%s | Yashova",
   },
   description:
-    "Most ad spend gets wasted on non-converting clicks. We design end-to-end marketing systems that track spend, qualify leads, and maximize ROI.",
+    "Most ad spend gets wasted on non-converting clicks. We build end-to-end marketing systems that track spend, qualify leads, and maximize ROI. Meta Ads, Google Ads, funnels and WhatsApp automation.",
+  keywords: [
+    "performance marketing agency",
+    "performance marketing Faridabad",
+    "performance marketing Delhi NCR",
+    "Meta ads agency India",
+    "Google Ads agency Delhi",
+    "lead generation India",
+    "WhatsApp automation",
+    "funnel building agency",
+  ],
+  authors: [{ name: "Yashova" }],
   openGraph: {
-    title: "Home - Yashova",
-    description:
-      "Most ad spend gets wasted on non-converting clicks. We design end-to-end marketing systems that track spend, qualify leads, and maximize ROI.",
+    type: "website",
+    locale: "en_IN",
     url: "https://yashova.com",
     siteName: "Yashova",
+    title: "Yashova — Performance Marketing Agency in Delhi NCR",
+    description:
+      "No hype. Just revenue. Marketing systems that track spend, qualify leads, and maximize ROI.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Yashova — Not Loud. Unignorable." }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yashova — Performance Marketing Agency in Delhi NCR",
+    description: "No hype. Just revenue.",
+    images: ["/og-image.jpg"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({

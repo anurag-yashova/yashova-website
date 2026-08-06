@@ -86,13 +86,13 @@ export default function ProofGallery({
             type="button"
             onClick={(e) => { e.stopPropagation(); prev(); }}
             aria-label="Previous image"
-            className="absolute left-4 flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white transition-colors hover:bg-white/20 focus-ring"
+            className="lightbox-nav absolute left-4 flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white transition-colors hover:bg-white/20 focus-ring"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
               <path d="M15 6l-6 6 6 6" />
             </svg>
           </button>
-          <div className="max-h-[88vh] max-w-6xl overflow-auto rounded-md bg-white" onClick={(e) => e.stopPropagation()}>
+          <div className="max-h-[78vh] w-full max-w-6xl overflow-auto rounded-md bg-white md:max-h-[88vh]" onClick={(e) => e.stopPropagation()}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={images[index]} alt={`${name} proof full view`} className="h-auto w-full" />
           </div>
@@ -100,7 +100,7 @@ export default function ProofGallery({
             type="button"
             onClick={(e) => { e.stopPropagation(); next(); }}
             aria-label="Next image"
-            className="absolute right-4 flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white transition-colors hover:bg-white/20 focus-ring"
+            className="lightbox-nav absolute right-4 flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white transition-colors hover:bg-white/20 focus-ring"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
               <path d="M9 6l6 6-6 6" />
