@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --void: #0f0f14;
+  --surface: #1a1a23;
+  --surface-raised: #23232f;
+  --surface-line: #33333f;
+  --ink: #f6f4ee;
+  --ink-muted: #a5a3b3;
+  --gold: #d7af37;
+  --gold-bright: #f0cc6b;
+  --signal: #4ade80;
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-line: var(--surface-line);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-signal: var(--signal);
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--void);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-mono-num {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* chevron divider motif -- echoes the >>> in the Yashova wordmark */
+.chevron::after {
+  content: "\00bb";
+  color: var(--gold);
+  margin-left: 0.35em;
+  font-weight: 700;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}

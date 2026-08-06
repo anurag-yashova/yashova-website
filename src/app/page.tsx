@@ -1,0 +1,293 @@
+import Link from "next/link";
+import Image from "next/image";
+
+const audiences = [
+  { title: "Coaches & Course Creators", body: "Scale your knowledge business with high-converting funnels." },
+  { title: "Healthcare & Medical Institutes", body: "Generate qualified patient leads consistently." },
+  { title: "Real Estate & Local Businesses", body: "Fill your pipeline with ready-to-buy prospects." },
+  { title: "Startups & D2C Brands", body: "Accelerate growth with data-driven acquisition." },
+];
+
+const capabilities = [
+  {
+    title: "Performance Marketing",
+    body: "We don't run ads. We build systems that convert clicks into paying customers.",
+    tags: ["Meta Ads", "Google Ads", "Programmatic"],
+  },
+  {
+    title: "Lead Generation Funnels",
+    body: "Landing pages + WhatsApp automation + follow-ups = higher conversions.",
+    tags: ["Landing Pages", "WhatsApp Automation", "CRM"],
+  },
+  {
+    title: "Growth Strategy",
+    body: "We don't guess. We analyze, test, and scale what works.",
+    tags: ["A/B Testing", "Analytics", "Scaling"],
+  },
+];
+
+const caseStudies = [
+  {
+    slug: "theaudiolearning",
+    name: "TheAudioLearning",
+    stats: [
+      { value: "850+", label: "Leads Generated" },
+      { value: "₹42", label: "Cost per Lead" },
+      { value: "12.5%", label: "Conversion Rate" },
+    ],
+    strategy: "Webinar funnel + WhatsApp follow-up",
+  },
+  {
+    slug: "cvolvepro",
+    name: "CvolvePro",
+    stats: [
+      { value: "67%", label: "Conversion ↑" },
+      { value: "45%", label: "CPL Reduction" },
+      { value: "4.2x", label: "ROAS" },
+    ],
+    strategy: "Funnel optimization + retargeting",
+  },
+  {
+    slug: "helping-hands-foundation",
+    name: "Helping Hands Foundation",
+    stats: [
+      { value: "₹30.1L+", label: "Donations Collected" },
+      { value: "4.5X", label: "ROAS" },
+      { value: "11,246", label: "Captured Payments" },
+    ],
+    strategy: "Meta Ads + Pixel/CAPI + Funnel Optimization",
+  },
+];
+
+const process = [
+  { n: "01", title: "Understand the Business", body: "Deep dive into your market, audience, and current positioning to build a foundation of clarity." },
+  { n: "02", title: "Define Scope & Strategy", body: "Craft a tailored roadmap with clear objectives, timelines, and measurable milestones." },
+  { n: "03", title: "Execute with a Dedicated Team", body: "Your campaigns are managed by specialists who understand your brand inside and out." },
+  { n: "04", title: "Optimise & Scale", body: "Continuous refinement based on data, with a focus on sustainable, long-term growth." },
+];
+
+const beliefs = [
+  "More ads ≠ more profit",
+  "Traffic ≠ sales",
+  "Cheap leads ≠ good leads",
+];
+
+const clients = [
+  "Buyernest", "TheAudioLearning", "CvolvePro", "Digital Africa",
+  "Investmate", "Tradebazar", "Earthling Trust", "Helping Hands", "Digiraag",
+];
+
+export default function Home() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-surface-line/60">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(215,175,55,0.10),transparent_60%)]" />
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div>
+              <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+                Performance Marketing, Faridabad → Worldwide
+              </p>
+              <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
+                No Hype.
+                <br />
+                Just Revenue.
+              </h1>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
+                Most ad spend gets wasted on non-converting clicks. We design
+                end-to-end marketing systems that track spend, qualify leads,
+                and maximize ROI. Trusted by 150+ brands globally to cut ad
+                waste.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/ai-audit"
+                  className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-void transition-colors hover:bg-gold-bright focus-ring"
+                >
+                  Get My Free Audit →
+                </Link>
+                <Link
+                  href="/case-studies"
+                  className="rounded-full border border-surface-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-gold hover:text-gold focus-ring"
+                >
+                  See Real Results
+                </Link>
+              </div>
+              <div className="mt-10 flex gap-8 font-mono-num">
+                <div>
+                  <div className="text-2xl font-semibold text-ink">150+</div>
+                  <div className="text-xs text-ink-muted">brands scaled</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-semibold text-ink">₹2.5Cr+</div>
+                  <div className="text-xs text-ink-muted">ad spend managed profitably</div>
+                </div>
+              </div>
+            </div>
+            <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-surface-line/60 bg-surface">
+              <Image
+                src="/images/anurag-profile.jpg"
+                alt="Anurag from Yashova, performance marketing expert"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Who we work with */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">Who We Work With</p>
+        <h2 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+          If you&apos;re spending money on ads and not getting predictable
+          returns, you&apos;re in the right place.
+        </h2>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {audiences.map((a) => (
+            <div key={a.title} className="rounded-xl border border-surface-line/60 bg-surface p-6">
+              <h3 className="text-lg font-semibold text-ink">{a.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-muted">{a.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* What we do */}
+      <section className="border-y border-surface-line/60 bg-surface/40">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">What We Actually Do</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+            That gets results
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {capabilities.map((c) => (
+              <div key={c.title} className="rounded-2xl border border-surface-line/60 bg-void p-7">
+                <h3 className="text-xl font-semibold text-ink">{c.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">{c.body}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {c.tags.map((t) => (
+                    <span key={t} className="rounded-full border border-surface-line px-3 py-1 text-xs text-ink-muted">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case studies */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">Case Studies</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+              Real campaigns. Real numbers.
+            </h2>
+          </div>
+          <Link href="/case-studies" className="text-sm font-semibold text-gold hover:text-gold-bright">
+            View all case studies →
+          </Link>
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {caseStudies.map((cs) => (
+            <Link
+              key={cs.slug}
+              href={`/case-studies/${cs.slug}`}
+              className="group rounded-2xl border border-surface-line/60 bg-surface p-7 transition-colors hover:border-gold/60 focus-ring"
+            >
+              <h3 className="text-xl font-semibold text-ink group-hover:text-gold">{cs.name}</h3>
+              <div className="mt-5 grid grid-cols-3 gap-3">
+                {cs.stats.map((s) => (
+                  <div key={s.label}>
+                    <div className="font-mono-num text-lg font-semibold text-gold">{s.value}</div>
+                    <div className="text-[11px] leading-tight text-ink-muted">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-xs text-ink-muted">Strategy: {cs.strategy}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* How we work */}
+      <section className="border-y border-surface-line/60 bg-surface/40">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">How We Work</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+            A structured process, not a shortcut
+          </h2>
+          <ol className="mt-10 grid gap-8 md:grid-cols-4">
+            {process.map((p, i) => (
+              <li key={p.n} className="relative pl-0">
+                <div className="font-mono-num text-sm text-gold">{p.n}</div>
+                <h3 className="mt-2 text-lg font-semibold text-ink">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.body}</p>
+                {i < process.length - 1 && (
+                  <div className="mt-6 hidden h-px w-full bg-surface-line md:block" aria-hidden />
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Why most marketing advice is wrong */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+          Why Most Marketing Advice Is Wrong
+        </p>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {beliefs.map((b) => (
+            <div key={b} className="rounded-xl border border-surface-line/60 p-6">
+              <p className="text-lg font-medium text-ink">{b}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-10 max-w-2xl text-xl font-medium leading-snug text-ink">
+          Hacks expire. Systems compound. If you&apos;re done chasing
+          shortcuts, let&apos;s build something that actually scales.
+        </p>
+      </section>
+
+      {/* Trusted by */}
+      <section className="border-t border-surface-line/60 bg-surface/40">
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-ink-muted">
+            Trusted by businesses worldwide
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-x-10 gap-y-4">
+            {clients.map((c) => (
+              <span key={c} className="text-sm font-medium text-ink-muted">{c}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="mx-auto max-w-6xl px-6 py-20 text-center">
+        <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+          Your ads should be making you money.
+          <br />
+          Let&apos;s make that happen.
+        </h2>
+        <p className="mx-auto mt-4 max-w-lg text-ink-muted">
+          If you are looking for structured marketing execution rather than
+          shortcuts, let&apos;s start with a discussion.
+        </p>
+        <Link
+          href="/strategy-call"
+          className="mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-void transition-colors hover:bg-gold-bright focus-ring"
+        >
+          Book My Free Strategy Call →
+        </Link>
+      </section>
+    </>
+  );
+}
