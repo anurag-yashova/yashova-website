@@ -11,6 +11,8 @@
   "dependencies": {
     "@portabletext/react": "^7.0.1",
     "@sanity/client": "^7.26.2",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.0.9",
     "next": "16.3.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"

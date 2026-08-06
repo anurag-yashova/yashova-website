@@ -1,54 +1,55 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { getAllPosts } from "@/lib/sanity";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
+import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Notes on performance marketing, funnels, and growth.",
+  title: "Performance Marketing Blog",
+  description:
+    "Playbooks, teardowns and real campaign data on Meta Ads, Google Ads, funnels, WhatsApp automation and lead generation — from a Delhi NCR performance marketing agency.",
 };
 
-export const revalidate = 60;
-
-export default async function BlogIndex() {
-  const posts = await getAllPosts();
+export default function Blog() {
+  const posts = getAllPosts();
 
   return (
     <>
-    <PageHero
-      eyebrow="Blog"
-      index="05"
-      title={<>Notes on <span className="hl">growth</span></>}
-      lead="Playbooks, teardowns, and lessons from running real performance campaigns."
-    />
-    <section className="mx-auto max-w-4xl px-6 py-16">
-
-      {posts.length === 0 ? (
-        <div className="glass rounded-lg p-10 text-center">
-          <p className="text-ink-muted">
-            No posts yet — new writing on performance marketing, funnels, and
-            case studies will show up here as soon as it&apos;s published in
-            the CMS.
-          </p>
-          <Link href="/case-studies" className="link-line mt-4 inline-block font-mono-num text-xs uppercase tracking-[0.14em] text-ink">
-            See case studies in the meantime
-          </Link>
-        </div>
-      ) : (
-        <div className="space-y-6">
-          {posts.map((post) => (
-            <Link
-              key={post._id}
-              href={`/blog/${post.slug}`}
-              className="block rounded-md border border-surface-line/60 bg-surface p-6 transition-colors hover:border-gold/60 focus-ring"
-            >
-              <h2 className="text-lg font-semibold text-ink">{post.title}</h2>
-              {post.excerpt && <p className="mt-2 text-sm text-ink-muted">{post.excerpt}</p>}
+      <PageHero
+        eyebrow="Blog"
+        index="05"
+        title={<>Notes on <span className="hl">growth</span></>}
+        lead="Playbooks, teardowns and lessons from campaigns we actually ran — with the numbers attached."
+      />
+      <section className="mx-auto max-w-4xl px-6 py-16">
+        {posts.length === 0 ? (
+          <div className="glass rounded-lg p-10 text-center">
+            <p className="text-ink-muted">New writing lands here shortly.</p>
+            <Link href="/case-studies" className="link-line mt-4 inline-block font-mono-num text-xs uppercase tracking-[0.14em] text-ink">
+              See case studies in the meantime
             </Link>
-          ))}
-        </div>
-      )}
-    </section>
+          </div>
+        ) : (
+          <div className="divide-y divide-surface-line border-t border-surface-line">
+            {posts.map((p, i) => (
+              <Reveal key={p.slug} delay={(i % 4) * 70}>
+                <Link href={`/blog/${p.slug}`} className="group block py-8 focus-ring">
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-mono-num text-xs text-ink-muted">
+                      {new Date(p.publishedAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
+                    </span>
+                    <span className="font-mono-num text-xs text-ink-muted">{p.readingTime} min</span>
+                  </div>
+                  <h2 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-ink transition-colors group-hover:text-gold md:text-3xl">
+                    {p.title}
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">{p.excerpt}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        )}
+      </section>
     </>
   );
 }

@@ -346,3 +346,43 @@ html.light .kpi-chip { animation: none; }
   .cursor-glow { display: none; }
   .page-enter { animation: none; }
 }
+
+/* ============ ARTICLE BODY ============ */
+.post-body { font-size: 1.02rem; line-height: 1.75; color: var(--ink-muted); }
+.post-body h2 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--ink); margin: 2.6rem 0 0.9rem;
+}
+.post-body h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--ink);
+  margin: 2rem 0 0.6rem;
+}
+.post-body p { margin: 0 0 1.1rem; }
+.post-body ul, .post-body ol { margin: 0 0 1.3rem 1.1rem; }
+.post-body li { margin-bottom: 0.5rem; }
+.post-body ul { list-style: none; }
+.post-body ul li { position: relative; padding-left: 1rem; }
+.post-body ul li::before {
+  content: ""; position: absolute; left: 0; top: 0.62em;
+  height: 5px; width: 5px; background: var(--gold);
+}
+.post-body ol { list-style: decimal; }
+.post-body strong { color: var(--ink); font-weight: 600; }
+.post-body a {
+  color: var(--ink);
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+.post-body a:hover { background-size: 0% 1px; }
+.post-body blockquote {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.2rem; margin: 1.8rem 0;
+  color: var(--ink); font-size: 1.1rem;
+}
+.post-body table { width: 100%; border-collapse: collapse; margin: 1.6rem 0; font-size: 0.9rem; }
+.post-body th, .post-body td { border: 1px solid var(--surface-line); padding: 0.6rem 0.9rem; text-align: left; }
+.post-body th { color: var(--ink); font-weight: 600; }
+.post-body td:last-child { font-family: var(--font-mono), monospace; color: var(--gold); }

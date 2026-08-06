@@ -1,30 +1,86 @@
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { PortableText } from "@portabletext/react";
-import { getPostBySlug } from "@/lib/sanity";
+import { notFound } from "next/navigation";
+import { getAllSlugs, getPost } from "@/lib/posts";
 
-export const revalidate = 60;
+export function generateStaticParams() {
+  return getAllSlugs().map((slug) => ({ slug }));
+}
 
-export default async function BlogPostPage({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPost(slug);
+  if (!post) return { title: "Not found" };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    keywords: post.keywords,
+    openGraph: { title: post.title, description: post.excerpt, type: "article" },
+  };
+}
+
+export default async function BlogPost({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPost(slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.publishedAt,
+    author: { "@type": "Organization", name: "Yashova" },
+    publisher: { "@type": "Organization", name: "Yashova" },
+  };
+
   return (
-    <article className="mx-auto max-w-3xl px-6 py-20">
-      <Link href="/blog" className="link-line font-mono-num text-xs uppercase tracking-[0.14em] text-ink">
-        Blog
-      </Link>
-      <h1 className="mt-6 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-        {post.title}
-      </h1>
-      <div className="prose prose-invert mt-8 max-w-none text-ink-muted">
-        {Array.isArray(post.body) ? <PortableText value={post.body as never} /> : null}
-      </div>
-    </article>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <article className="mx-auto max-w-3xl px-6 py-20">
+        <Link href="/blog" className="link-line font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted">
+          Back to blog
+        </Link>
+        <div className="mt-8 flex items-baseline gap-4">
+          <span className="font-mono-num text-xs text-ink-muted">
+            {new Date(post.publishedAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}
+          </span>
+          <span className="font-mono-num text-xs text-ink-muted">{post.readingTime} min read</span>
+        </div>
+        <h1 className="mt-3 text-4xl font-bold leading-[1.02] tracking-tighter text-ink md:text-5xl">
+          {post.title}
+        </h1>
+        <p className="mt-6 text-lg leading-relaxed text-ink-muted">{post.excerpt}</p>
+        <div className="rule mt-10" />
+        <div
+          className="post-body mt-10"
+          dangerouslySetInnerHTML={{ __html: post.body }}
+        />
+        <div className="rule mt-14" />
+        <div className="mt-10">
+          <p className="eyebrow">Work with us</p>
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink">
+            Want this run on your account?
+          </h2>
+          <Link
+            href="/strategy-call"
+            className="cta-pulse mt-6 inline-block rounded-md bg-ink px-7 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
+          >
+            Book a free strategy call
+          </Link>
+        </div>
+      </article>
+    </>
   );
 }
