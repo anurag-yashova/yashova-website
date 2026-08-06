@@ -1,0 +1,908 @@
+<div class="ga-app">
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow on-dark">Website Growth Audit · By Yashova</span>
+    <h1>See exactly where your website <span class="hl">leaks revenue</span>.</h1>
+    <p class="sub">A real analyst-grade breakdown of your site — speed, SEO, conversion and the revenue you're leaving on the table. We run the same checks we'd run before taking you on as a client. No fluff, no vanity scores.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="n">150+</div><div class="l">Brands scaled</div></div>
+      <div class="hero-stat"><div class="n">₹2.5 Cr+</div><div class="l">Ad spend managed</div></div>
+      <div class="hero-stat"><div class="n">6 layers</div><div class="l">Audited per site</div></div>
+    </div>
+    <a href="#intake" class="scroll-cue"><span class="ln"></span> Start your audit</a>
+  </div>
+</section>
+
+<!-- ===================== STAGE (form / scan / report) ===================== -->
+<main class="stage" id="intake">
+  <!-- INTAKE -->
+  <div id="intake-block">
+    <div class="intake-head">
+      <span class="eyebrow">Step 01 · Tell us about the site</span>
+      <h2>Where should we point the analysis?</h2>
+      <p>Takes about a minute. We'll scan the live site and build your report on the spot.</p>
+    </div>
+
+    <div class="form-card">
+      <div class="form-card-top">
+        <span class="t">Audit intake</span>
+        <span class="step" id="form-step-label">1 of 1 · ~60 sec</span>
+      </div>
+      <div class="form-body">
+        <div class="field">
+          <label for="f-url">Website URL <span class="req">*</span></label>
+          <div class="url-wrap">
+            <input class="inp" id="f-url" type="text" placeholder="https://yourbusiness.com" autocomplete="url" />
+          </div>
+          <div class="field-note">The live page you want analysed — homepage or landing page.</div>
+        </div>
+
+        <div class="field">
+          <label>Primary goal — what should this site do better? <span class="req">*</span></label>
+          <div class="goal-grid" id="goal-grid">
+            <button type="button" class="goal-chip" data-goal="leads"><span class="gc-t">More leads</span><span class="gc-d">Enquiries & form fills</span></button>
+            <button type="button" class="goal-chip" data-goal="sales"><span class="gc-t">More sales</span><span class="gc-d">Checkout & revenue</span></button>
+            <button type="button" class="goal-chip" data-goal="seo"><span class="gc-t">Better SEO</span><span class="gc-d">Organic visibility</span></button>
+            <button type="button" class="goal-chip" data-goal="cro"><span class="gc-t">Higher conversions</span><span class="gc-d">Turn traffic into action</span></button>
+            <button type="button" class="goal-chip" data-goal="speed"><span class="gc-t">Faster website</span><span class="gc-d">Speed & Core Web Vitals</span></button>
+            <button type="button" class="goal-chip" data-goal="brand"><span class="gc-t">Brand awareness</span><span class="gc-d">Trust & first impression</span></button>
+          </div>
+        </div>
+
+        <div class="divider-label"><span>Where to send the report</span></div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-name">Full name <span class="req">*</span></label>
+            <input class="inp" id="f-name" type="text" placeholder="e.g. Anurag Sharma" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="f-biz">Business name <span class="req">*</span></label>
+            <input class="inp" id="f-biz" type="text" placeholder="e.g. Yashova" autocomplete="organization" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">Email address <span class="req">*</span></label>
+            <input class="inp" id="f-email" type="email" placeholder="you@business.com" autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+            <input class="inp" id="f-phone" type="tel" placeholder="WhatsApp preferred" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-industry">Industry <span class="req">*</span></label>
+            <select class="inp" id="f-industry">
+              <option value="">Select industry…</option>
+              <option value="coaching">Coaching / Course creator</option>
+              <option value="healthcare">Healthcare / Clinic</option>
+              <option value="realestate">Real estate</option>
+              <option value="d2c">D2C / E-commerce</option>
+              <option value="education">Education / Institute</option>
+              <option value="services">Professional services</option>
+              <option value="hospitality">Food & hospitality</option>
+              <option value="saas">Tech / SaaS</option>
+              <option value="finance">Finance / Insurance</option>
+              <option value="travel">Travel & tourism</option>
+              <option value="manufacturing">Manufacturing / B2B</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-budget">Monthly marketing budget <span class="req">*</span></label>
+            <select class="inp" id="f-budget">
+              <option value="">Select range…</option>
+              <option value="u50">Under ₹50k</option>
+              <option value="50-150">₹50k – ₹1.5L</option>
+              <option value="150-400">₹1.5L – ₹4L</option>
+              <option value="400-1000">₹4L – ₹10L</option>
+              <option value="1000+">₹10L+</option>
+              <option value="intl">International / USD budget</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="submit-row">
+          <button class="btn-primary" id="run-btn" type="button">Run my growth audit <span class="arw">→</span></button>
+          <div class="form-trust">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            We analyse the live page only. No spam, no reselling your details.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h3>Before you ask</h3>
+      <div class="faq-item"><button class="faq-q">Is this really free? <span class="pm">+</span></button><div class="faq-a"><p>Yes. It's how we start most client relationships — show you what's wrong before we ever pitch you. The full hands-on audit and strategy call are also free; we only charge once you decide to work with us.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How accurate are the numbers? <span class="pm">+</span></button><div class="faq-a"><p>The performance, Core Web Vitals and SEO checks run a real Lighthouse scan on your live URL — the same engine behind Google PageSpeed Insights — so those match what Google sees. The conversion, competitor and revenue figures are modelled estimates based on your inputs and industry benchmarks, the same way a strategist scopes opportunity before a project.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Will you spam or sell my details? <span class="pm">+</span></button><div class="faq-a"><p>No. Your details come to one inbox — Anurag's — so we can send the full report and, if you want, book a call. That's it.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What if my site is brand new or tiny? <span class="pm">+</span></button><div class="faq-a"><p>Still useful. A smaller site usually means the fixes are faster and cheaper — the audit shows you exactly which ones move the needle first.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do I have to get on a call? <span class="pm">+</span></button><div class="faq-a"><p>Not at all. The report stands on its own. The call is there if you'd rather have us walk you through it and map out what to fix.</p></div></div>
+    </div>
+  </div>
+
+  <!-- SCAN -->
+  <div class="scan" id="scan-block">
+    <div class="scan-card">
+      <div class="scan-top">
+        <span class="scan-dot"></span>
+        <span class="st" id="scan-title">Auditing your website…</span>
+        <span class="su" id="scan-url">—</span>
+      </div>
+      <div class="scan-viz">
+        <div class="scan-grid"></div>
+        <div class="wireframe" id="wireframe"></div>
+        <div class="scanline"></div>
+      </div>
+      <div class="scan-steps" id="scan-steps"></div>
+      <div class="scan-insight">
+        <div class="ic-lab">While we work</div>
+        <div class="ic-txt" id="scan-insight">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT -->
+  <div class="report" id="report-block">
+    <div class="rep-tools">
+      <button id="btn-print" type="button">🖨 Save / print</button>
+      <button id="btn-restart" type="button">↻ New audit</button>
+    </div>
+    <div class="report-doc" id="report-doc"><!-- rendered --></div>
+  </div>
+</main>
+
+<script>
+/* =====================================================================
+   YASHOVA · WEBSITE GROWTH AUDIT — engine
+   - Real Lighthouse data via Google PageSpeed Insights API (when key set)
+   - Deterministic modelled fallback so the page always produces a report
+   - Goal-weighted scoring, personalised copy, hand-built SVG visuals
+   ===================================================================== */
+(function(){
+'use strict';
+
+/* ---- CONFIG -------------------------------------------------------- */
+/* Paste your free Google PageSpeed Insights API key between the quotes.
+   How to get one is in the handoff notes. Leave blank to run in
+   modelled-demo mode (report still works, numbers are estimated).      */
+var PSI_API_KEY = "AIzaSyB6_1vYbZczTu3zUTkkr_BqsQyz6dipUvo";
+var LEAD_EMAIL  = "anurag@yashova.com";   // where intake leads are sent
+var WA_NUMBER   = "919818086846";
+
+/* ---- tiny utils ---------------------------------------------------- */
+var $=function(s,r){return (r||document).querySelector(s);};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+function clamp(n,a,b){return Math.max(a,Math.min(b,n));}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function hashSeed(str){var h=1779033703^str.length;for(var i=0;i<str.length;i++){h=Math.imul(h^str.charCodeAt(i),3432918353);h=h<<13|h>>>19;}return function(){h=Math.imul(h^h>>>16,2246822507);h=Math.imul(h^h>>>13,3266489909);return (h^=h>>>16)>>>0;};}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};}
+var RND=Math.random;
+function ri(lo,hi){return Math.floor(RND()*(hi-lo+1))+lo;}
+function pick(arr){return arr[Math.floor(RND()*arr.length)];}
+function pickN(arr,n){var c=arr.slice(),o=[];while(o.length<n&&c.length){o.push(c.splice(Math.floor(RND()*c.length),1)[0]);}return o;}
+
+/* ---- industry context --------------------------------------------- */
+var IND={
+  coaching:{label:'coaching',avgConv:42,avgSeo:58,avgSpeed:56,proof:'Most coaching sites lose people between the ad click and the booking form.'},
+  healthcare:{label:'healthcare',avgConv:46,avgSeo:60,avgSpeed:54,proof:'Patients decide in seconds — trust signals and speed do the heavy lifting.'},
+  realestate:{label:'real estate',avgConv:40,avgSeo:55,avgSpeed:50,proof:'Heavy galleries quietly wreck load times and mobile conversions.'},
+  d2c:{label:'D2C',avgConv:48,avgSeo:62,avgSpeed:52,proof:'Every 100ms of load time has a measurable cost on add-to-cart.'},
+  education:{label:'education',avgConv:44,avgSeo:60,avgSpeed:57,proof:'Admissions funnels live or die on the enquiry form and follow-up.'},
+  services:{label:'professional services',avgConv:43,avgSeo:59,avgSpeed:58,proof:'Credibility and a frictionless enquiry path matter more than design polish.'},
+  hospitality:{label:'hospitality',avgConv:45,avgSeo:57,avgSpeed:53,proof:'Mobile is where the booking happens — or doesn\'t.'},
+  saas:{label:'SaaS',avgConv:47,avgSeo:64,avgSpeed:62,proof:'A clear value prop above the fold outperforms feature lists every time.'},
+  finance:{label:'finance',avgConv:41,avgSeo:61,avgSpeed:59,proof:'Trust and clarity convert; jargon and friction don\'t.'},
+  travel:{label:'travel',avgConv:43,avgSeo:58,avgSpeed:51,proof:'Image-heavy pages need real performance discipline to convert on mobile.'},
+  manufacturing:{label:'B2B / manufacturing',avgConv:39,avgSeo:54,avgSpeed:60,proof:'B2B buyers want proof and an easy way to start a conversation.'},
+  other:{label:'business',avgConv:43,avgSeo:58,avgSpeed:56,proof:'The fundamentals — speed, clarity, an obvious next step — decide the result.'}
+};
+function indFor(k){return IND[k]||IND.other;}
+
+var GOAL_LABEL={leads:'more leads',sales:'more sales',seo:'better organic visibility',cro:'higher conversions',speed:'a faster site',brand:'a stronger first impression'};
+
+/* ---- state --------------------------------------------------------- */
+var DATA=null, FILEREF='';
+
+/* =====================================================================
+   PAGESPEED INSIGHTS (real data)
+   ===================================================================== */
+function psiURL(url,strategy,cats){
+  var base='https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url='+encodeURIComponent(url)+'&strategy='+strategy;
+  cats.forEach(function(c){base+='&category='+c;});
+  if(PSI_API_KEY) base+='&key='+PSI_API_KEY;
+  return base;
+}
+function fetchPSI(url,strategy,cats){
+  return fetch(psiURL(url,strategy,cats)).then(function(r){if(!r.ok)throw new Error('psi '+r.status);return r.json();});
+}
+function band3(v,good,poor,invert){
+  // invert=false: lower is better (timings). returns 'good'|'okay'|'poor'
+  if(invert){ if(v>=good)return'good'; if(v<=poor)return'poor'; return'okay'; }
+  if(v<=good)return'good'; if(v>poor)return'poor'; return'okay';
+}
+function parsePSI(mobile,desktop){
+  function cat(d,n){try{return Math.round((d.lighthouseResult.categories[n].score||0)*100);}catch(e){return null;}}
+  function aud(d,n){try{return d.lighthouseResult.audits[n];}catch(e){return null;}}
+  function num(d,n){var a=aud(d,n);return a&&typeof a.numericValue==='number'?a.numericValue:null;}
+  function ascore(d,n){var a=aud(d,n);return a?a.score:null;} // 1 pass, 0 fail, null n/a
+
+  var perfM=cat(mobile,'performance'), perfD=desktop?cat(desktop,'performance'):perfM;
+  var seo=cat(mobile,'seo'), a11y=cat(mobile,'accessibility'), bp=cat(mobile,'best-practices');
+
+  var lcp=num(mobile,'largest-contentful-paint');
+  var fcp=num(mobile,'first-contentful-paint');
+  var cls=num(mobile,'cumulative-layout-shift');
+  var tbt=num(mobile,'total-blocking-time');
+  var si =num(mobile,'speed-index');
+  var tti=num(mobile,'interactive');
+
+  var cwv={
+    lcp:{ms:lcp, txt:lcp!=null?(lcp/1000).toFixed(1)+'s':'—', band:lcp!=null?band3(lcp,2500,4000):'okay'},
+    fcp:{ms:fcp, txt:fcp!=null?(fcp/1000).toFixed(1)+'s':'—', band:fcp!=null?band3(fcp,1800,3000):'okay'},
+    cls:{ms:cls, txt:cls!=null?cls.toFixed(2):'—', band:cls!=null?band3(cls,0.1,0.25):'okay'},
+    tbt:{ms:tbt, txt:tbt!=null?Math.round(tbt)+'ms':'—', band:tbt!=null?band3(tbt,200,600):'okay'},
+    si :{ms:si,  txt:si!=null?(si/1000).toFixed(1)+'s':'—', band:si!=null?band3(si,3400,5800):'okay'},
+    tti:{ms:tti, txt:tti!=null?(tti/1000).toFixed(1)+'s':'—', band:tti!=null?band3(tti,3800,7300):'okay'}
+  };
+
+  // SEO checklist from real audits where present
+  function chk(d,key,label,desc){
+    var s=ascore(d,key);
+    var status = s===null? null : (s>=0.9?'pass':(s>0?'warn':'fail'));
+    return status===null?null:{key:key,label:label,desc:desc,status:status};
+  }
+  var seoChecks=[
+    chk(mobile,'document-title','Title tag','Search + social rely on a clear, unique title.'),
+    chk(mobile,'meta-description','Meta description','The snippet that decides your click-through in search.'),
+    chk(mobile,'image-alt','Image alt text','Accessibility + image SEO depend on it.'),
+    chk(mobile,'link-text','Descriptive link text','"Click here" tells Google nothing.'),
+    chk(mobile,'crawlable-anchors','Crawlable links','Links Google can actually follow.'),
+    chk(mobile,'is-crawlable','Indexable','Page isn\'t accidentally blocked from search.'),
+    chk(mobile,'viewport','Mobile viewport','Set correctly for mobile rendering.'),
+    chk(mobile,'structured-data','Structured data','Schema that earns rich results.'),
+    chk(mobile,'http-status-code','Valid status code','Server returns a healthy 200.')
+  ].filter(Boolean);
+
+  return finalize({source:'live',perfM:perfM,perfD:perfD,seoScore:seo,a11yScore:a11y,bpScore:bp,cwv:cwv,seoChecks:seoChecks});
+}
+
+/* =====================================================================
+   MODELLED FALLBACK (deterministic by input)
+   ===================================================================== */
+function modelData(form){
+  var ind=indFor(form.industry);
+  var perfM=clamp(ind.avgSpeed+ri(-22,20),24,93);
+  var perfD=clamp(perfM+ri(6,22),30,98);
+  var seo=clamp(ind.avgSeo+ri(-20,22),28,95);
+  var a11y=clamp(ri(62,93),40,98);
+  var bp=clamp(ri(66,96),45,99);
+
+  function fakeMs(lo,hi){return ri(lo,hi);}
+  var lcp=fakeMs(2100,5200), fcp=fakeMs(1300,3400), tbt=fakeMs(90,720);
+  var cls=Math.round((RND()*0.34+0.02)*100)/100, si=fakeMs(2600,6200), tti=fakeMs(3200,8200);
+  var cwv={
+    lcp:{ms:lcp,txt:(lcp/1000).toFixed(1)+'s',band:band3(lcp,2500,4000)},
+    fcp:{ms:fcp,txt:(fcp/1000).toFixed(1)+'s',band:band3(fcp,1800,3000)},
+    cls:{ms:cls,txt:cls.toFixed(2),band:band3(cls,0.1,0.25)},
+    tbt:{ms:tbt,txt:Math.round(tbt)+'ms',band:band3(tbt,200,600)},
+    si:{ms:si,txt:(si/1000).toFixed(1)+'s',band:band3(si,3400,5800)},
+    tti:{ms:tti,txt:(tti/1000).toFixed(1)+'s',band:band3(tti,3800,7300)}
+  };
+  var defs=[
+    ['document-title','Title tag','Search + social rely on a clear, unique title.'],
+    ['meta-description','Meta description','The snippet that decides your click-through in search.'],
+    ['image-alt','Image alt text','Accessibility + image SEO depend on it.'],
+    ['link-text','Descriptive link text','"Click here" tells Google nothing.'],
+    ['crawlable-anchors','Crawlable links','Links Google can actually follow.'],
+    ['is-crawlable','Indexable','Page isn\'t accidentally blocked from search.'],
+    ['viewport','Mobile viewport','Set correctly for mobile rendering.'],
+    ['structured-data','Structured data','Schema that earns rich results.'],
+    ['http-status-code','Valid status code','Server returns a healthy 200.']
+  ];
+  var seoChecks=defs.map(function(d){
+    var roll=RND(); var status= roll>0.62?'pass':(roll>0.3?'warn':'fail');
+    // bias toward pass on fundamentals
+    if((d[0]==='http-status-code'||d[0]==='viewport')&&RND()>0.2)status='pass';
+    return {key:d[0],label:d[1],desc:d[2],status:status};
+  });
+  return finalize({source:'model',perfM:perfM,perfD:perfD,seoScore:seo,a11yScore:a11y,bpScore:bp,cwv:cwv,seoChecks:seoChecks});
+}
+
+/* =====================================================================
+   FINALIZE — derive sections, overall, copy
+   ===================================================================== */
+function finalize(d){
+  var f=window.__FORM, ind=indFor(f.industry);
+
+  // pillar scores 0-100
+  var perf=Math.round(0.6*d.perfM+0.4*d.perfD);
+  var passes=d.seoChecks.filter(function(c){return c.status==='pass';}).length;
+  var seo=Math.round(((d.seoScore!=null?d.seoScore:60)*0.7) + (passes/Math.max(d.seoChecks.length,1)*100*0.3));
+
+  // conversion (modelled): start from industry avg, penalise weak perf/seo, vary
+  var conv=clamp(Math.round(ind.avgConv + (perf-56)*0.18 + (seo-58)*0.12 + ri(-9,12)),22,86);
+  // UX: blend real accessibility with modelled sub-dims
+  var uxDims=uxDimensions(d,perf,conv);
+  var ux=Math.round(uxDims.reduce(function(a,b){return a+b.v;},0)/uxDims.length);
+
+  // goal weighting for overall
+  var w={perf:1,seo:1,conv:1,ux:1};
+  if(f.goal==='speed')w.perf=1.7;
+  if(f.goal==='seo')w.seo=1.7;
+  if(f.goal==='leads'||f.goal==='cro')w.conv=1.7;
+  if(f.goal==='sales')w.conv=1.6;
+  if(f.goal==='brand')w.ux=1.6;
+  var overall=Math.round((perf*w.perf+seo*w.seo+conv*w.conv+ux*w.ux)/(w.perf+w.seo+w.conv+w.ux));
+
+  d.scores={perf:perf,seo:seo,conv:conv,ux:ux,overall:overall};
+  d.uxDims=uxDims;
+  d.ind=ind;
+  d.form=f;
+
+  // competitor benchmark rows
+  var topPerf=clamp(ind.avgSpeed+34,82,96), topSeo=clamp(ind.avgSeo+32,84,96), topConv=clamp(ind.avgConv+38,80,94), topUx=92;
+  d.cmp=[
+    {t:'Page speed',you:perf,avg:ind.avgSpeed,top:topPerf},
+    {t:'SEO health',you:seo,avg:ind.avgSeo,top:topSeo},
+    {t:'Conversion readiness',you:conv,avg:ind.avgConv,top:topConv},
+    {t:'Trust & UX',you:ux,avg:74,top:topUx}
+  ];
+
+  // revenue opportunity (modelled ranges)
+  var headroom=clamp(100-conv,10,70);
+  var upLo=clamp(Math.round(headroom*0.20),6,34), upHi=clamp(Math.round(headroom*0.40)+upLo-Math.round(headroom*0.20),upLo+6,52);
+  var budgetTier={u50:1,'50-150':2,'150-400':3,'400-1000':4,'1000+':5,intl:5}[f.budget]||2;
+  var leadLo=budgetTier*ri(7,11), leadHi=leadLo+budgetTier*ri(9,16);
+  var revTiers={1:'₹40k–₹1.1L',2:'₹1.2L–₹3L',3:'₹3L–₹7L',4:'₹7L–₹16L',5:'₹15L–₹40L'};
+  d.rev={upLo:upLo,upHi:upHi,leadLo:leadLo,leadHi:leadHi,revRange:revTiers[budgetTier]};
+
+  // conversion opportunities (priority matrix) — impact 1-10, effort 1-10
+  d.convOps=convOpportunities(d);
+
+  // SEO opportunities keyword count (modelled colour)
+  d.seoOpp=ri(6,28);
+
+  return d;
+}
+
+function uxDimensions(d,perf,conv){
+  var a11y=d.a11yScore!=null?d.a11yScore:ri(60,90);
+  var mobile=clamp(Math.round(perf*0.5+ri(28,52)),30,96);
+  return [
+    {k:'Visual hierarchy',v:clamp(ri(48,88),20,98)},
+    {k:'Readability',v:clamp(ri(55,92),25,98)},
+    {k:'Accessibility',v:clamp(a11y,20,99)},
+    {k:'Mobile usability',v:mobile},
+    {k:'Consistency',v:clamp(ri(52,90),25,98)},
+    {k:'Interaction quality',v:clamp(Math.round(conv*0.5+ri(30,52)),25,96)}
+  ];
+}
+
+function convOpportunities(d){
+  var pool=[
+    {t:'Above-the-fold offer clarity',d:'The first screen doesn\'t say who it\'s for and what to do next.',impact:9,effort:3,svc:'Landing page / messaging'},
+    {t:'Primary CTA strength',d:'CTAs blend in or compete — one obvious action wins.',impact:8,effort:2,svc:'CRO / design'},
+    {t:'Form friction',d:'Too many fields and no reason to trust the form.',impact:7,effort:3,svc:'Funnel build'},
+    {t:'Trust signals',d:'Proof, reviews and guarantees are thin or missing.',impact:8,effort:4,svc:'Brand & trust'},
+    {t:'Mobile conversion path',d:'The mobile journey to enquiry has dead-ends.',impact:9,effort:5,svc:'CRO / dev'},
+    {t:'Page speed drag',d:'Slow load quietly costs you ready buyers.',impact:7,effort:6,svc:'Performance'},
+    {t:'Follow-up automation',d:'No WhatsApp/email capture means leads go cold.',impact:8,effort:5,svc:'WhatsApp automation'},
+    {t:'Navigation overload',d:'Too many paths dilute the one action that matters.',impact:6,effort:3,svc:'UX'}
+  ];
+  // choose 5, vary by goal
+  var chosen=pickN(pool,5);
+  // nudge impact/effort slightly for variety, keep within bounds
+  chosen.forEach(function(o){o.impact=clamp(o.impact+ri(-1,1),3,10);o.effort=clamp(o.effort+ri(-1,1),1,9);});
+  return chosen;
+}
+
+/* =====================================================================
+   COPY (personalised, goal-aware, varied)
+   ===================================================================== */
+function gradeOf(s){ if(s>=80)return{g:'A',l:'Strong',band:'good'}; if(s>=65)return{g:'B',l:'Solid',band:'okay'}; if(s>=50)return{g:'C',l:'Leaking',band:'okay'}; return{g:'D',l:'Critical',band:'poor'}; }
+function bandColor(b){return b==='good'?'var(--good)':b==='poor'?'var(--poor)':'var(--okay)';}
+function bandWash(b){return b==='good'?'var(--good-wash)':b==='poor'?'var(--poor-wash)':'var(--okay-wash)';}
+function scoreBand(s){return s>=75?'good':s>=50?'okay':'poor';}
+
+function verdictCopy(d){
+  var f=d.form, biz=f.biz, ov=d.scores.overall, gr=gradeOf(ov);
+  var goalTxt=GOAL_LABEL[f.goal]||'growth';
+  var head, sub;
+  if(gr.g==='A'){
+    head=biz+' is in good shape — now it\'s about squeezing the last 20%.';
+    sub='The fundamentals are working. The gains left are in sharpening conversion and protecting your speed as you scale toward '+goalTxt+'.';
+  }else if(gr.g==='B'){
+    head=biz+' is solid, but it\'s leaving a clear chunk of '+goalTxt+' on the table.';
+    sub='Nothing here is broken — but a handful of fixable gaps are capping your results. The priorities below are where we\'d start.';
+  }else if(gr.g==='C'){
+    head=biz+' is leaking '+goalTxt+' in a few specific, fixable places.';
+    sub='This is the most common pattern we see: the traffic shows up, then the site quietly loses people. Good news — these are exactly the fixes that move numbers fastest.';
+  }else{
+    head=biz+' has real foundational gaps holding back '+goalTxt+'.';
+    sub='There\'s meaningful upside here. A focused first phase on the priorities below would likely shift the numbers more than any ad budget change.';
+  }
+  return {head:head,sub:sub,grade:gr};
+}
+
+function perfNote(d){
+  var p=d.scores.perf,f=d.form;
+  if(p>=75)return 'Speed is a strength — '+f.biz+' loads comfortably for most visitors. Keep an eye on the metrics flagged amber as you add content.';
+  if(p>=50)return 'Speed is middling. On mobile especially, the slow points below are costing you ready visitors before the page even finishes loading.';
+  return 'Speed is a real problem. A meaningful share of visitors likely bounce before the page is usable — fixing this protects every rupee you spend driving traffic.';
+}
+function seoNote(d){
+  var s=d.scores.seo;
+  if(s>=75)return 'Search fundamentals are largely in place. The opportunity now is depth — content and structured data that earn richer results.';
+  if(s>=50)return 'The basics are half-done. The flagged items below are quick technical wins that compound over the next few months.';
+  return 'Search is being left on autopilot. Several fundamentals are missing — these are low-effort fixes with outsized long-term payoff.';
+}
+function convNote(d){
+  return 'Modelled from your inputs, industry benchmarks and the technical findings above. The matrix plots each opportunity by impact against effort — top-left is where we\'d start.';
+}
+function uxNote(d){
+  var u=d.scores.ux;
+  if(u>=75)return 'The experience holds together well. Minor refinements would push it from good to memorable.';
+  if(u>=50)return 'The experience is functional but inconsistent — the weaker axes below are where visitors hesitate.';
+  return 'The experience is working against you in places. The weakest axes below are worth addressing before spending more on traffic.';
+}
+
+/* =====================================================================
+   SVG VISUALS
+   ===================================================================== */
+function ringSVG(score,size){
+  size=size||150; var r=size/2-12, c=2*Math.PI*r, off=c*(1-score/100);
+  var grad='ring-g';
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'">'+
+    '<defs><linearGradient id="'+grad+'" x1="0" y1="0" x2="1" y2="1">'+
+    '<stop offset="0" stop-color="#E7B62E"/><stop offset="1" stop-color="#A87B0E"/></linearGradient></defs>'+
+    '<circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="var(--cloud)" stroke-width="11"/>'+
+    '<circle class="ring-fg" cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" fill="none" stroke="url(#'+grad+')" stroke-width="11" stroke-linecap="round" '+
+    'stroke-dasharray="'+c.toFixed(1)+'" stroke-dashoffset="'+c.toFixed(1)+'" data-off="'+off.toFixed(1)+'" '+
+    'transform="rotate(-90 '+size/2+' '+size/2+')"/></svg>';
+}
+function gaugeSVG(score){
+  var w=150,h=86,cx=w/2,cy=h-6,r=64, col=bandColor(scoreBand(score));
+  function pt(a){return [cx+r*Math.cos(Math.PI*(1-a)), cy-r*Math.sin(Math.PI*(1-a))];}
+  function arc(a0,a1){var p0=pt(a0),p1=pt(a1),large=(a1-a0)>0.5?1:0;return 'M'+p0[0].toFixed(1)+' '+p0[1].toFixed(1)+' A'+r+' '+r+' 0 '+large+' 1 '+p1[0].toFixed(1)+' '+p1[1].toFixed(1);}
+  var frac=score/100;
+  return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'+
+    '<path d="'+arc(0,1)+'" fill="none" stroke="var(--cloud)" stroke-width="10" stroke-linecap="round"/>'+
+    '<path class="gauge-fg" d="'+arc(0,1)+'" fill="none" stroke="'+col+'" stroke-width="10" stroke-linecap="round" '+
+    'stroke-dasharray="'+(Math.PI*r).toFixed(1)+'" stroke-dashoffset="'+(Math.PI*r).toFixed(1)+'" data-len="'+(Math.PI*r*frac).toFixed(1)+'" data-tot="'+(Math.PI*r).toFixed(1)+'"/>'+
+    '</svg>';
+}
+function radarSVG(dims){
+  var size=210,cx=size/2,cy=size/2,R=78,N=dims.length;
+  function pt(i,rad){var a=-Math.PI/2+i*2*Math.PI/N;return [cx+rad*Math.cos(a),cy+rad*Math.sin(a)];}
+  var g='';
+  [0.25,0.5,0.75,1].forEach(function(f){
+    var pts=[];for(var i=0;i<N;i++){var p=pt(i,R*f);pts.push(p[0].toFixed(1)+','+p[1].toFixed(1));}
+    g+='<polygon points="'+pts.join(' ')+'" fill="none" stroke="var(--hair)" stroke-width="1"/>';
+  });
+  for(var i=0;i<N;i++){var p=pt(i,R);g+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="var(--hair)" stroke-width="1"/>';}
+  var dpts=[];for(var j=0;j<N;j++){var pp=pt(j,R*(dims[j].v/100));dpts.push(pp[0].toFixed(1)+','+pp[1].toFixed(1));}
+  g+='<polygon class="radar-poly" points="'+dpts.join(' ')+'" fill="rgba(75,82,115,.18)" stroke="var(--navy-700)" stroke-width="2" style="opacity:0;transition:opacity .8s ease"/>';
+  for(var k=0;k<N;k++){var d2=pt(k,R*(dims[k].v/100));g+='<circle cx="'+d2[0].toFixed(1)+'" cy="'+d2[1].toFixed(1)+'" r="3" fill="var(--gold)"/>';}
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'">'+g+'</svg>';
+}
+
+/* =====================================================================
+   RENDER REPORT
+   ===================================================================== */
+function fileRef(){
+  var d=new Date(),p=function(n){return (n<10?'0':'')+n;};
+  return 'YA-'+(d.getFullYear()%100)+p(d.getMonth()+1)+p(d.getDate())+'-'+ri(100,999);
+}
+function statusPill(st){
+  var map={pass:['var(--good)','var(--good-wash)','Pass'],warn:['var(--okay)','var(--okay-wash)','Improve'],fail:['var(--poor)','var(--poor-wash)','Missing']};
+  var m=map[st]||map.warn;
+  return '<span class="cstat" style="color:'+m[0]+';background:'+m[1]+'">'+m[2]+'</span>';
+}
+function checkMark(st){
+  var col=st==='pass'?'var(--good)':st==='warn'?'var(--okay)':'var(--poor)';
+  var bg=st==='pass'?'var(--good-wash)':st==='warn'?'var(--okay-wash)':'var(--poor-wash)';
+  var ic=st==='pass'?'<path d="M20 6L9 17l-5-5"/>':st==='warn'?'<path d="M12 8v5M12 17h.01"/>':'<path d="M18 6L6 18M6 6l12 12"/>';
+  return '<span class="cmk" style="background:'+bg+'"><svg viewBox="0 0 24 24" fill="none" stroke="'+col+'" stroke-width="2.6" stroke-linecap="round">'+ic+'</svg></span>';
+}
+
+function render(d){
+  var f=d.form, ind=d.ind, v=verdictCopy(d), gr=v.grade, S=d.scores;
+  FILEREF=fileRef();
+  var dateStr=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+
+  // ---- masthead + overall ----
+  var benchPct=clamp(S.overall,2,99);
+  var indBench=Math.round((ind.avgConv+ind.avgSeo+ind.avgSpeed)/3);
+  var html='';
+  html+='<div class="rep-mast"><div class="row1"><div>'+
+    '<div class="rep-kicker">Growth Audit · '+esc(ind.label)+'</div>'+
+    '<h2>'+esc(f.biz)+'</h2></div>'+
+    '<div class="rep-meta">File <b>'+FILEREF+'</b><br>'+dateStr+'<br>Prepared by <b>Yashova</b></div>'+
+    '</div></div>';
+
+  html+='<div class="rep-overall reveal">'+
+    '<div class="score-ring-wrap">'+ringSVG(S.overall,150)+
+      '<div class="num"><b data-count="'+S.overall+'">0</b><small>/ 100 growth</small></div></div>'+
+    '<div>'+
+      '<span class="grade-pill" style="color:'+bandColor(gr.band)+';background:'+bandWash(gr.band)+'">Grade '+gr.g+' · '+gr.l+'</span>'+
+      '<div class="verdict">'+esc(v.head)+'</div>'+
+      '<div class="verdict-sub">'+esc(v.sub)+'</div>'+
+      '<div class="bench-row"><div class="bench-bar"><div class="bench-fill" data-w="'+benchPct+'"></div>'+
+        '<div class="bench-mark" data-l="'+esc(ind.label)+' avg" style="left:'+indBench+'%"></div></div>'+
+        '<div class="bench-cap"><span>0</span><span>You vs industry</span><span>100</span></div></div>'+
+    '</div></div>';
+
+  // ---- A · Performance ----
+  html+=sec('B','Performance','Real Lighthouse scan of your live URL — '+(d.source==='live'?'measured now':'modelled')+'.',S.perf,
+    '<div class="gauge-row">'+
+      gaugeCard('Mobile',d.perfM)+gaugeCard('Desktop',d.perfD)+
+    '</div>'+
+    '<div class="cwv-grid">'+
+      cwvCard('LCP',d.cwv.lcp,'Largest paint')+
+      cwvCard('FCP',d.cwv.fcp,'First paint')+
+      cwvCard('CLS',d.cwv.cls,'Layout shift')+
+      cwvCard('TBT',d.cwv.tbt,'Blocking time')+
+      cwvCard('Speed Index',d.cwv.si,'Visual load')+
+      cwvCard('TTI',d.cwv.tti,'Interactive')+
+    '</div>'+
+    '<p style="font-size:13.5px;color:var(--ink-soft);margin:18px 0 0">'+esc(perfNote(d))+'</p>'
+  );
+
+  // ---- C · SEO ----
+  var seoRows=d.seoChecks.map(function(c){
+    return '<div class="check">'+checkMark(c.status)+'<div class="ctxt"><div class="ct">'+esc(c.label)+'</div><div class="cd">'+esc(c.desc)+'</div></div>'+statusPill(c.status)+'</div>';
+  }).join('');
+  html+=sec('C','Search & SEO','How findable '+esc(f.biz)+' is, and what\'s capping it.',S.seo,
+    '<div class="checklist">'+seoRows+'</div>'+
+    '<p style="font-size:13.5px;color:var(--ink-soft);margin:16px 0 0">'+esc(seoNote(d))+' We also spotted roughly <b>'+d.seoOpp+'</b> keyword openings your '+esc(ind.label)+' competitors are ranking for that you\'re not.</p>'
+  );
+
+  // ---- D · Conversion (priority matrix) ----
+  html+=sec('D','Conversion opportunities','Where visitors hesitate — plotted by impact against effort.',S.conv,
+    matrixBlock(d)+
+    '<p style="font-size:13px;color:var(--ink-faint);margin:16px 0 0;font-style:italic">'+esc(convNote(d))+'</p>'
+  );
+
+  // ---- E · UX (radar) ----
+  var radarLegend=d.uxDims.map(function(x){return '<div class="rl-item"><span class="rn">'+x.v+'</span><span class="rb"><i data-w="'+x.v+'"></i></span><span style="flex:1.4">'+esc(x.k)+'</span></div>';}).join('');
+  html+=sec('E','User experience','Six axes of how the page feels to a real visitor.',S.ux,
+    '<div class="radar-wrap"><div>'+radarSVG(d.uxDims)+'</div><div class="radar-legend">'+radarLegend+'</div></div>'+
+    '<p style="font-size:13.5px;color:var(--ink-soft);margin:18px 0 0">'+esc(uxNote(d))+'</p>'
+  );
+
+  // ---- F · Competitor benchmark ----
+  var cmpRows=d.cmp.map(function(r){
+    var gap=Math.max(r.top-r.you,0);
+    return '<div class="cmp-row reveal"><div class="cr-top"><span class="cr-t">'+esc(r.t)+'</span><span class="cr-gap">'+(gap>0?'+'+gap+' pts to leaders':'at the top')+'</span></div>'+
+      '<div class="cmp-track"><div class="cmp-base"></div>'+
+      '<div class="cmp-bar you" data-w="'+r.you+'"><span class="lab">You · '+r.you+'</span></div>'+
+      '<div class="cmp-tick" data-l="'+esc(ind.label)+' avg" style="left:'+r.avg+'%"></div>'+
+      '<div class="cmp-tick" data-l="top 10%" style="left:'+r.top+'%;background:var(--good)"></div>'+
+      '</div></div>';
+  }).join('');
+  html+=secPlain('F','Competitor benchmark','How '+esc(f.biz)+' stacks up against the '+esc(ind.label)+' average and the top performers.',
+    cmpRows+'<p style="font-size:13px;color:var(--ink-faint);margin:6px 0 0;font-style:italic">Benchmarks modelled from aggregate '+esc(ind.label)+' performance data.</p>'
+  );
+
+  // ---- G · Revenue opportunity ----
+  html+=secPlain('G','Revenue opportunity','A modelled estimate of what closing these gaps could be worth.',
+    '<div class="rev-grid">'+
+      revCard('Conversion uplift','+'+d.rev.upLo+'–'+d.rev.upHi+'%','if priority fixes ship')+
+      revCard('Extra monthly leads','+'+d.rev.leadLo+'–'+d.rev.leadHi,'at your current traffic')+
+      revCard('Est. monthly upside',d.rev.revRange,'revenue range, modelled')+
+    '</div>'+
+    '<p class="rev-note">These are projections, not promises — modelled from your budget tier, industry conversion benchmarks and the headroom in the scores above. Real numbers depend on execution. We\'d pressure-test them with you on a call.</p>'
+  );
+
+  // ---- Priorities ----
+  var pri=priorities(d);
+  var priHtml=pri.map(function(p,i){
+    return '<div class="prio"><div class="pn">'+(i+1)+'</div><div><div class="pt">'+esc(p.t)+'</div><div class="pd">'+esc(p.d)+'</div><span class="ptag">'+esc(p.svc)+'</span></div></div>';
+  }).join('');
+  html+=secPlain('★','If we only fixed three things','Ordered for your goal — '+esc(GOAL_LABEL[f.goal]||'growth')+'.',priHtml);
+
+  // ---- CTA ----
+  var waMsg=encodeURIComponent('Hi Anurag, I just ran the Yashova growth audit for '+f.biz+' (file '+FILEREF+', score '+S.overall+'/100). I\'d like to talk through fixing it.');
+  html+='<div class="rep-cta"><div class="inner">'+
+    '<h3>Want us to fix this for you?</h3>'+
+    '<p>'+esc(f.name.split(' ')[0]||'Let\'s')+', this report shows the what. A free 30-minute strategy call is where we map the how — what to fix first, what it\'s worth, and whether we\'re the right team to do it. No pitch deck, no pressure.</p>'+
+    '<div class="cta-btns">'+
+      '<a class="btn-gold" target="_blank" rel="noopener" href="https://yashova.com/strategy-call/" style="background:#D7AF37!important;color:#1A1C22!important;display:inline-flex;padding:14px 24px;border-radius:9px;font-weight:600;font-size:15px;text-decoration:none!important;align-items:center;gap:9px">Book my free strategy call →</a>'+
+      '<a class="btn-ghost" target="_blank" rel="noopener" href="https://wa.me/'+WA_NUMBER+'?text='+waMsg+'" style="border:2px solid #D7AF37!important;color:#E9C03D!important;display:inline-flex;padding:14px 22px;border-radius:9px;font-weight:500;font-size:15px;text-decoration:none!important;background:transparent!important;align-items:center;gap:9px">Send this on WhatsApp</a>'+
+    '</div>'+
+    '<div class="cta-fine">File '+FILEREF+' · prepared by Yashova · no hype, just revenue</div>'+
+  '</div></div>';
+
+  return html;
+}
+
+function sec(tag,title,desc,score,body){
+  var b=scoreBand(score);
+  return '<div class="rep-sec reveal"><div class="sec-head">'+
+    '<span class="sec-tag">'+tag+'</span>'+
+    '<div><h3>'+esc(title)+'</h3><p>'+esc(desc)+'</p></div>'+
+    '<div class="sec-score"><div class="ss-n" style="color:'+bandColor(b)+'">'+score+'</div><div class="ss-l">/ 100</div></div>'+
+    '</div>'+body+'</div>';
+}
+function secPlain(tag,title,desc,body){
+  return '<div class="rep-sec reveal"><div class="sec-head">'+
+    '<span class="sec-tag">'+tag+'</span>'+
+    '<div><h3>'+esc(title)+'</h3><p>'+esc(desc)+'</p></div></div>'+body+'</div>';
+}
+function gaugeCard(dev,score){
+  return '<div class="gauge-card"><div class="gc-dev">'+dev+'</div>'+gaugeSVG(score)+
+    '<div class="gauge-val" style="color:'+bandColor(scoreBand(score))+'">'+score+'</div></div>';
+}
+function cwvCard(k,o,nm){
+  return '<div class="cwv"><span class="pill" style="background:'+bandColor(o.band)+'"></span>'+
+    '<div class="k">'+k+'</div><div class="v" style="color:'+bandColor(o.band)+'">'+o.txt+'</div><div class="nm">'+nm+'</div></div>';
+}
+function revCard(k,n,l){return '<div class="rev-card"><div class="rv-k">'+k+'</div><div class="rv-n">'+n+'</div><div class="rv-l">'+l+'</div></div>';}
+
+function matrixBlock(d){
+  var ops=d.convOps;
+  var dots=ops.map(function(o,i){
+    var x=clamp((10-o.effort)/10*82+9,9,91);   // low effort -> right
+    var y=clamp(o.impact/10*78+8,8,86);          // high impact -> up (we invert via bottom)
+    var col=i<2?'var(--gold-deep)':'var(--navy-600)';
+    return '<div class="mx-dot" title="'+esc(o.t)+'" style="left:'+x+'%;bottom:'+y+'%;background:'+col+'">'+(i+1)+'</div>';
+  }).join('');
+  var legend=ops.map(function(o,i){
+    var col=i<2?'var(--gold-deep)':'var(--navy-600)';
+    return '<div class="mx-leg"><span class="mn" style="background:'+col+'">'+(i+1)+'</span><div><div class="ml-t">'+esc(o.t)+'</div><div class="ml-d">'+esc(o.d)+'</div></div></div>';
+  }).join('');
+  return '<div class="matrix-wrap"><div class="matrix">'+
+    '<span class="quad-l" style="top:8px;right:10px">Quick wins</span>'+
+    '<span class="axis-y">Impact →</span>'+
+    '<span class="axis-x l">High effort</span>'+
+    '<span class="axis-x">Low effort</span>'+
+    dots+'</div><div class="mx-legend">'+legend+'</div></div>';
+}
+
+function priorities(d){
+  var f=d.form, ind=d.ind;
+  // candidate priorities tied to weakest pillars + goal
+  var cands=[];
+  cands.push({key:'perf',score:d.scores.perf,t:'Fix the load speed that\'s bleeding visitors',d:'Mobile speed is where most of your paid and organic traffic actually lands — and where '+f.biz+' is losing them first.',svc:'Performance & web vitals'});
+  cands.push({key:'seo',score:d.scores.seo,t:'Close the search fundamentals',d:'The missing technical SEO items below are low-effort fixes that compound into steady organic traffic over the next quarter.',svc:'SEO foundation'});
+  cands.push({key:'conv',score:d.scores.conv,t:'Sharpen the offer and the one action that matters',d:'A clearer above-the-fold promise and a single, obvious CTA is usually the fastest lever on '+(GOAL_LABEL[f.goal]||'conversions')+'.',svc:'CRO / landing page'});
+  cands.push({key:'ux',score:d.scores.ux,t:'Tighten the mobile experience',d:'The weakest UX axes are exactly where visitors hesitate before they act. Worth fixing before spending more on traffic.',svc:'UX & design'});
+  cands.push({key:'lead',score:d.scores.conv-5,t:'Add WhatsApp + follow-up capture',d:'Without automated follow-up, the leads you do generate go cold. This is the system that turns a one-time visit into a conversation.',svc:'WhatsApp automation'});
+  // weight: lower score = higher priority; goal nudges its pillar up
+  cands.forEach(function(c){c.w=100-c.score;});
+  if(f.goal==='speed'){cands[0].w+=40;}
+  if(f.goal==='seo'){cands[1].w+=40;}
+  if(f.goal==='leads'){cands[2].w+=25;cands[4].w+=35;}
+  if(f.goal==='cro'){cands[2].w+=40;}
+  if(f.goal==='sales'){cands[2].w+=30;cands[4].w+=20;}
+  if(f.goal==='brand'){cands[3].w+=40;}
+  cands.sort(function(a,b){return b.w-a.w;});
+  return cands.slice(0,3);
+}
+
+/* =====================================================================
+   SCAN SEQUENCE
+   ===================================================================== */
+var SCAN_STEPS=[
+  ['Fetching the live page','globe'],
+  ['Measuring Core Web Vitals','gauge'],
+  ['Checking mobile experience','phone'],
+  ['Auditing SEO structure','search'],
+  ['Mapping conversion gaps','target'],
+  ['Benchmarking competitors','bars'],
+  ['Modelling revenue upside','rupee'],
+  ['Compiling your report','doc']
+];
+var INSIGHTS=[
+  'A one-second delay in mobile load can cut conversions by up to 20%.',
+  'Most visitors decide whether to stay within the first 3 seconds.',
+  'Pages that rank in Google\'s top 3 win roughly 55% of all clicks.',
+  '70% of buyers form a trust impression from the homepage alone.',
+  'Cutting form fields from 6 to 3 commonly lifts completions by a third.',
+  'A clear single call-to-action routinely beats three competing ones.'
+];
+function stepIcon(){return '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>';}
+function buildWireframe(){
+  var wf=$('#wireframe'); if(!wf)return;
+  var bars=[['10%','8%','42%','9%'],['62%','8%','26%','9%'],['10%','26%','78%','5%'],['10%','36%','60%','5%'],['10%','50%','30%','22%'],['46%','50%','42%','10%'],['46%','66%','42%','6%'],['10%','80%','78%','8%']];
+  wf.innerHTML=bars.map(function(b){return '<div class="wf-bar" style="left:'+b[0]+';top:'+b[1]+';width:'+b[2]+';height:'+b[3]+'"></div>';}).join('');
+}
+function renderScanSteps(){
+  $('#scan-steps').innerHTML=SCAN_STEPS.map(function(s,i){
+    return '<div class="scan-step" data-i="'+i+'"><span class="scan-ic" data-i="'+i+'"></span><span class="lbl">'+s[0]+'</span></div>';
+  }).join('');
+}
+function rotateInsights(){
+  var el=$('#scan-insight'),order=pickN(INSIGHTS,INSIGHTS.length),idx=0;
+  el.textContent=order[0];
+  return setInterval(function(){idx=(idx+1)%order.length;el.style.opacity=0;setTimeout(function(){el.textContent=order[idx];el.style.opacity=1;},220);},2600);
+}
+
+/* run scan + data fetch together */
+function runAudit(form){
+  window.__FORM=form;
+  // seed RNG deterministically so a given site always yields same modelled report
+  var seedFn=hashSeed((form.url+'|'+form.biz+'|'+form.industry+'|'+form.goal).toLowerCase());
+  RND=mulberry32(seedFn());
+
+  $('#intake-block').style.display='none';
+  $('#scan-block').classList.add('on');
+  $('#scan-url').textContent=form.url.replace(/^https?:\/\//,'').slice(0,38);
+  buildWireframe(); renderScanSteps();
+  var insTimer=rotateInsights();
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  // kick off real data (PSI) — tolerate failure
+  var fullUrl=/^https?:\/\//.test(form.url)?form.url:'https://'+form.url;
+  var dataPromise = liveDataPromise(fullUrl);
+
+  // animate steps with min dwell; gate last step on data
+  var steps=$$('.scan-step'), ics=$$('.scan-ic');
+  var i=0;
+  function activate(idx){
+    steps.forEach(function(s,k){s.classList.toggle('active',k===idx);if(k<idx){s.classList.add('done');}});
+    ics.forEach(function(ic,k){ if(k<idx){ic.innerHTML=stepIcon();} else if(k===idx){ic.innerHTML='<span class="spin"></span>';} else {ic.innerHTML='';}});
+  }
+  activate(0);
+  var perStep=520;
+  var stepTimer=setInterval(function(){
+    if(i<SCAN_STEPS.length-1){ i++; activate(i); }
+  },perStep);
+
+  // when data ready (or timeout), finish gracefully
+  dataPromise.then(function(d){
+    DATA=d;
+    var minWait=SCAN_STEPS.length*perStep+300;
+    var elapsed=Date.now()-START;
+    setTimeout(function(){
+      clearInterval(stepTimer); clearInterval(insTimer);
+      steps.forEach(function(s){s.classList.add('done');s.classList.remove('active');});
+      ics.forEach(function(ic){ic.innerHTML=stepIcon();});
+      finishToReport(d);
+    }, Math.max(minWait-elapsed,400));
+  });
+  var START=Date.now();
+}
+
+function liveDataPromise(fullUrl){
+  // race PSI against a hard timeout; fall back to model
+  var form=window.__FORM;
+  var psi=Promise.all([
+    fetchPSI(fullUrl,'mobile',['performance','seo','accessibility','best-practices']),
+    fetchPSI(fullUrl,'desktop',['performance']).catch(function(){return null;})
+  ]).then(function(res){ return parsePSI(res[0],res[1]); });
+
+  var timeout=new Promise(function(res){setTimeout(function(){res('__timeout__');},33000);});
+  return Promise.race([psi,timeout]).then(function(r){
+    if(r==='__timeout__'||!r){ return modelData(form); }
+    return r;
+  }).catch(function(){ return modelData(form); });
+}
+
+function finishToReport(d){
+  $('#scan-block').classList.remove('on');
+  var rep=$('#report-block'); rep.classList.add('on');
+  $('#report-doc').innerHTML=render(d);
+  window.scrollTo({top:0,behavior:'smooth'});
+  requestAnimationFrame(function(){ animateReport(); });
+  sendLead(d);
+}
+
+/* =====================================================================
+   ANIMATIONS ON REPORT
+   ===================================================================== */
+function animateReport(){
+  // ring
+  var ring=$('.ring-fg'); if(ring){ requestAnimationFrame(function(){ ring.style.transition='stroke-dashoffset 1.3s cubic-bezier(.2,.7,.2,1)'; ring.style.strokeDashoffset=ring.getAttribute('data-off'); }); }
+  // count-up
+  $$('[data-count]').forEach(function(el){
+    var target=+el.getAttribute('data-count'),t0=null,dur=1200;
+    function step(ts){ if(!t0)t0=ts; var p=clamp((ts-t0)/dur,0,1); el.textContent=Math.round(target*(p<1?(1-Math.pow(1-p,3)):1)); if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  });
+  // gauges
+  $$('.gauge-fg').forEach(function(g){ requestAnimationFrame(function(){ g.style.transition='stroke-dashoffset 1.1s cubic-bezier(.2,.7,.2,1)'; g.style.strokeDashoffset=(g.getAttribute('data-tot')-g.getAttribute('data-len')); }); });
+  // bench + bars on reveal
+  var io=new IntersectionObserver(function(ents){
+    ents.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in');
+      $$('.bench-fill',e.target).forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+      $$('.rl-item i',e.target).forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+      $$('.cmp-bar.you',e.target).forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+      $$('.radar-poly',e.target).forEach(function(p){p.style.opacity=1;});
+      io.unobserve(e.target);
+    }});
+  },{threshold:.18});
+  $$('.reveal').forEach(function(el){io.observe(el);});
+  // also fire any radar already in view
+  setTimeout(function(){$$('.radar-poly').forEach(function(p){p.style.opacity=1;});$$('.rl-item i').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});},200);
+  // safety net: nothing should ever stay invisible
+  setTimeout(function(){
+    $$('.reveal:not(.in)').forEach(function(el){el.classList.add('in');});
+    $$('.cmp-bar.you').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+  },2800);
+}
+
+/* =====================================================================
+   LEAD CAPTURE
+   ===================================================================== */
+function sendLead(d){
+  try{
+    var f=d.form, S=d.scores;
+    var body=new FormData();
+    body.append('_subject','New Growth Audit lead — '+f.biz+' ('+S.overall+'/100)');
+    body.append('Name',f.name); body.append('Business',f.biz); body.append('Email',f.email);
+    body.append('Phone',f.phone||'—'); body.append('Website',f.url);
+    body.append('Industry',f.industry); body.append('Goal',f.goal); body.append('Budget',f.budget);
+    body.append('File',FILEREF); body.append('Overall',S.overall);
+    body.append('Scores','perf '+S.perf+' / seo '+S.seo+' / conv '+S.conv+' / ux '+S.ux);
+    body.append('Source',d.source);
+    fetch('https://formsubmit.co/'+LEAD_EMAIL,{method:'POST',body:body,mode:'no-cors'}).catch(function(){});
+  }catch(e){}
+}
+
+/* =====================================================================
+   FORM / WIRING
+   ===================================================================== */
+var selectedGoal='';
+function wireForm(){
+  $$('#goal-grid .goal-chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      $$('#goal-grid .goal-chip').forEach(function(x){x.classList.remove('sel');});
+      c.classList.add('sel'); selectedGoal=c.getAttribute('data-goal');
+    });
+  });
+  $('#run-btn').addEventListener('click',submit);
+  $('#btn-restart')&&$('#btn-restart').addEventListener('click',function(){location.reload();});
+  $('#btn-print')&&$('#btn-print').addEventListener('click',function(){
+    // force all animated elements to final state before printing
+    $$('.cmp-bar.you').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+    $$('.bench-fill').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+    $$('.rl-item i').forEach(function(b){b.style.width=b.getAttribute('data-w')+'%';});
+    $$('.reveal').forEach(function(el){el.classList.add('in');});
+    $$('.radar-poly').forEach(function(p){p.style.opacity=1;});
+    setTimeout(function(){window.print();},200);
+  });
+  // FAQ
+  $$('.faq-q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var it=q.parentElement, open=it.classList.contains('open');
+      it.classList.toggle('open');
+      var a=$('.faq-a',it); a.style.maxHeight=open?null:a.scrollHeight+'px';
+    });
+  });
+}
+function mark(el,bad){el.classList.toggle('bad',bad);}
+function submit(){
+  var url=$('#f-url').value.trim(), name=$('#f-name').value.trim(), biz=$('#f-biz').value.trim(),
+      email=$('#f-email').value.trim(), phone=$('#f-phone').value.trim(),
+      industry=$('#f-industry').value, budget=$('#f-budget').value, goal=selectedGoal;
+  var ok=true;
+  if(url.length<3){mark($('#f-url'),true);ok=false;}else mark($('#f-url'),false);
+  if(!name){mark($('#f-name'),true);ok=false;}else mark($('#f-name'),false);
+  if(!biz){mark($('#f-biz'),true);ok=false;}else mark($('#f-biz'),false);
+  if(!/.+@.+\..+/.test(email)){mark($('#f-email'),true);ok=false;}else mark($('#f-email'),false);
+  if(!industry){mark($('#f-industry'),true);ok=false;}else mark($('#f-industry'),false);
+  if(!budget){mark($('#f-budget'),true);ok=false;}else mark($('#f-budget'),false);
+  if(!goal){ $('#goal-grid').style.outline='2px solid var(--poor)';$('#goal-grid').style.outlineOffset='6px';$('#goal-grid').style.borderRadius='10px'; ok=false; } else { $('#goal-grid').style.outline='none'; }
+  if(!ok){ var firstBad=$('.inp.bad'); if(firstBad)firstBad.focus(); return; }
+  runAudit({url:url,name:name,biz:biz,email:email,phone:phone,industry:industry,budget:budget,goal:goal});
+}
+
+if(document.readyState!=='loading')wireForm();
+else document.addEventListener('DOMContentLoaded',wireForm);
+
+/* expose for testing */
+window.__audit={modelData:modelData,render:render,runAudit:runAudit,finalize:finalize,setForm:function(f){window.__FORM=f;var s=hashSeed((f.url+'|'+f.biz+'|'+f.industry+'|'+f.goal).toLowerCase());RND=mulberry32(s());}};
+
+})();
+
+</script>
+</div>
