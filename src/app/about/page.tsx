@@ -74,11 +74,11 @@ export default function About() {
           <div className="flex flex-col items-start gap-8 sm:flex-row">
             <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-full border border-surface-line/60">
               <Image
-                src="/images/anurag-profile.jpg"
+                src="/images/anurag-profile.png"
                 alt="Anurag Sharma, founder of Yashova"
                 fill
                 sizes="128px"
-                className="object-cover"
+                className="object-contain object-top"
               />
             </div>
             <div>

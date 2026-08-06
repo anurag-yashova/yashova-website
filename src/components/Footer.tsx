@@ -10,7 +10,7 @@ export default function Footer() {
               yashova
             </div>
             <p className="mt-1 text-xs uppercase tracking-[0.2em] text-gold">
-              Not Loud. Unignorable.
+              Systems over shortcuts.
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-muted">
               Performance marketing systems that track spend, qualify leads,
@@ -54,9 +54,9 @@ export default function Footer() {
         <div className="mt-12 flex flex-col gap-3 border-t border-surface-line/60 pt-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Yashova. All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="https://linkedin.com" className="hover:text-ink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://facebook.com" className="hover:text-ink" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://instagram.com" className="hover:text-ink" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.linkedin.com/company/yashova/" className="hover:text-ink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.facebook.com/yashova.in" className="hover:text-ink" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/yashova.in/" className="hover:text-ink" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
         </div>
       </div>

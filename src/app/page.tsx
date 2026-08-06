@@ -72,6 +72,33 @@ const beliefs = [
   "Cheap leads ≠ good leads",
 ];
 
+const testimonials = [
+  {
+    quote: "We started with zero expectations… but in just 4 weeks, our leads went from 120 to 340+. What surprised us more? The quality — people were actually ready to buy.",
+    attribution: "Puru",
+  },
+  {
+    quote: "Earlier, we were paying ₹80–₹100 per lead. Now it's consistently around ₹25–₹35. But the real win? Conversions almost doubled within a month.",
+    attribution: "Client testimonial",
+  },
+  {
+    quote: "We saw a 2.7x increase in conversions in 30 days. Same budget, but much better targeting and creatives. It finally felt like ads were working with us, not against us.",
+    attribution: "Nisar",
+  },
+  {
+    quote: "In less than 30 days, our leads jumped from 200 to 600+. But what really changed was the intent — we started getting people who were genuinely interested, not just clicking.",
+    attribution: "Nitin",
+  },
+  {
+    quote: "We reduced our cost per lead by nearly 60% and increased qualified leads by 3x in one month. Sales calls became easier because we were speaking to the right audience.",
+    attribution: "Apara",
+  },
+  {
+    quote: "Before this, we were struggling to get even 5–6 quality leads a day. Now we consistently get 20–25+ — and a good percentage of them actually convert.",
+    attribution: "Ashish",
+  },
+];
+
 const clients = [
   "Buyernest", "TheAudioLearning", "CvolvePro", "Digital Africa",
   "Investmate", "Tradebazar", "Earthling Trust", "Helping Hands", "Digiraag",
@@ -127,11 +154,11 @@ export default function Home() {
             </div>
             <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-surface-line/60 bg-surface">
               <Image
-                src="/images/anurag-profile.jpg"
+                src="/images/anurag-profile.png"
                 alt="Anurag from Yashova, performance marketing expert"
                 fill
                 sizes="(max-width: 768px) 100vw, 400px"
-                className="object-cover"
+                className="object-contain p-4"
                 priority
               />
             </div>
@@ -235,6 +262,21 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">What Clients Say</p>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((t) => (
+            <figure key={t.attribution + t.quote.slice(0, 10)} className="flex flex-col rounded-2xl border border-surface-line/60 bg-surface p-6">
+              <blockquote className="flex-1 text-sm leading-relaxed text-ink-muted">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-4 text-sm font-semibold text-gold">— {t.attribution}</figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
