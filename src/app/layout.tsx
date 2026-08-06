@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import CursorGlow from "@/components/CursorGlow";
+import MetaPixel from "@/components/MetaPixel";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -63,6 +64,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <CursorGlow />
+        <MetaPixel />
       </body>
     </html>
   );

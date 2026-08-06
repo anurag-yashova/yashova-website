@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/track";
 
 /** Submits straight to WhatsApp — no backend needed, matches the
  *  agency's WhatsApp-first follow-up workflow. */
@@ -11,6 +12,7 @@ export default function ContactForm() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    track("Lead", { content_name: "Strategy Call Form" });
     const text = `Hi, I'm ${name || "—"} (${email || "no email"}). I want to discuss growth: ${message || "—"}`;
     window.open(
       `https://wa.me/919818086846?text=${encodeURIComponent(text)}`,

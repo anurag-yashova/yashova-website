@@ -1,3 +1,7 @@
+"use client";
+
+import { track } from "@/lib/track";
+
 export default function WhatsAppFloat() {
   return (
     <a
@@ -5,6 +9,7 @@ export default function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
+      onClick={() => track("Contact", { content_name: "WhatsApp Float" })}
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-md bg-[#25D366] shadow-lg transition-transform hover:scale-110 focus-ring"
     >
       <svg viewBox="0 0 24 24" fill="#ffffff" className="h-7 w-7" aria-hidden>
