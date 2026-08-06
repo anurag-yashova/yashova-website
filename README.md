@@ -1,40 +1,26 @@
-# Yashova — yashova.com
+# yashova.com
 
-Next.js + Tailwind rebuild of the Yashova performance-marketing agency site,
-migrated from WordPress content (site copy, images, and case study numbers
-pulled from the original WP export).
+Performance marketing agency site for [Yashova](https://yashova.com) — Faridabad, Delhi NCR.
 
-## Stack
+Next.js 16 · TypeScript · Tailwind v4 · deployed on Vercel.
 
-- **Next.js 15 (App Router)** + TypeScript
-- **Tailwind CSS v4** — design tokens in `src/app/globals.css`
-- **Sanity** (headless CMS) for the `/blog` section — project ID `ee6fwzzp`
-- Deploys on **Vercel**
+## Working on this project
 
-## Getting started
+**Read [`PROJECT_INSTRUCTIONS.md`](./PROJECT_INSTRUCTIONS.md) first.** It contains the design
+system, content sources, known gotchas, and the standard workflow. It is the single source
+of truth for this project and should be updated whenever anything changes.
+
+## Local development
 
 ```bash
 npm install
-cp .env.example .env.local   # fill in Sanity dataset/project if different
-npm run dev
+npm run dev          # http://localhost:3000
+npm run build        # production build
+npx tsc --noEmit     # typecheck
+npx eslint src       # lint
 ```
 
-## Structure
+## Blog
 
-- `src/app/` — pages (App Router)
-- `src/components/` — shared UI (Nav, Footer, Stat)
-- `src/lib/case-studies.ts` — case study content (Home, TheAudioLearning, CvolvePro, Helping Hands Foundation)
-- `src/lib/sanity.ts` — Sanity client + blog queries
-
-## Known follow-ups
-
-- **Strategy Call form** (`/strategy-call`) currently submits via `mailto:`,
-  which is unreliable on mobile. Wire it to Formspree, Resend, or a Next.js
-  API route before launch.
-- **AI Audit tool** (`/ai-audit`) is currently a lead-capture page. The
-  original site's live PageSpeed-API-powered audit tool was not rebuilt —
-  that's a separate scoped task.
-- **Sanity blog schema** hasn't been created yet in the Sanity Studio — the
-  `/blog` route will show an empty state until a `post` document type (with
-  `title`, `slug`, `excerpt`, `publishedAt`, `body`) exists and has entries.
-- Point `yashova.com` DNS at Vercel once the project is deployed there.
+Posts are markdown files in `content/blog/`. A post with a `publishedAt` date in the
+future is hidden automatically and goes live on its own date — no action needed.
