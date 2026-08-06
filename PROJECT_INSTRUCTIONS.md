@@ -76,13 +76,20 @@ The site went through several redesigns. The **current and final** direction is
 - **Huge type.** Headlines up to `text-8xl`, `tracking-tighter`.
 - **Asymmetric but balanced.** Swiss grid, lots of whitespace.
 
-### The hero is a LEDGER, not a dashboard
+### The hero is a LIVE DESK, not a dashboard
 Anurag explicitly rejected the glass-card + line-chart + floating-avatar hero as
 "the design every AI website has." The homepage hero is now `LedgerHero.tsx`: a
 statement of account that prints itself line by line, with dotted leaders, a debit
 column, a ruled total, a signature and a "Verified" stamp. **Do not reintroduce a
 dashboard-style chart hero.** If a new visual is needed, it must come from the
 language of documents, print and accounting — not SaaS analytics UI.
+
+`LedgerHero.tsx` cycles three real client statements (TAL → Helping Hands → CvolvePro).
+Each one prints line by line, then **SVG pen strokes draw themselves** over the figures
+(a loose circle round the ratio, an underline, an arrow) with a **handwritten margin note**
+in Caveat (`--font-hand`), a signature, and a stamp — then the sheet lifts away and the next
+prints. The handwriting is the point: it is the human hand on the page. Fonts in use are
+Space Grotesk / Inter / IBM Plex Mono / **Caveat**.
 
 ### Typography
 - Display: **Space Grotesk** (`--font-display`) — 700 weight for headings
