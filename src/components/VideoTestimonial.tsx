@@ -45,7 +45,7 @@ export default function VideoTestimonial({
         {!playing && (
           <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors group-hover:bg-black/20">
             <span className="flex h-14 w-14 items-center justify-center rounded-md bg-ink shadow-lg">
-              <svg viewBox="0 0 24 24" fill="#212428" className="ml-1 h-6 w-6" aria-hidden>
+              <svg viewBox="0 0 24 24" fill="var(--void)" className="ml-1 h-6 w-6" aria-hidden>
                 <path d="M8 5v14l11-7z" />
               </svg>
             </span>
