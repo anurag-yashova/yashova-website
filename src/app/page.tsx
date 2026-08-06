@@ -4,6 +4,8 @@ import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import HeroChart from "@/components/HeroChart";
 import VideoTestimonial from "@/components/VideoTestimonial";
+import MetricsTicker from "@/components/MetricsTicker";
+import LiveOpsFeed from "@/components/LiveOpsFeed";
 import {
   CoachIcon,
   HealthIcon,
@@ -107,16 +109,16 @@ export default function Home() {
   return (
     <>
       {/* ===== Hero ===== */}
+      <MetricsTicker />
       <section className="relative overflow-hidden border-b border-glass-border">
         <div className="dot-grid pointer-events-none absolute inset-0" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(215,175,55,0.08),transparent_60%)]" />
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-14 md:grid-cols-2">
             <div>
-              <h1 className="rise-1 text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
-                No Hype.
-                <br />
-                Just <span className="hl">Revenue.</span>
+              <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
+                <span className="clip-line"><span>No Hype.</span></span>
+                <span className="clip-line"><span>Just <span className="hl">Revenue.</span></span></span>
               </h1>
               <p className="rise-2 mt-5 text-lg font-medium text-ink">
                 Trusted by 150+ brands globally to cut ad waste.
@@ -157,7 +159,9 @@ export default function Home() {
             </div>
 
             <div className="rise-3 relative">
-              <div className="glass rounded-3xl p-6 md:p-8">
+              <div className="breathe-glow" />
+              <LiveOpsFeed />
+              <div className="glass relative rounded-3xl p-6 md:p-8">
                 <div className="mb-4 flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-widest text-ink-muted">
                     Campaign Revenue
@@ -223,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* ===== What we do ===== */}
-      <section className="border-y border-glass-border bg-surface/40">
+      <section className="scan-top border-y border-glass-border bg-surface/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
@@ -232,7 +236,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {capabilities.map((c, i) => (
-              <Reveal key={c.title} delay={i * 110}>
+              <Reveal key={c.title} delay={i * 110} from={i === 0 ? "left" : i === 2 ? "right" : "up"}>
                 <div className="card-hover h-full rounded-2xl border border-surface-line/60 bg-void p-7">
                   <c.icon className="text-gold" />
                   <h3 className="mt-4 text-xl font-semibold text-ink">{c.title}</h3>
@@ -266,7 +270,7 @@ export default function Home() {
         </Reveal>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {caseStudies.map((cs, i) => (
-            <Reveal key={cs.slug} delay={i * 110}>
+            <Reveal key={cs.slug} delay={i * 110} from="zoom">
               <Link
                 href={`/case-studies/${cs.slug}`}
                 className="card-hover group block h-full rounded-2xl border border-surface-line/60 bg-surface p-7 focus-ring"
@@ -295,7 +299,7 @@ export default function Home() {
       </section>
 
       {/* ===== How we work ===== */}
-      <section className="border-y border-glass-border bg-surface/40">
+      <section className="scan-top border-y border-glass-border bg-surface/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
@@ -336,7 +340,7 @@ export default function Home() {
       </section>
 
       {/* ===== Why most marketing advice is wrong ===== */}
-      <section className="border-y border-glass-border bg-surface/40">
+      <section className="scan-top border-y border-glass-border bg-surface/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
@@ -345,7 +349,7 @@ export default function Home() {
           </Reveal>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {beliefs.map((b, i) => (
-              <Reveal key={b} delay={i * 100}>
+              <Reveal key={b} delay={i * 100} from="left">
                 <div className="glass card-hover flex h-full items-center gap-4 rounded-2xl p-6">
                   <NoEqualIcon className="shrink-0 text-gold" />
                   <p className="text-lg font-medium text-ink">{b}</p>

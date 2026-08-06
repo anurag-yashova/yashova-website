@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import CursorGlow from "@/components/CursorGlow";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -61,6 +62,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <CursorGlow />
       </body>
     </html>
   );

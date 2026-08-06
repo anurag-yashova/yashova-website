@@ -2,13 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const fromClass = {
+  up: "reveal",
+  left: "reveal-left",
+  right: "reveal-right",
+  zoom: "reveal-zoom",
+} as const;
+
 export default function Reveal({
   children,
   delay = 0,
+  from = "up",
   className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  from?: keyof typeof fromClass;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,7 +42,7 @@ export default function Reveal({
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      className={`${fromClass[from]} ${visible ? "is-visible" : ""} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
