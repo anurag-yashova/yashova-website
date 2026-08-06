@@ -478,7 +478,7 @@ html.light .kpi-chip { animation: none; }
 
 /* ---- the hand: pen strokes drawn over the page ---- */
 .pen {
-  position: absolute; inset: 0; width: 100%; height: 100%;
+  position: absolute; left: 0; top: 0;
   pointer-events: none; overflow: visible;
 }
 .pen-stroke {
@@ -487,8 +487,8 @@ html.light .kpi-chip { animation: none; }
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
-  stroke-dasharray: 420;
-  stroke-dashoffset: 420;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
   opacity: 0.85;
 }
 .pen.in .pen-1 { animation: penDraw 0.75s cubic-bezier(0.4, 0, 0.3, 1) 0.1s forwards; }
@@ -498,9 +498,7 @@ html.light .kpi-chip { animation: none; }
 
 .pen-note {
   position: absolute;
-  left: 1.6rem;
-  bottom: 4.6rem;
-  max-width: 46%;
+  max-width: 190px;
   font-family: var(--font-hand), cursive;
   font-size: 1.15rem;
   line-height: 1.15;

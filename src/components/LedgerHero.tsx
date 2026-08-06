@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useReducer, useRef } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 
 /** A working desk, not a hero image.
  *  Statements roll off one after another; a hand marks each one up in pen,
@@ -90,8 +90,42 @@ function reducer(s: State, a: Action): State {
   }
 }
 
+type Marks = {
+  w: number;
+  h: number;
+  ring: string;      // wobbly ellipse around the ratio figure
+  underline: string; // stroke under the total figure
+  arrow: string;
+  arrowHead: string;
+  noteX: number;
+  noteY: number;
+};
+
+/** Hand-drawn ellipse around a rect: four cubic arcs with a deterministic wobble,
+ *  overshooting slightly at the end the way a real pen does. */
+function ringPath(x: number, y: number, w: number, h: number): string {
+  const cx = x + w / 2;
+  const cy = y + h / 2;
+  const rx = w / 2 + 12;
+  const ry = h / 2 + 8;
+  const k = 0.5523;
+  const j = (n: number) => n * (1 + 0.04);
+  return [
+    `M ${cx + rx} ${cy - 2}`,
+    `C ${cx + rx} ${cy - j(ry) * k + 2}, ${cx + rx * k} ${cy - ry}, ${cx - 1} ${cy - ry}`,
+    `C ${cx - rx * k - 3} ${cy - ry}, ${cx - rx} ${cy - ry * k}, ${cx - rx} ${cy + 1}`,
+    `C ${cx - rx} ${cy + ry * k + 2}, ${cx - rx * k} ${cy + ry}, ${cx + 2} ${cy + ry}`,
+    `C ${cx + rx * k + 4} ${cy + ry}, ${cx + rx + 2} ${cy + ry * k}, ${cx + rx - 1} ${cy - 4}`,
+    `C ${cx + rx - 3} ${cy - ry * 0.75}, ${cx + rx * 0.6} ${cy - ry - 3}, ${cx - 6} ${cy - ry - 1}`,
+  ].join(" ");
+}
+
 export default function LedgerHero() {
   const ref = useRef<HTMLDivElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const ratioRef = useRef<HTMLSpanElement>(null);
+  const totalRef = useRef<HTMLSpanElement>(null);
+  const [marks, setMarks] = useState<Marks | null>(null);
   const [state, dispatch] = useReducer(reducer, { doc: 0, printed: 0, phase: "print" });
   const started = useRef(false);
 
@@ -136,6 +170,40 @@ export default function LedgerHero() {
     }
   }, [state]);
 
+  const measure = useCallback(() => {
+    const sheet = sheetRef.current;
+    const ratio = ratioRef.current;
+    const total = totalRef.current;
+    if (!sheet || !ratio || !total) return;
+
+    const base = sheet.getBoundingClientRect();
+    const r = ratio.getBoundingClientRect();
+    const t = total.getBoundingClientRect();
+
+    const rx = r.left - base.left;
+    const ry = r.top - base.top;
+    const tx = t.left - base.left;
+    const ty = t.top - base.top;
+
+    setMarks({
+      w: base.width,
+      h: base.height,
+      ring: ringPath(rx, ry, r.width, r.height),
+      underline: `M ${tx - 4} ${ty + t.height + 5} C ${tx + t.width * 0.35} ${ty + t.height + 8}, ${tx + t.width * 0.7} ${ty + t.height + 2}, ${tx + t.width + 5} ${ty + t.height + 6}`,
+      arrow: `M ${rx - 120} ${ry + 74} C ${rx - 84} ${ry + 66}, ${rx - 46} ${ry + 46}, ${rx - 16} ${ry + 22}`,
+      arrowHead: `M ${rx - 30} ${ry + 24} L ${rx - 16} ${ry + 22} L ${rx - 22} ${ry + 36}`,
+      noteX: Math.max(16, rx - 210),
+      noteY: ry + 66,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (state.phase !== "mark") return;
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [state.phase, measure]);
+
   const s = statements[state.doc];
   const marked = state.phase === "mark" || state.phase === "hold";
   const leaving = state.phase === "hold";
@@ -146,7 +214,14 @@ export default function LedgerHero() {
       <div className="ledger-stack" aria-hidden />
       <div className="ledger-stack ledger-stack-2" aria-hidden />
 
-      <div ref={ref} className={`ledger ${leaving ? "is-leaving" : ""}`} key={state.doc}>
+      <div
+        ref={(el) => {
+          ref.current = el;
+          sheetRef.current = el;
+        }}
+        className={`ledger ${leaving ? "is-leaving" : ""}`}
+        key={state.doc}
+      >
         <div className="ledger-head">
           <div>
             <span className="ledger-title">Statement of account</span>
@@ -180,32 +255,38 @@ export default function LedgerHero() {
 
           <li className={`ledger-line ledger-total ${state.printed > TOTAL_ROWS ? "in" : ""}`}>
             <span>{s.total.label}</span>
-            <span className="ledger-amount">{s.total.value}</span>
+            <span ref={totalRef} className="ledger-amount">{s.total.value}</span>
           </li>
           <li className={`ledger-line ledger-ratio ${state.printed > TOTAL_ROWS + 1 ? "in" : ""}`}>
             <span>{s.ratio.label}</span>
-            <span className="ledger-amount" id="ratio-figure">
+            <span ref={ratioRef} className="ledger-amount">
               {s.ratio.value}
             </span>
           </li>
         </ol>
 
-        {/* the hand: pen strokes drawn over the finished figures */}
-        <svg className={`pen ${marked ? "in" : ""}`} viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden>
-          {/* loose circle around the ratio figure */}
-          <path
-            className="pen-stroke pen-1"
-            d="M312 246c-34-9-62-6-72 3-9 8-2 18 22 22 27 5 62 2 74-6 11-8 4-17-16-21-22-5-52-4-66 2"
-            fill="none"
-          />
-          {/* underline under the total */}
-          <path className="pen-stroke pen-2" d="M232 214c26 3 52 4 78 1" fill="none" />
-          {/* arrow from the note up to the circle */}
-          <path className="pen-stroke pen-3" d="M196 286c22-6 48-16 74-28" fill="none" />
-          <path className="pen-stroke pen-3" d="M262 254l10 4-3 10" fill="none" />
-        </svg>
+        {/* the hand: pen strokes drawn around the actual figures, measured from the DOM */}
+        {marks && (
+          <svg
+            className={`pen ${marked ? "in" : ""}`}
+            viewBox={`0 0 ${marks.w} ${marks.h}`}
+            width={marks.w}
+            height={marks.h}
+            aria-hidden
+          >
+            <path className="pen-stroke pen-1" d={marks.ring} fill="none" />
+            <path className="pen-stroke pen-2" d={marks.underline} fill="none" />
+            <path className="pen-stroke pen-3" d={marks.arrow} fill="none" />
+            <path className="pen-stroke pen-3" d={marks.arrowHead} fill="none" />
+          </svg>
+        )}
 
-        <span className={`pen-note ${marked ? "in" : ""}`}>{s.note}</span>
+        <span
+          className={`pen-note ${marked ? "in" : ""}`}
+          style={marks ? { left: marks.noteX, top: marks.noteY } : undefined}
+        >
+          {s.note}
+        </span>
 
         <div className={`ledger-foot ${state.printed > TOTAL_ROWS + 1 ? "in" : ""}`}>
           <span className="ledger-sig">Anurag Sharma</span>
