@@ -9,6 +9,8 @@ export type CaseStudy = {
   strategy: string;
   stats: { value: string; label: string }[];
   details: { title: string; body: string }[];
+  proofImages: string[];
+  pdfUrl: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -39,6 +41,12 @@ export const caseStudies: CaseStudy[] = [
         body: "By pairing a low-friction webinar entry point with WhatsApp-based follow-up automation, prospects were nurtured from first click to enrollment without manual intervention at every step.",
       },
     ],
+    proofImages: [
+      "/images/case-studies/tal-1.jpg",
+      "/images/case-studies/tal-2.jpg",
+      "/images/case-studies/tal-3.jpg",
+    ],
+    pdfUrl: "/downloads/case-study-theaudiolearning.pdf",
   },
   {
     slug: "cvolvepro",
@@ -67,6 +75,12 @@ export const caseStudies: CaseStudy[] = [
         body: "Educational content focused on resume optimization and ATS compatibility, with authority-driven messaging positioning CVolvePro as a complete career toolkit. CPC was maintained under ₹5 during the testing phase.",
       },
     ],
+    proofImages: [
+      "/images/case-studies/cvolvepro-1.png",
+      "/images/case-studies/cvolvepro-2.jpg",
+      "/images/case-studies/cvolvepro-3.jpg",
+    ],
+    pdfUrl: "/downloads/case-study-cvolvepro.pdf",
   },
   {
     slug: "helping-hands-foundation",
@@ -93,6 +107,12 @@ export const caseStudies: CaseStudy[] = [
         body: "Optimizing the donation page itself alongside the ad campaigns removed friction between click and completed payment, turning cold traffic into a reliably profitable acquisition channel for the foundation.",
       },
     ],
+    proofImages: [
+      "/images/case-studies/hhf-1.jpg",
+      "/images/case-studies/hhf-2.jpg",
+      "/images/case-studies/hhf-3.jpg",
+    ],
+    pdfUrl: "/downloads/case-study-helping-hands-foundation.pdf",
   },
 ];
 
