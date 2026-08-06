@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "About",
@@ -26,17 +27,11 @@ const process = [
 export default function About() {
   return (
     <>
-      <section className="border-b border-glass-border">
-        <div className="mx-auto max-w-4xl px-6 py-20">
-          <h1 className="text-4xl font-semibold leading-tight tracking-tight text-ink md:text-5xl">
-            We build marketing systems that drive <span className="hl">real business growth</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
-            From strategy to execution — social media, paid ads, funnels, and
-            brand building — all under one roof.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About Yashova"
+        title={<>We build marketing systems that drive <span className="hl">real business growth</span></>}
+        lead="From strategy to execution — social media, paid ads, funnels, and brand building — all under one roof."
+      />
 
       <section className="mx-auto max-w-4xl px-6 py-20">
         <p className="eyebrow text-gold">Why We Exist</p>
@@ -61,7 +56,7 @@ export default function About() {
         <h3 className="mt-14 text-xl font-semibold text-ink">How We&apos;re Different</h3>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {differentiators.map((d) => (
-            <li key={d} className="glass flex gap-3 rounded-2xl p-5 text-sm leading-relaxed text-ink-muted">
+            <li key={d} className="glass card-hover flex gap-3 rounded-2xl p-5 text-sm leading-relaxed text-ink-muted">
               <span className="text-gold">»</span>
               {d}
             </li>
@@ -120,7 +115,7 @@ export default function About() {
         </h2>
         <Link
           href="/strategy-call"
-          className="mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-void transition-colors hover:bg-gold-bright focus-ring"
+          className="mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-on-gold transition-colors hover:bg-gold-bright focus-ring"
         >
           Book a Strategy Call
         </Link>

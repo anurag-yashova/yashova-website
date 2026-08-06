@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/about", label: "About" },
@@ -13,24 +14,42 @@ const links = [
   { href: "/blog", label: "Blog" },
 ];
 
+function Wordmark({ className = "h-10 w-auto" }: { className?: string }) {
+  return (
+    <>
+      <Image
+        src="/images/yashova-wordmark.png"
+        alt="Yashova — Not Loud. Unignorable."
+        width={660}
+        height={220}
+        className={`logo-light ${className}`}
+        priority
+      />
+      <Image
+        src="/images/yashova-wordmark-dark.png"
+        alt="Yashova — Not Loud. Unignorable."
+        width={660}
+        height={220}
+        className={`logo-dark ${className}`}
+        priority
+      />
+    </>
+  );
+}
+
+export { Wordmark };
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-glass-border bg-void/85 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 focus-ring rounded">
-          <Image
-            src="/images/logo.jpg"
-            alt="Yashova"
-            width={132}
-            height={40}
-            className="h-8 w-auto rounded-sm"
-            priority
-          />
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
+        <Link href="/" className="focus-ring rounded" aria-label="Yashova home">
+          <Wordmark className="h-11 w-auto md:h-12" />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {links.map((l) =>
             "external" in l && l.external ? (
               <a
@@ -54,31 +73,37 @@ export default function Nav() {
           )}
         </nav>
 
-        <Link
-          href="/strategy-call"
-          className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-void transition-colors hover:bg-gold-bright md:inline-block focus-ring"
-        >
-          Book a Strategy Call
-        </Link>
+        <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle />
+          <Link
+            href="/strategy-call"
+            className="rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring"
+          >
+            Book a Strategy Call
+          </Link>
+        </div>
 
-        <button
-          className="text-ink md:hidden focus-ring rounded p-1"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-            {open ? (
-              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            )}
-          </svg>
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <ThemeToggle />
+          <button
+            className="text-ink focus-ring rounded p-1"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              {open ? (
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open && (
-        <div className="border-t border-surface-line/60 bg-void px-6 py-4 md:hidden">
+        <div className="border-t border-glass-border bg-void px-6 py-4 lg:hidden">
           <nav className="flex flex-col gap-4">
             {links.map((l) =>
               "external" in l && l.external ? (
@@ -106,7 +131,7 @@ export default function Nav() {
             <Link
               href="/strategy-call"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-gold px-5 py-2.5 text-center text-sm font-semibold text-void"
+              className="mt-2 rounded-full bg-gold px-5 py-2.5 text-center text-sm font-medium text-on-gold"
             >
               Book a Strategy Call
             </Link>

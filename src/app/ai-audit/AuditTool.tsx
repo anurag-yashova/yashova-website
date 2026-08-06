@@ -101,7 +101,7 @@ export default function AuditTool() {
         <button
           type="submit"
           disabled={loading}
-          className="rounded-full bg-gold px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold-bright focus-ring disabled:opacity-60"
+          className="rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring disabled:opacity-60"
         >
           {loading ? "Scanning…" : "Run Free Audit"}
         </button>

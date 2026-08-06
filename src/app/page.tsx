@@ -129,7 +129,7 @@ export default function Home() {
               <div className="rise-3 mt-8 flex flex-wrap gap-4">
                 <Link
                   href="/ai-audit"
-                  className="cta-pulse rounded-full bg-gold px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold-bright focus-ring"
+                  className="cta-pulse rounded-full bg-gold px-6 py-3 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring"
                 >
                   Get My Free Audit →
                 </Link>
@@ -182,15 +182,17 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-2 hidden h-28 w-28 overflow-hidden rounded-2xl border-2 border-gold/40 md:block">
-                <Image
-                  src="/images/anurag-profile.png"
-                  alt="Anurag from Yashova"
-                  fill
-                  sizes="112px"
-                  className="bg-surface object-cover object-top"
-                  priority
-                />
+              <div className="absolute -bottom-5 -right-3 hidden md:block">
+                <div className="relative h-24 w-24 overflow-hidden rounded-full border-[3px] border-gold bg-surface shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+                  <Image
+                    src="/images/anurag-profile.png"
+                    alt="Anurag from Yashova"
+                    fill
+                    sizes="96px"
+                    className="object-cover object-top"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -373,7 +375,7 @@ export default function Home() {
           </p>
           <Link
             href="/strategy-call"
-            className="cta-pulse mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-void transition-colors hover:bg-gold-bright focus-ring"
+            className="cta-pulse mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-on-gold transition-colors hover:bg-gold-bright focus-ring"
           >
             Book My Free Strategy Call →
           </Link>

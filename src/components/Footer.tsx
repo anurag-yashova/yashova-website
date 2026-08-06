@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Wordmark } from "@/components/Nav";
 
 export default function Footer() {
   return (
@@ -6,10 +7,8 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <div className="font-display text-xl font-semibold tracking-tight text-ink">
-              yashova
-            </div>
-            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-gold">
+            <Wordmark className="h-12 w-auto" />
+            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-gold">
               Systems over shortcuts.
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-muted">

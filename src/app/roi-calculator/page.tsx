@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ROICalculator from "./ROICalculator";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "ROI Calculator",
@@ -8,18 +9,15 @@ export const metadata: Metadata = {
 
 export default function ROICalculatorPage() {
   return (
-    <section className="mx-auto max-w-5xl px-6 py-20">
-      <p className="eyebrow text-gold">Free Tool</p>
-      <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink md:text-5xl">
-        ROI Calculator
-      </h1>
-      <p className="mt-4 max-w-lg text-ink-muted">
-        Adjust the numbers to see what a given ad spend could return, based
-        on your own click cost, conversion rate, and deal value.
-      </p>
-      <div className="mt-12">
-        <ROICalculator />
-      </div>
+    <>
+    <PageHero
+      eyebrow="Free Tool"
+      title={<>ROI <span className="hl">Calculator</span></>}
+      lead="Adjust the numbers to see what a given ad spend could return, based on your own click cost, conversion rate, and deal value."
+    />
+    <section className="mx-auto max-w-5xl px-6 py-16">
+      <ROICalculator />
     </section>
+    </>
   );
 }

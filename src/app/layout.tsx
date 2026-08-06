@@ -48,9 +48,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${montserrat.variable} ${poppins.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-void text-ink">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("yashova-theme")==="light")document.documentElement.classList.add("light")}catch(e){}`,
+          }}
+        />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

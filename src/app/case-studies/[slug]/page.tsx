@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
 import CountUp from "@/components/CountUp";
+import ProofGallery from "@/components/ProofGallery";
+import Reveal from "@/components/Reveal";
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -105,19 +107,13 @@ export default async function CaseStudyPage({
         </div>
 
         {cs.proofImages.length > 0 && (
-          <div className="mt-10">
+          <Reveal className="mt-10">
             <p className="eyebrow text-gold">Proof of Results</p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-3">
-              {cs.proofImages.map((src) => (
-                <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-xl border border-glass-border bg-white">
-                  <Image src={src} alt={`${cs.name} campaign dashboard proof`} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
-                </div>
-              ))}
-            </div>
+            <ProofGallery images={cs.proofImages} name={cs.name} />
             <p className="mt-3 text-xs text-ink-muted">
-              Screenshots from actual Meta Ads / Razorpay dashboards for this campaign.
+              Screenshots from actual Meta Ads / LinkedIn / Razorpay dashboards for this campaign. Click any image to view full size.
             </p>
-          </div>
+          </Reveal>
         )}
 
         <div className="mt-14 space-y-10">
@@ -137,7 +133,7 @@ export default async function CaseStudyPage({
           <h2 className="text-2xl font-semibold text-ink">Want results like this?</h2>
           <Link
             href="/strategy-call"
-            className="mt-6 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-void hover:bg-gold-bright focus-ring"
+            className="mt-6 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-on-gold hover:bg-gold-bright focus-ring"
           >
             Book My Free Strategy Call →
           </Link>
