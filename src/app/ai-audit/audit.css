@@ -39,7 +39,7 @@
   --f-mono: var(--font-mono), ui-monospace, monospace;
 }
 
-.ga-app *{box-sizing:border-box;}
+.ga-app :where(*){box-sizing:border-box;}
 .ga-app{
   margin:0;
   font-family:var(--f-body);
@@ -51,9 +51,9 @@
   text-rendering:optimizeLegibility;
 }
 .ga-app img{max-width:100%;display:block;}
-.ga-app a{color:inherit;text-decoration:none;}
-.ga-app button{font-family:inherit;cursor:pointer;border:none;background:none;}
-.ga-app input,.ga-app select{font-family:inherit;font-size:16px;}
+.ga-app :where(a){color:inherit;text-decoration:none;}
+.ga-app :where(button){font-family:inherit;cursor:pointer;border:none;background:none;}
+.ga-app :where(input,select){font-family:inherit;font-size:16px;}
 .ga-app ::selection{background:var(--gold-wash);color:var(--navy-800);}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
@@ -234,7 +234,7 @@ select.inp option{background:var(--void);color:var(--ink);}
 .submit-row{margin-top:26px;}
 .btn-primary{
   width:100%;display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  background:var(--gold);color:var(--void);font-family:var(--f-display);font-weight:600;font-size:16px;
+  background:var(--ink);color:var(--void);font-family:var(--f-display);font-weight:600;font-size:16px;
   padding:16px 22px;border-radius:12px;
   transition:transform .16s ease, box-shadow .25s ease;
   box-shadow:0 4px 24px rgba(215,175,55,.25);
@@ -246,8 +246,8 @@ select.inp option{background:var(--void);color:var(--ink);}
   animation:btn-shine 3s ease-in-out infinite;
 }
 @keyframes btn-shine{0%,100%{left:-100%;}50%{left:150%;}}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(215,175,55,.35);}
-.btn-primary .arw{color:var(--void);transition:transform .16s ease;}
+.btn-primary:hover{transform:translateY(-2px);background:var(--gold);box-shadow:0 8px 36px rgba(215,175,55,.35);}
+.btn-primary .arw{color:currentColor;transition:transform .16s ease;}
 .btn-primary:hover .arw{transform:translateX(4px);}
 .form-trust{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.3);}
 .form-trust svg{width:13px;height:13px;stroke:var(--gold);}

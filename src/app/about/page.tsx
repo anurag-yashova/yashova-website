@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { MarkAbout } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "About",
@@ -28,7 +29,8 @@ export default function About() {
   return (
     <>
       <PageHero
-        eyebrow="About Yashova"
+        eyebrow="The people behind the numbers"
+        icon={MarkAbout}
         index="01"
         title={<>We build marketing systems that drive <span className="hl">real business growth</span></>}
         lead="From strategy to execution — social media, paid ads, funnels, and brand building — all under one roof."

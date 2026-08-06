@@ -4,6 +4,7 @@ import Image from "next/image";
 import { caseStudies } from "@/lib/case-studies";
 import CountUp from "@/components/CountUp";
 import PageHero from "@/components/PageHero";
+import { MarkCase } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 
 
@@ -16,7 +17,8 @@ export default function CaseStudiesIndex() {
   return (
     <>
     <PageHero
-      eyebrow="Case Studies"
+      eyebrow="Receipts, not adjectives"
+        icon={MarkCase}
       index="02"
       title={<>Real campaigns. <span className="hl">Real numbers.</span></>}
       lead="We partner with ambitious businesses ready to scale profitably. No manufactured results."

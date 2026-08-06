@@ -58,7 +58,7 @@ export default async function BlogPost({
           </span>
           <span className="font-mono-num text-xs text-ink-muted">{post.readingTime} min read</span>
         </div>
-        <h1 className="mt-3 text-4xl font-bold leading-[1.02] tracking-tighter text-ink md:text-5xl">
+        <h1 className="mt-3 text-4xl font-bold leading-[1.08] tracking-tighter text-ink md:text-5xl">
           {post.title}
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-ink-muted">{post.excerpt}</p>

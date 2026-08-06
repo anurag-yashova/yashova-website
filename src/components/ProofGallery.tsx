@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 
 export default function ProofGallery({
   images,
@@ -11,6 +12,11 @@ export default function ProofGallery({
   name: string;
 }) {
   const [index, setIndex] = useState<number | null>(null);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,   // client
+    () => false   // server
+  );
 
   const close = useCallback(() => setIndex(null), []);
   const prev = useCallback(
@@ -64,7 +70,7 @@ export default function ProofGallery({
         ))}
       </div>
 
-      {index !== null && (
+      {index !== null && mounted && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
           onClick={close}
@@ -109,7 +115,8 @@ export default function ProofGallery({
           <span className="absolute bottom-5 rounded-md bg-white/10 px-3 py-1 font-mono-num text-xs text-white">
             {index + 1} / {images.length}
           </span>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ROICalculator from "./ROICalculator";
 import PageHero from "@/components/PageHero";
+import { MarkTool } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "ROI Calculator",
@@ -11,7 +12,8 @@ export default function ROICalculatorPage() {
   return (
     <>
     <PageHero
-      eyebrow="Free Tool"
+      eyebrow="Run your own numbers"
+        icon={MarkTool}
       index="04"
       title={<>ROI <span className="hl">Calculator</span></>}
       lead="Adjust the numbers to see what a given ad spend could return, based on your own click cost, conversion rate, and deal value."

@@ -3,12 +3,14 @@ export default function PageHero({
   title,
   lead,
   index,
+  icon: Icon,
   children,
 }: {
   eyebrow: string;
   title: React.ReactNode;
   lead?: string;
   index?: string;
+  icon?: React.ComponentType<{ className?: string }>;
   children?: React.ReactNode;
 }) {
   return (
@@ -20,8 +22,11 @@ export default function PageHero({
         </span>
       )}
       <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <p className="eyebrow rise-1">{eyebrow}</p>
-        <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[0.98] tracking-tighter text-ink md:text-7xl lg:text-8xl">
+        <p className={`eyebrow rise-1 ${Icon ? "has-icon" : ""}`}>
+          {Icon && <Icon className="eyebrow-icon" />}
+          {eyebrow}
+        </p>
+        <h1 className="mt-6 max-w-4xl text-5xl font-bold leading-[1.06] tracking-tighter text-ink md:text-7xl lg:text-8xl">
           <span className="clip-line"><span>{title}</span></span>
         </h1>
         {lead && (

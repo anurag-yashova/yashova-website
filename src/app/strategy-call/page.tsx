@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { MarkTalk } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 
@@ -12,7 +13,8 @@ export default function StrategyCall() {
   return (
     <>
       <PageHero
-        eyebrow="Get In Touch"
+        eyebrow="A real conversation, not a pitch"
+        icon={MarkTalk}
         index="06"
         title={<>Let&apos;s discuss your <span className="hl">growth</span></>}
         lead="Tell us where you're losing money on ads — we'll come back with a clear read on what to fix first."

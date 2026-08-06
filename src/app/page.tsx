@@ -21,6 +21,9 @@ import {
   MapIcon,
   TeamIcon,
   ScaleUpIcon,
+  MarkSignal,
+  MarkCase,
+  MarkTool,
 } from "@/components/icons";
 
 const audiences = [
@@ -95,12 +98,42 @@ const process = [
 ];
 
 const testimonials = [
-  { video: "/videos/buyernest.mp4", label: "Buyernest", quote: "We started with zero expectations… but in just 4 weeks, our leads went from 120 to 340+. What surprised us more? The quality — people were actually ready to buy." },
-  { video: "/videos/theaudiolearning.mp4", label: "TheAudioLearning", quote: "Earlier, we were paying ₹80–₹100 per lead. Now it's consistently around ₹25–₹35. But the real win? Conversions almost doubled within a month." },
-  { video: "/videos/cvolvepro.mp4", label: "CvolvePro", quote: "We saw a 2.7x increase in conversions in 30 days. Same budget, but much better targeting and creatives. It finally felt like ads were working with us, not against us." },
-  { video: "/videos/fundraising.mp4", label: "Fundraising Campaign", quote: "In less than 30 days, our leads jumped from 200 to 600+. But what really changed was the intent — we started getting people who were genuinely interested, not just clicking." },
-  { video: "/videos/life_coach.mp4", label: "Life Coach", quote: "We reduced our cost per lead by nearly 60% and increased qualified leads by 3x in one month. Sales calls became easier because we were speaking to the right audience." },
-  { video: "/videos/student_ngo.mp4", label: "Student NGO", quote: "Before this, we were struggling to get even 5–6 quality leads a day. Now we consistently get 20–25+ — and a good percentage of them actually convert." },
+  {
+    video: "/videos/buyernest.mp4",
+    label: "Buyernest",
+    role: "E-commerce",
+    quote: "We started with zero expectations. In four weeks our leads went from 120 to 340+ — and the quality changed more than the number. People were actually ready to buy.",
+  },
+  {
+    video: "/videos/theaudiolearning.mp4",
+    label: "TheAudioLearning",
+    role: "Medical coding education",
+    quote: "We were paying ₹80–₹100 per lead. It settled around ₹25–₹35. The real win was conversions almost doubling in the same month.",
+  },
+  {
+    video: "/videos/cvolvepro.mp4",
+    label: "CvolvePro",
+    role: "Career tech",
+    quote: "2.7x more conversions in 30 days on the same budget. Better targeting, better creative. It finally felt like the ads were working with us instead of against us.",
+  },
+  {
+    video: "/videos/fundraising.mp4",
+    label: "Knowledgeprisp",
+    role: "Fundraising campaign",
+    quote: "In under 30 days our leads went from 200 to 600+. What actually changed was intent — we started hearing from people who genuinely wanted this, not just clickers.",
+  },
+  {
+    video: "/videos/life_coach.mp4",
+    label: "Bebrainteaser",
+    role: "Coaching",
+    quote: "Cost per lead dropped by nearly 60% and qualified leads tripled in a month. Sales calls got easier because we were finally speaking to the right audience.",
+  },
+  {
+    video: "/videos/student_ngo.mp4",
+    label: "Student NGO",
+    role: "Non-profit",
+    quote: "We used to struggle for five or six decent leads a day. Now it is consistently 20–25, and a good share of them actually convert.",
+  },
 ];
 
 const clients = ["Buyernest", "TheAudioLearning", "CvolvePro", "Digital Africa", "Investmate", "Tradebazar", "Earthling Trust", "Helping Hands", "Digiraag"];
@@ -115,7 +148,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-14 md:grid-cols-2">
             <div>
-              <h1 className="text-5xl font-bold leading-[0.98] tracking-tighter text-ink md:text-7xl lg:text-8xl">
+              <h1 className="text-5xl font-bold leading-[1.06] tracking-tighter text-ink md:text-7xl lg:text-8xl">
                 <span className="clip-line"><span>No Hype.</span></span>
                 <span className="clip-line"><span>Just <span className="hl">Revenue.</span></span></span>
               </h1>
@@ -303,8 +336,8 @@ export default function Home() {
       <section className="border-y border-surface-line">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <Reveal>
-            <p className="eyebrow">What changed</p>
-            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.05] tracking-tighter text-ink md:text-5xl">
+            <p className="eyebrow has-icon"><MarkSignal className="eyebrow-icon" />Before we touched it / after</p>
+            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.08] tracking-tighter text-ink md:text-5xl">
               Same budget. <span className="hl">Different arithmetic.</span>
             </h2>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-ink-muted">
@@ -353,7 +386,7 @@ export default function Home() {
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={t.label} delay={(i % 3) * 100}>
-              <VideoTestimonial src={t.video} label={t.label} quote={t.quote} />
+              <VideoTestimonial src={t.video} label={t.label} role={t.role} quote={t.quote} />
             </Reveal>
           ))}
         </div>
@@ -363,8 +396,8 @@ export default function Home() {
       <section className="scan-top border-y border-surface-line">
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <Reveal>
-            <p className="eyebrow">The diagnosis</p>
-            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.05] tracking-tighter text-ink md:text-5xl">
+            <p className="eyebrow has-icon"><MarkCase className="eyebrow-icon" />The diagnosis</p>
+            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.08] tracking-tighter text-ink md:text-5xl">
               Your ads aren&apos;t the problem. <span className="hl">The leak is after the click.</span>
             </h2>
           </Reveal>
@@ -386,8 +419,8 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <Reveal from="left">
               <div className="lg:sticky lg:top-28">
-                <p className="eyebrow">One campaign, to scale</p>
-                <h2 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tighter text-ink md:text-5xl">
+                <p className="eyebrow has-icon"><MarkTool className="eyebrow-icon" />One campaign, taken to scale</p>
+                <h2 className="mt-5 text-3xl font-bold leading-[1.08] tracking-tighter text-ink md:text-5xl">
                   Where the money <span className="hl">actually goes</span>
                 </h2>
                 <p className="mt-5 max-w-sm text-sm leading-relaxed text-ink-muted">

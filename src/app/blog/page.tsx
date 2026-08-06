@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import { MarkWrite } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 import { getAllPosts } from "@/lib/posts";
 
@@ -16,7 +17,8 @@ export default function Blog() {
   return (
     <>
       <PageHero
-        eyebrow="Blog"
+        eyebrow="Field notes from live accounts"
+        icon={MarkWrite}
         index="05"
         title={<>Notes on <span className="hl">growth</span></>}
         lead="Playbooks, teardowns and lessons from campaigns we actually ran — with the numbers attached."

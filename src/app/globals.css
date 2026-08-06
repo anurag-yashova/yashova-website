@@ -75,6 +75,8 @@ h1, h2, h3, h4 {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.03em;
+  line-height: 1.06;
+  padding-bottom: 0.02em;
 }
 
 strong, b { font-weight: 600; }
@@ -112,13 +114,17 @@ strong, b { font-weight: 600; }
   align-items: center;
   gap: 0.6rem;
 }
+/* editorial index rule instead of a decorative dot */
 .eyebrow::before {
   content: "";
-  height: 7px;
-  width: 7px;
+  height: 1px;
+  width: 26px;
   background: var(--gold);
   flex-shrink: 0;
 }
+/* variant carrying a real icon, set via <PageHero icon=... /> */
+.eyebrow-icon { flex-shrink: 0; color: var(--gold); }
+.eyebrow.has-icon::before { display: none; }
 
 /* thin horizontal rule — editorial section divider */
 .rule { border-top: 1px solid var(--surface-line); }
@@ -145,7 +151,7 @@ strong, b { font-weight: 600; }
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.page-enter { animation: pageIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.page-enter { animation: pageIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 
 /* scroll reveals */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
@@ -166,7 +172,13 @@ strong, b { font-weight: 600; }
 .rise-4 { animation: riseIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both; }
 
 /* kinetic headline — lines rise out of clipped masks */
-.clip-line { display: block; overflow: hidden; }
+.clip-line {
+  display: block;
+  overflow: hidden;
+  /* descenders (y, g, p) need room inside the mask */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
 @keyframes lineUp { from { transform: translateY(110%); } to { transform: translateY(0); } }
 .clip-line > span { display: block; transform: translateY(110%); animation: lineUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .clip-line:nth-child(2) > span { animation-delay: 0.12s; }

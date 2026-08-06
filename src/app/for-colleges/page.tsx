@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { MarkCampus } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
@@ -18,7 +19,8 @@ export default function ForColleges() {
   return (
     <>
       <PageHero
-        eyebrow="For Colleges & Institutions"
+        eyebrow="Built for admissions teams"
+        icon={MarkCampus}
         index="03"
         title={<>We partner with colleges to create <span className="hl">lasting impact</span> and new opportunities</>}
         lead="From placement marketing to certification-program enrollment, we build the acquisition systems that education institutions normally can't build in-house."

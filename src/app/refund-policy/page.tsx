@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import { MarkPolicy } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -9,7 +10,8 @@ export default function RefundPolicy() {
   return (
     <>
     <PageHero
-      eyebrow="Policy"
+      eyebrow="Plain terms, plainly stated"
+        icon={MarkPolicy}
       title="Refund Policy"
       index="07"
     />
