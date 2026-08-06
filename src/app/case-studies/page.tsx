@@ -36,7 +36,7 @@ export default function CaseStudiesIndex() {
               <h2 className="text-xl font-semibold text-ink group-hover:text-gold">{cs.name}</h2>
             </div>
             <p className="mt-2 text-sm text-ink-muted">{cs.industry}</p>
-            <div className="mt-6 grid grid-cols-3 gap-3">
+            <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {cs.stats.slice(0, 3).map((s) => (
                 <div key={s.label}>
                   <div className="font-mono-num text-lg font-semibold text-gold"><CountUp value={s.value} /></div>

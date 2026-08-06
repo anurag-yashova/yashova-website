@@ -27,6 +27,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yashova.com"),
+  icons: { icon: "/icon-512.png", apple: "/apple-touch-icon.png" },
   title: {
     default: "Yashova — Performance Marketing Agency in Delhi NCR",
     template: "%s | Yashova",

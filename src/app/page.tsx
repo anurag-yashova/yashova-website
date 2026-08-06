@@ -7,6 +7,8 @@ import VideoTestimonial from "@/components/VideoTestimonial";
 import LiveOpsFeed from "@/components/LiveOpsFeed";
 import ProofBar from "@/components/ProofBar";
 import FunnelDiagram from "@/components/FunnelDiagram";
+import LeakFunnel from "@/components/LeakFunnel";
+import BeforeAfter from "@/components/BeforeAfter";
 import {
   CoachIcon,
   HealthIcon,
@@ -19,7 +21,6 @@ import {
   MapIcon,
   TeamIcon,
   ScaleUpIcon,
-  NoEqualIcon,
 } from "@/components/icons";
 
 const audiences = [
@@ -92,8 +93,6 @@ const process = [
   { icon: TeamIcon, n: "03", title: "Execute with a Dedicated Team", body: "Your campaigns are managed by specialists who understand your brand inside and out." },
   { icon: ScaleUpIcon, n: "04", title: "Optimise & Scale", body: "Continuous refinement based on data, with a focus on sustainable, long-term growth." },
 ];
-
-const beliefs = ["More ads ≠ more profit", "Traffic ≠ sales", "Cheap leads ≠ good leads"];
 
 const testimonials = [
   { video: "/videos/buyernest.mp4", label: "Buyernest", quote: "We started with zero expectations… but in just 4 weeks, our leads went from 120 to 340+. What surprised us more? The quality — people were actually ready to buy." },
@@ -171,7 +170,7 @@ export default function Home() {
                   </span>
                 </div>
                 <HeroChart />
-                <div className="mt-5 grid grid-cols-3 gap-3 border-t border-glass-border pt-5 text-center">
+                <div className="mt-5 grid grid-cols-3 gap-2 border-t border-surface-line pt-5 text-center sm:gap-3">
                   <div>
                     <div className="font-mono-num text-lg font-semibold text-gold"><CountUp value="₹1.02Cr" /></div>
                     <div className="text-[10px] text-ink-muted">Revenue (TAL)</div>
@@ -283,7 +282,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg font-semibold text-ink group-hover:text-gold">{cs.name}</h3>
                 </div>
-                <div className="mt-6 grid grid-cols-3 gap-3">
+                <div className="mt-6 grid grid-cols-1 gap-3 xs:grid-cols-3 sm:grid-cols-3">
                   {cs.stats.map((s) => (
                     <div key={s.label}>
                       <div className="font-mono-num text-lg font-semibold text-gold">
@@ -297,6 +296,25 @@ export default function Home() {
               </Link>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* ===== Before / after ===== */}
+      <section className="border-y border-surface-line">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <Reveal>
+            <p className="eyebrow">What changed</p>
+            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.05] tracking-tighter text-ink md:text-5xl">
+              Same budget. <span className="hl">Different arithmetic.</span>
+            </h2>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-ink-muted">
+              Cost per result on accounts we took over &mdash; before and after
+              the tracking, funnel and follow-up were rebuilt.
+            </p>
+          </Reveal>
+          <div className="mt-12">
+            <BeforeAfter />
+          </div>
         </div>
       </section>
 
@@ -341,28 +359,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== Why most marketing advice is wrong ===== */}
-      <section className="scan-top border-y border-glass-border bg-surface/40">
-        <div className="mx-auto max-w-6xl px-6 py-20">
+      {/* ===== Where the money leaks ===== */}
+      <section className="scan-top border-y border-surface-line">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
           <Reveal>
-            <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-              Why Most <span className="hl">Marketing</span> Advice is Wrong
+            <p className="eyebrow">The diagnosis</p>
+            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.05] tracking-tighter text-ink md:text-5xl">
+              Your ads aren&apos;t the problem. <span className="hl">The leak is after the click.</span>
             </h2>
           </Reveal>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {beliefs.map((b, i) => (
-              <Reveal key={b} delay={i * 100} from="left">
-                <div className="glass card-hover flex h-full items-center gap-4 rounded-lg p-6">
-                  <NoEqualIcon className="shrink-0 text-gold" />
-                  <p className="text-lg font-medium text-ink">{b}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mt-12">
+            <LeakFunnel />
           </div>
-          <Reveal delay={150}>
-            <p className="mt-10 max-w-2xl text-xl font-medium leading-snug text-ink">
-              Hacks expire. Systems compound. If you&apos;re done chasing
-              shortcuts, let&apos;s build something that actually scales.
+          <Reveal delay={100}>
+            <p className="mt-12 max-w-2xl text-lg font-medium leading-snug text-ink md:text-xl">
+              More ads never fixed a leaking funnel. Hacks expire, systems
+              compound &mdash; and the system is the part nobody sells you.
             </p>
           </Reveal>
         </div>
