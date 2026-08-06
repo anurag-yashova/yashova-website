@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { caseStudies, getCaseStudy } from "@/lib/case-studies";
+import CountUp from "@/components/CountUp";
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -71,8 +72,8 @@ export default async function CaseStudyPage({
         <p className="eyebrow text-gold">Campaign Performance</p>
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
           {cs.stats.map((s) => (
-            <div key={s.label} className="rounded-xl border border-surface-line/60 bg-surface p-5">
-              <div className="font-mono-num text-2xl font-semibold text-gold">{s.value}</div>
+            <div key={s.label} className="card-hover rounded-xl border border-surface-line/60 bg-surface p-5">
+              <div className="font-mono-num text-2xl font-semibold text-gold"><CountUp value={s.value} /></div>
               <div className="mt-1 text-sm text-ink-muted">{s.label}</div>
             </div>
           ))}

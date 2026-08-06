@@ -34,7 +34,7 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-ink-muted transition-colors hover:text-ink focus-ring rounded"
+              className="nav-link text-sm font-medium text-ink-muted transition-colors hover:text-ink focus-ring rounded"
             >
               {l.label}
             </Link>
