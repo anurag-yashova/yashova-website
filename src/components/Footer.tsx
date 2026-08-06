@@ -22,6 +22,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-ink">Company</h3>
             <ul className="mt-4 space-y-3 text-sm text-ink-muted">
               <li><Link href="/about" className="hover:text-ink">About</Link></li>
+              <li><a href="https://drive.google.com/drive/folders/12tEDEJW1dGStX7CbmluwMPrPDaLii_WX" target="_blank" rel="noopener noreferrer" className="hover:text-ink">Our Work</a></li>
               <li><Link href="/case-studies" className="hover:text-ink">Case Studies</Link></li>
               <li><Link href="/for-colleges" className="hover:text-ink">For Colleges</Link></li>
               <li><Link href="/blog" className="hover:text-ink">Blog</Link></li>

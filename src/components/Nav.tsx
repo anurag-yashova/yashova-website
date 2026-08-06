@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const links = [
   { href: "/about", label: "About" },
+  { href: "https://drive.google.com/drive/folders/12tEDEJW1dGStX7CbmluwMPrPDaLii_WX", label: "Our Work", external: true },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/for-colleges", label: "For Colleges" },
   { href: "/roi-calculator", label: "ROI Calculator" },
@@ -30,15 +31,27 @@ export default function Nav() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="nav-link text-sm font-medium text-ink-muted transition-colors hover:text-ink focus-ring rounded"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {links.map((l) =>
+            "external" in l && l.external ? (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link text-sm font-medium text-ink-muted transition-colors hover:text-ink focus-ring rounded"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="nav-link text-sm font-medium text-ink-muted transition-colors hover:text-ink focus-ring rounded"
+              >
+                {l.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <Link
@@ -67,16 +80,29 @@ export default function Nav() {
       {open && (
         <div className="border-t border-surface-line/60 bg-void px-6 py-4 md:hidden">
           <nav className="flex flex-col gap-4">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="text-sm font-medium text-ink-muted hover:text-ink"
-              >
-                {l.label}
-              </Link>
-            ))}
+            {links.map((l) =>
+              "external" in l && l.external ? (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium text-ink-muted hover:text-ink"
+                >
+                  {l.label}
+                </a>
+              ) : (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="text-sm font-medium text-ink-muted hover:text-ink"
+                >
+                  {l.label}
+                </Link>
+              )
+            )}
             <Link
               href="/strategy-call"
               onClick={() => setOpen(false)}

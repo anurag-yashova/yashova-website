@@ -3,6 +3,7 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
 import HeroChart from "@/components/HeroChart";
+import VideoTestimonial from "@/components/VideoTestimonial";
 import {
   CoachIcon,
   HealthIcon,
@@ -92,12 +93,12 @@ const process = [
 const beliefs = ["More ads ≠ more profit", "Traffic ≠ sales", "Cheap leads ≠ good leads"];
 
 const testimonials = [
-  { quote: "We started with zero expectations… but in just 4 weeks, our leads went from 120 to 340+. What surprised us more? The quality — people were actually ready to buy.", attribution: "Puru" },
-  { quote: "Earlier, we were paying ₹80–₹100 per lead. Now it's consistently around ₹25–₹35. But the real win? Conversions almost doubled within a month.", attribution: "Client testimonial" },
-  { quote: "We saw a 2.7x increase in conversions in 30 days. Same budget, but much better targeting and creatives. It finally felt like ads were working with us, not against us.", attribution: "Nisar" },
-  { quote: "In less than 30 days, our leads jumped from 200 to 600+. But what really changed was the intent — we started getting people who were genuinely interested, not just clicking.", attribution: "Nitin" },
-  { quote: "We reduced our cost per lead by nearly 60% and increased qualified leads by 3x in one month. Sales calls became easier because we were speaking to the right audience.", attribution: "Apara" },
-  { quote: "Before this, we were struggling to get even 5–6 quality leads a day. Now we consistently get 20–25+ — and a good percentage of them actually convert.", attribution: "Ashish" },
+  { video: "/videos/buyernest.mp4", label: "Buyernest", quote: "We started with zero expectations… but in just 4 weeks, our leads went from 120 to 340+. What surprised us more? The quality — people were actually ready to buy." },
+  { video: "/videos/theaudiolearning.mp4", label: "TheAudioLearning", quote: "Earlier, we were paying ₹80–₹100 per lead. Now it's consistently around ₹25–₹35. But the real win? Conversions almost doubled within a month." },
+  { video: "/videos/cvolvepro.mp4", label: "CvolvePro", quote: "We saw a 2.7x increase in conversions in 30 days. Same budget, but much better targeting and creatives. It finally felt like ads were working with us, not against us." },
+  { video: "/videos/fundraising.mp4", label: "Fundraising Campaign", quote: "In less than 30 days, our leads jumped from 200 to 600+. But what really changed was the intent — we started getting people who were genuinely interested, not just clicking." },
+  { video: "/videos/life_coach.mp4", label: "Life Coach", quote: "We reduced our cost per lead by nearly 60% and increased qualified leads by 3x in one month. Sales calls became easier because we were speaking to the right audience." },
+  { video: "/videos/student_ngo.mp4", label: "Student NGO", quote: "Before this, we were struggling to get even 5–6 quality leads a day. Now we consistently get 20–25+ — and a good percentage of them actually convert." },
 ];
 
 const clients = ["Buyernest", "TheAudioLearning", "CvolvePro", "Digital Africa", "Investmate", "Tradebazar", "Earthling Trust", "Helping Hands", "Digiraag"];
@@ -325,14 +326,8 @@ export default function Home() {
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
-            <Reveal key={t.attribution + i} delay={(i % 3) * 100}>
-              <figure className="glass card-hover flex h-full flex-col rounded-2xl p-6">
-                <span aria-hidden className="font-display text-4xl leading-none text-gold/50">&ldquo;</span>
-                <blockquote className="mt-1 flex-1 text-sm leading-relaxed text-ink-muted">
-                  {t.quote}
-                </blockquote>
-                <figcaption className="mt-4 text-sm font-semibold text-gold">— {t.attribution}</figcaption>
-              </figure>
+            <Reveal key={t.label} delay={(i % 3) * 100}>
+              <VideoTestimonial src={t.video} label={t.label} quote={t.quote} />
             </Reveal>
           ))}
         </div>
