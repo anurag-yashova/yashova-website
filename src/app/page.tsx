@@ -52,9 +52,9 @@ const caseStudies = [
     name: "TheAudioLearning",
     logo: "/images/case-studies/tal-logo.png",
     stats: [
-      { value: "850+", label: "Leads Generated" },
-      { value: "₹42", label: "Cost per Lead" },
-      { value: "12.5%", label: "Conversion Rate" },
+      { value: "₹1.02Cr+", label: "Revenue Generated" },
+      { value: "5.5X", label: "ROAS" },
+      { value: "780+", label: "Admissions" },
     ],
     strategy: "Webinar funnel + WhatsApp follow-up",
   },
@@ -72,7 +72,7 @@ const caseStudies = [
   {
     slug: "helping-hands-foundation",
     name: "Helping Hands Foundation",
-    logo: "/images/case-studies/hhf-logo.jpg",
+    logo: "/images/case-studies/hhf-logo.png",
     stats: [
       { value: "₹30.1L+", label: "Donations Collected" },
       { value: "4.5X", label: "ROAS" },

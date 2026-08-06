@@ -36,7 +36,13 @@ export default async function CaseStudyPage({
           <Link href="/case-studies" className="text-sm font-semibold text-gold hover:text-gold-bright">
             ← All case studies
           </Link>
-          <h1 className="mt-6 text-3xl font-semibold leading-tight tracking-tight text-ink md:text-4xl">
+          <div className="mt-6 flex items-center gap-4">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-white/90">
+              <Image src={cs.logo} alt={`${cs.name} logo`} fill sizes="56px" className="object-contain p-1.5" />
+            </div>
+            <span className="text-sm font-semibold uppercase tracking-widest text-ink-muted">{cs.name}</span>
+          </div>
+          <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-ink md:text-4xl">
             {cs.headline}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink-muted">
@@ -77,6 +83,25 @@ export default async function CaseStudyPage({
               <div className="mt-1 text-sm text-ink-muted">{s.label}</div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 overflow-hidden rounded-2xl border border-glass-border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-surface text-left">
+                <th className="px-5 py-3 font-semibold text-ink">Metric</th>
+                <th className="px-5 py-3 font-semibold text-ink">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cs.metrics.map((m, i) => (
+                <tr key={m.metric} className={i % 2 ? "bg-surface/40" : ""}>
+                  <td className="px-5 py-2.5 text-ink-muted">{m.metric}</td>
+                  <td className="font-mono-num px-5 py-2.5 font-medium text-gold">{m.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
         {cs.proofImages.length > 0 && (

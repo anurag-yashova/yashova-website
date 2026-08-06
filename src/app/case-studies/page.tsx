@@ -4,11 +4,6 @@ import Image from "next/image";
 import { caseStudies } from "@/lib/case-studies";
 import CountUp from "@/components/CountUp";
 
-const logos: Record<string, string> = {
-  theaudiolearning: "/images/case-studies/tal-logo.png",
-  cvolvepro: "/images/case-studies/cvolvepro-logo.png",
-  "helping-hands-foundation": "/images/case-studies/hhf-logo.jpg",
-};
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -35,7 +30,7 @@ export default function CaseStudiesIndex() {
           >
             <div className="flex items-center gap-3">
               <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white/90">
-                <Image src={logos[cs.slug]} alt={`${cs.name} logo`} fill sizes="44px" className="object-contain p-1" />
+                <Image src={cs.logo} alt={`${cs.name} logo`} fill sizes="44px" className="object-contain p-1" />
               </div>
               <h2 className="text-xl font-semibold text-ink group-hover:text-gold">{cs.name}</h2>
             </div>
