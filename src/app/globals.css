@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --void: #0f0f14;
-  --surface: #1a1a23;
-  --surface-raised: #23232f;
-  --surface-line: #33333f;
-  --ink: #f6f4ee;
-  --ink-muted: #a5a3b3;
+  --void: #212428;
+  --surface: #262a2f;
+  --surface-raised: #2c3036;
+  --surface-line: #3a3f46;
+  --glass: rgba(196, 207, 222, 0.06);
+  --glass-border: rgba(196, 207, 222, 0.14);
+  --ink: #ffffff;
+  --ink-muted: #c2c2c2;
   --gold: #d7af37;
   --gold-bright: #f0cc6b;
   --signal: #4ade80;
@@ -17,13 +19,15 @@
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
   --color-surface-line: var(--surface-line);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-gold: var(--gold);
   --color-gold-bright: var(--gold-bright);
   --color-signal: var(--signal);
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
+  --font-display: var(--font-montserrat);
+  --font-body: var(--font-poppins);
   --font-mono: var(--font-plex-mono);
 }
 
@@ -45,6 +49,36 @@ h1, h2, h3, h4 {
   font-family: var(--font-mono), ui-monospace, monospace;
 }
 
+/* signature move: a highlighted word inside a heading, echoing the
+   original site's <span class="yellow"> word-level emphasis */
+.hl {
+  color: var(--gold);
+}
+
+/* frosted glass card, matches the original's translucent panels */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px);
+}
+
+/* pill outline button/tag, matches the original's rounded chips */
+.pill {
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 500;
+}
+
+/* small italic eyebrow badge above section headings */
+.eyebrow {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -52,14 +86,6 @@ h1, h2, h3, h4 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* chevron divider motif -- echoes the >>> in the Yashova wordmark */
-.chevron::after {
-  content: "\00bb";
-  color: var(--gold);
-  margin-left: 0.35em;
-  font-weight: 700;
 }
 
 .focus-ring:focus-visible {

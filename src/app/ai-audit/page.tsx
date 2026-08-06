@@ -14,7 +14,7 @@ const points = [
 export default function AiAudit() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-20 text-center">
-      <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+      <p className="eyebrow text-gold">
         Limited Audit Slots Available
       </p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink md:text-5xl">
@@ -23,7 +23,7 @@ export default function AiAudit() {
 
       <div className="mt-10 grid gap-5 sm:grid-cols-3">
         {points.map((p) => (
-          <div key={p} className="rounded-xl border border-surface-line/60 bg-surface p-6">
+          <div key={p} className="glass rounded-2xl p-6">
             <h3 className="text-base font-semibold text-ink">{p}</h3>
           </div>
         ))}

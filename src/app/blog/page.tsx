@@ -14,7 +14,7 @@ export default async function BlogIndex() {
 
   return (
     <section className="mx-auto max-w-4xl px-6 py-20">
-      <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">Blog</p>
+      <p className="eyebrow text-gold">Blog</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink md:text-5xl">
         Notes on growth
       </h1>

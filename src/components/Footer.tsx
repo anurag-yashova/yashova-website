@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-surface-line/60 bg-surface">
+    <footer className="border-t border-glass-border bg-surface">
       <div className="mx-auto max-w-6xl px-6 py-14">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
@@ -51,7 +51,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-surface-line/60 pt-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-glass-border pt-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Yashova. All rights reserved.</p>
           <div className="flex gap-5">
             <a href="https://www.linkedin.com/company/yashova/" className="hover:text-ink" target="_blank" rel="noopener noreferrer">LinkedIn</a>

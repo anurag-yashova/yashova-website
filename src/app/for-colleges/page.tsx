@@ -15,9 +15,9 @@ const pillars = [
 export default function ForColleges() {
   return (
     <>
-      <section className="border-b border-surface-line/60">
+      <section className="border-b border-glass-border">
         <div className="mx-auto max-w-4xl px-6 py-20">
-          <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">For Colleges & Institutions</p>
+          <p className="eyebrow text-gold">For Colleges & Institutions</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink md:text-5xl">
             We partner with colleges to create lasting impact and new opportunities
           </h1>
@@ -32,7 +32,7 @@ export default function ForColleges() {
       <section className="mx-auto max-w-4xl px-6 py-20">
         <div className="grid gap-6 sm:grid-cols-3">
           {pillars.map((p) => (
-            <div key={p.title} className="rounded-xl border border-surface-line/60 bg-surface p-6">
+            <div key={p.title} className="glass rounded-2xl p-6">
               <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.body}</p>
             </div>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CaseStudiesIndex() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">Case Studies</p>
+      <p className="eyebrow text-gold">Case Studies</p>
       <h1 className="mt-3 max-w-xl text-4xl font-semibold tracking-tight text-ink md:text-5xl">
         Real campaigns. Real numbers.
       </h1>

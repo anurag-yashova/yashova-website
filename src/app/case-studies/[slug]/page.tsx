@@ -29,7 +29,7 @@ export default async function CaseStudyPage({
 
   return (
     <>
-      <section className="border-b border-surface-line/60">
+      <section className="border-b border-glass-border">
         <div className="mx-auto max-w-4xl px-6 py-20">
           <Link href="/case-studies" className="text-sm font-semibold text-gold hover:text-gold-bright">
             ← All case studies

@@ -16,7 +16,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-surface-line/60 bg-void/85 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-glass-border bg-void/85 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 focus-ring rounded">
           <Image
@@ -43,7 +43,7 @@ export default function Nav() {
 
         <Link
           href="/strategy-call"
-          className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-void transition-colors hover:bg-gold-bright md:inline-block focus-ring"
+          className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-medium text-void transition-colors hover:bg-gold-bright md:inline-block focus-ring"
         >
           Book a Strategy Call
         </Link>

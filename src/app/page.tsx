@@ -73,30 +73,12 @@ const beliefs = [
 ];
 
 const testimonials = [
-  {
-    quote: "We started with zero expectations… but in just 4 weeks, our leads went from 120 to 340+. What surprised us more? The quality — people were actually ready to buy.",
-    attribution: "Puru",
-  },
-  {
-    quote: "Earlier, we were paying ₹80–₹100 per lead. Now it's consistently around ₹25–₹35. But the real win? Conversions almost doubled within a month.",
-    attribution: "Client testimonial",
-  },
-  {
-    quote: "We saw a 2.7x increase in conversions in 30 days. Same budget, but much better targeting and creatives. It finally felt like ads were working with us, not against us.",
-    attribution: "Nisar",
-  },
-  {
-    quote: "In less than 30 days, our leads jumped from 200 to 600+. But what really changed was the intent — we started getting people who were genuinely interested, not just clicking.",
-    attribution: "Nitin",
-  },
-  {
-    quote: "We reduced our cost per lead by nearly 60% and increased qualified leads by 3x in one month. Sales calls became easier because we were speaking to the right audience.",
-    attribution: "Apara",
-  },
-  {
-    quote: "Before this, we were struggling to get even 5–6 quality leads a day. Now we consistently get 20–25+ — and a good percentage of them actually convert.",
-    attribution: "Ashish",
-  },
+  { quote: "We started with zero expectations… but in just 4 weeks, our leads went from 120 to 340+. What surprised us more? The quality — people were actually ready to buy.", attribution: "Puru" },
+  { quote: "Earlier, we were paying ₹80–₹100 per lead. Now it's consistently around ₹25–₹35. But the real win? Conversions almost doubled within a month.", attribution: "Client testimonial" },
+  { quote: "We saw a 2.7x increase in conversions in 30 days. Same budget, but much better targeting and creatives. It finally felt like ads were working with us, not against us.", attribution: "Nisar" },
+  { quote: "In less than 30 days, our leads jumped from 200 to 600+. But what really changed was the intent — we started getting people who were genuinely interested, not just clicking.", attribution: "Nitin" },
+  { quote: "We reduced our cost per lead by nearly 60% and increased qualified leads by 3x in one month. Sales calls became easier because we were speaking to the right audience.", attribution: "Apara" },
+  { quote: "Before this, we were struggling to get even 5–6 quality leads a day. Now we consistently get 20–25+ — and a good percentage of them actually convert.", attribution: "Ashish" },
 ];
 
 const clients = [
@@ -108,57 +90,54 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-surface-line/60">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(215,175,55,0.10),transparent_60%)]" />
+      <section className="relative overflow-hidden border-b border-glass-border">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(215,175,55,0.08),transparent_60%)]" />
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
-              <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">
-                Performance Marketing, Faridabad → Worldwide
-              </p>
-              <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
+              <h1 className="text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
                 No Hype.
                 <br />
-                Just Revenue.
+                Just <span className="hl">Revenue.</span>
               </h1>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
+              <p className="mt-5 text-lg font-medium text-ink">
+                Trusted by 150+ brands globally to cut ad waste.
+              </p>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
                 Most ad spend gets wasted on non-converting clicks. We design
                 end-to-end marketing systems that track spend, qualify leads,
-                and maximize ROI. Trusted by 150+ brands globally to cut ad
-                waste.
+                and maximize ROI.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   href="/ai-audit"
-                  className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-void transition-colors hover:bg-gold-bright focus-ring"
+                  className="rounded-full bg-gold px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold-bright focus-ring"
                 >
                   Get My Free Audit →
                 </Link>
                 <Link
                   href="/case-studies"
-                  className="rounded-full border border-surface-line px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-gold hover:text-gold focus-ring"
+                  className="pill px-6 py-3 text-sm text-ink transition-colors hover:border-gold hover:text-gold focus-ring"
                 >
                   See Real Results
                 </Link>
               </div>
-              <div className="mt-10 flex gap-8 font-mono-num">
-                <div>
-                  <div className="text-2xl font-semibold text-ink">150+</div>
-                  <div className="text-xs text-ink-muted">brands scaled</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-semibold text-ink">₹2.5Cr+</div>
-                  <div className="text-xs text-ink-muted">ad spend managed profitably</div>
-                </div>
-              </div>
+              <ul className="mt-10 flex flex-col gap-2 text-sm text-ink-muted">
+                <li className="flex items-center gap-2">
+                  <span className="text-gold">●</span> 150+ brands scaled
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-gold">●</span> ₹2.5 Cr+ ad spend managed profitably
+                </li>
+              </ul>
             </div>
-            <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-surface-line/60 bg-surface">
+            <div className="relative mx-auto aspect-square w-full max-w-sm">
               <Image
                 src="/images/anurag-profile.png"
                 alt="Anurag from Yashova, performance marketing expert"
                 fill
                 sizes="(max-width: 768px) 100vw, 400px"
-                className="object-contain p-4"
+                className="object-contain"
                 priority
               />
             </div>
@@ -168,14 +147,16 @@ export default function Home() {
 
       {/* Who we work with */}
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">Who We Work With</p>
-        <h2 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+        <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+          Who We <span className="hl">Work With</span>
+        </h2>
+        <p className="mt-3 max-w-lg text-ink-muted">
           If you&apos;re spending money on ads and not getting predictable
           returns, you&apos;re in the right place.
-        </h2>
+        </p>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {audiences.map((a) => (
-            <div key={a.title} className="rounded-xl border border-surface-line/60 bg-surface p-6">
+            <div key={a.title} className="glass rounded-2xl p-6">
               <h3 className="text-lg font-semibold text-ink">{a.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-muted">{a.body}</p>
             </div>
@@ -184,11 +165,10 @@ export default function Home() {
       </section>
 
       {/* What we do */}
-      <section className="border-y border-surface-line/60 bg-surface/40">
+      <section className="border-y border-glass-border bg-surface/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">What We Actually Do</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            That gets results
+          <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+            What We Actually Do <span className="hl">(That Gets Results)</span>
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {capabilities.map((c) => (
@@ -197,7 +177,7 @@ export default function Home() {
                 <p className="mt-3 text-sm leading-relaxed text-ink-muted">{c.body}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {c.tags.map((t) => (
-                    <span key={t} className="rounded-full border border-surface-line px-3 py-1 text-xs text-ink-muted">
+                    <span key={t} className="pill px-3 py-1 text-xs text-ink-muted">
                       {t}
                     </span>
                   ))}
@@ -212,10 +192,10 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">Case Studies</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-              Real campaigns. Real numbers.
+            <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+              Case <span className="hl">studies</span>
             </h2>
+            <p className="mt-3 text-ink-muted">Real campaigns. Real numbers. No manufactured results.</p>
           </div>
           <Link href="/case-studies" className="text-sm font-semibold text-gold hover:text-gold-bright">
             View all case studies →
@@ -244,11 +224,10 @@ export default function Home() {
       </section>
 
       {/* How we work */}
-      <section className="border-y border-surface-line/60 bg-surface/40">
+      <section className="border-y border-glass-border bg-surface/40">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">How We Work</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            A structured process, not a shortcut
+          <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+            How We <span className="hl">Work</span>
           </h2>
           <ol className="mt-10 grid gap-8 md:grid-cols-4">
             {process.map((p, i) => (
@@ -267,10 +246,12 @@ export default function Home() {
 
       {/* Testimonials */}
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">What Clients Say</p>
+        <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+          What Clients <span className="hl">Say</span>
+        </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
-            <figure key={t.attribution + t.quote.slice(0, 10)} className="flex flex-col rounded-2xl border border-surface-line/60 bg-surface p-6">
+            <figure key={t.attribution + t.quote.slice(0, 10)} className="glass flex flex-col rounded-2xl p-6">
               <blockquote className="flex-1 text-sm leading-relaxed text-ink-muted">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
@@ -281,43 +262,29 @@ export default function Home() {
       </section>
 
       {/* Why most marketing advice is wrong */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">
-          Why Most Marketing Advice Is Wrong
-        </p>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {beliefs.map((b) => (
-            <div key={b} className="rounded-xl border border-surface-line/60 p-6">
-              <p className="text-lg font-medium text-ink">{b}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-10 max-w-2xl text-xl font-medium leading-snug text-ink">
-          Hacks expire. Systems compound. If you&apos;re done chasing
-          shortcuts, let&apos;s build something that actually scales.
-        </p>
-      </section>
-
-      {/* Trusted by */}
-      <section className="border-t border-surface-line/60 bg-surface/40">
-        <div className="mx-auto max-w-6xl px-6 py-14">
-          <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-ink-muted">
-            Trusted by businesses worldwide
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-x-10 gap-y-4">
-            {clients.map((c) => (
-              <span key={c} className="text-sm font-medium text-ink-muted">{c}</span>
+      <section className="border-y border-glass-border bg-surface/40">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
+            Why Most <span className="hl">Marketing</span> Advice is Wrong
+          </h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {beliefs.map((b) => (
+              <div key={b} className="glass rounded-2xl p-6">
+                <p className="text-lg font-medium text-ink">{b}</p>
+              </div>
             ))}
           </div>
+          <p className="mt-10 max-w-2xl text-xl font-medium leading-snug text-ink">
+            Hacks expire. Systems compound. If you&apos;re done chasing
+            shortcuts, let&apos;s build something that actually scales.
+          </p>
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="mx-auto max-w-6xl px-6 py-20 text-center">
         <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-          Your ads should be making you money.
-          <br />
-          Let&apos;s make that happen.
+          Your ads should be making you money, <span className="hl">Let&apos;s make that happen.</span>
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-ink-muted">
           If you are looking for structured marketing execution rather than
@@ -325,10 +292,26 @@ export default function Home() {
         </p>
         <Link
           href="/strategy-call"
-          className="mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-void transition-colors hover:bg-gold-bright focus-ring"
+          className="mt-8 inline-block rounded-full bg-gold px-8 py-3.5 text-sm font-medium text-void transition-colors hover:bg-gold-bright focus-ring"
         >
           Book My Free Strategy Call →
         </Link>
+      </section>
+
+      {/* Trusted by */}
+      <section className="border-t border-glass-border bg-surface/40">
+        <div className="mx-auto max-w-6xl px-6 py-14">
+          <h2 className="text-center text-2xl font-semibold text-ink">
+            Trusted by businesses <span className="hl">worldwide</span>
+          </h2>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {clients.map((c) => (
+              <span key={c} className="rounded-full border border-glass-border px-4 py-1.5 text-sm italic font-bold text-ink-muted">
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
     </>
   );

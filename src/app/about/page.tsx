@@ -26,10 +26,10 @@ const process = [
 export default function About() {
   return (
     <>
-      <section className="border-b border-surface-line/60">
+      <section className="border-b border-glass-border">
         <div className="mx-auto max-w-4xl px-6 py-20">
           <h1 className="text-4xl font-semibold leading-tight tracking-tight text-ink md:text-5xl">
-            We build marketing systems that drive real business growth
+            We build marketing systems that drive <span className="hl">real business growth</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
             From strategy to execution — social media, paid ads, funnels, and
@@ -39,7 +39,7 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20">
-        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">Why We Exist</p>
+        <p className="eyebrow text-gold">Why We Exist</p>
         <div className="mt-5 space-y-5 text-base leading-relaxed text-ink-muted">
           <p>
             Most business owners have been burned — by agencies that
@@ -61,7 +61,7 @@ export default function About() {
         <h3 className="mt-14 text-xl font-semibold text-ink">How We&apos;re Different</h3>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {differentiators.map((d) => (
-            <li key={d} className="flex gap-3 rounded-xl border border-surface-line/60 bg-surface p-5 text-sm leading-relaxed text-ink-muted">
+            <li key={d} className="glass flex gap-3 rounded-2xl p-5 text-sm leading-relaxed text-ink-muted">
               <span className="text-gold">»</span>
               {d}
             </li>
@@ -69,7 +69,7 @@ export default function About() {
         </ul>
       </section>
 
-      <section className="border-y border-surface-line/60 bg-surface/40">
+      <section className="border-y border-glass-border bg-surface/40">
         <div className="mx-auto max-w-4xl px-6 py-20">
           <div className="flex flex-col items-start gap-8 sm:flex-row">
             <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-full border border-surface-line/60">
@@ -82,7 +82,7 @@ export default function About() {
               />
             </div>
             <div>
-              <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+              <p className="eyebrow text-gold">
                 The Person Behind Yashova
               </p>
               <p className="mt-4 text-base leading-relaxed text-ink-muted">
@@ -102,7 +102,7 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-4xl px-6 py-20">
-        <p className="chevron text-xs font-semibold uppercase tracking-[0.25em] text-gold">How We Work</p>
+        <p className="eyebrow text-gold">How We Work</p>
         <ol className="mt-10 grid gap-8 sm:grid-cols-2">
           {process.map((p) => (
             <li key={p.n} className="rounded-xl border border-surface-line/60 bg-surface p-6">
