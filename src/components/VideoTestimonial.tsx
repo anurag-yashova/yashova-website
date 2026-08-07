@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /** Shared across all testimonial cards: pausing any other playing video
  *  when a new one starts. Only one voice at a time. */
@@ -22,11 +22,32 @@ export default function VideoTestimonial({
   quote: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const wrapRef = useRef<HTMLElement>(null);
   const [playing, setPlaying] = useState(false);
+  const [near, setNear] = useState(false);
+
+  /* Six videos on one page is a lot of bytes. Nothing is fetched until the
+     card is within a screen of the viewport. */
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setNear(true);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: "600px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   function toggle() {
     const v = videoRef.current;
     if (!v) return;
+    if (!near) setNear(true);
     if (v.paused) {
       pauseOthers(v);
       v.play();
@@ -36,7 +57,7 @@ export default function VideoTestimonial({
   }
 
   return (
-    <figure className="glass card-hover flex h-full flex-col overflow-hidden rounded-lg">
+    <figure ref={wrapRef} className="glass card-hover flex h-full flex-col overflow-hidden rounded-lg">
       <button
         type="button"
         onClick={toggle}
@@ -46,8 +67,8 @@ export default function VideoTestimonial({
         <video
           ref={videoRef}
           data-testimonial
-          src={src}
-          preload="metadata"
+          src={near ? src : undefined}
+          preload={near ? "metadata" : "none"}
           playsInline
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}

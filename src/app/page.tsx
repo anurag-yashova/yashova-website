@@ -135,7 +135,20 @@ const testimonials = [
   },
 ];
 
-const clients = ["Buyernest", "TheAudioLearning", "CvolvePro", "Digital Africa", "Investmate", "Tradebazar", "Earthling Trust", "Helping Hands", "Digiraag"];
+const clients: { name: string; logo?: string }[] = [
+  { name: "TheAudioLearning", logo: "/images/clients/theaudiolearning.jpg" },
+  { name: "CvolvePro", logo: "/images/clients/cvolvepro.jpg" },
+  { name: "Helping Hands Foundation", logo: "/images/clients/helping-hands.jpg" },
+  { name: "Investmate", logo: "/images/clients/investmate.jpg" },
+  { name: "Tradebazarr", logo: "/images/clients/tradebazarr.jpg" },
+  { name: "Digital Riches", logo: "/images/clients/digital-riches.jpg" },
+  { name: "Merhba Boutique", logo: "/images/clients/merhba-boutique.jpg" },
+  { name: "Buyernest" },
+  { name: "Knowledgeprisp" },
+  { name: "Bebrainteaser" },
+  { name: "Earthling Trust" },
+  { name: "Digiraag" },
+];
 
 export default function Home() {
   return (
@@ -432,15 +445,24 @@ export default function Home() {
           </h2>
         </Reveal>
         <div className="mt-8 overflow-hidden" aria-label="Client list">
-          <div className="marquee-track gap-3 pr-3">
-            {[...clients, ...clients].map((c, i) => (
-              <span
-                key={`${c}-${i}`}
-                className="whitespace-nowrap rounded-md border border-glass-border px-5 py-2 text-sm font-bold italic text-ink-muted"
-              >
-                {c}
-              </span>
-            ))}
+          <div className="marquee-track items-center gap-8 pr-8">
+            {[...clients, ...clients].map((c, i) =>
+              c.logo ? (
+                <span key={`${c.name}-${i}`} className="client-mark" title={c.name}>
+                  <Image
+                    src={c.logo}
+                    alt={c.name}
+                    width={120}
+                    height={120}
+                    className="h-full w-full object-contain"
+                  />
+                </span>
+              ) : (
+                <span key={`${c.name}-${i}`} className="client-word">
+                  {c.name}
+                </span>
+              )
+            )}
           </div>
         </div>
       </section>

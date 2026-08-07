@@ -54,7 +54,8 @@ Claude implements, tests, and pushes.
 | Repo | github.com/anurag-yashova/yashova-website |
 | Blog | Markdown files in `content/blog/` (NOT a CMS) |
 | Meta Pixel | `2060709664860383` |
-| Analytics | GA4 not yet installed |
+| Analytics | GA4 scaffolded — set `NEXT_PUBLIC_GA_ID` in Vercel to activate |
+| Booking | Cal.com scaffolded — set `NEXT_PUBLIC_CAL_LINK` (e.g. `yashova/strategy-call`) |
 
 ---
 
@@ -269,6 +270,11 @@ anything: public audits of live ads, landing pages and funnels.
 - 30 blog posts with auto-scheduling
 - Favicon set from the real logo
 - Mobile responsive pass
+
+### Env vars (set in Vercel → Settings → Environment Variables)
+`NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET` (legacy),
+`NEXT_PUBLIC_GA_ID` (optional — GA4 renders nothing without it),
+`NEXT_PUBLIC_CAL_LINK` (optional — falls back to the WhatsApp form without it)
 
 ### Open / next
 - **Phase 1 (blocking):** full visual QA by Anurag — light mode on every page, phone check,

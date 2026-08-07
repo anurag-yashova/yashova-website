@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import { MarkTalk } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import BookingEmbed from "@/components/BookingEmbed";
 
 export const metadata: Metadata = {
   title: "Strategy Call",
@@ -43,7 +44,7 @@ export default function StrategyCall() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <ContactForm />
+            <BookingEmbed fallback={<ContactForm />} />
           </Reveal>
         </div>
       </section>

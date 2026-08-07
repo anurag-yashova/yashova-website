@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import CursorGlow from "@/components/CursorGlow";
 import MetaPixel from "@/components/MetaPixel";
+import SiteSchema from "@/components/SiteSchema";
+import Analytics from "@/components/Analytics";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -34,6 +36,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://yashova.com"),
   icons: { icon: "/icon-512.png", apple: "/apple-touch-icon.png" },
+  alternates: { canonical: "/" },
   title: {
     default: "Yashova — Performance Marketing Agency in Delhi NCR",
     template: "%s | Yashova",
@@ -59,13 +62,13 @@ export const metadata: Metadata = {
     title: "Yashova — Performance Marketing Agency in Delhi NCR",
     description:
       "No hype. Just revenue. Marketing systems that track spend, qualify leads, and maximize ROI.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Yashova — Not Loud. Unignorable." }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Yashova — Not Loud. Unignorable." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Yashova — Performance Marketing Agency in Delhi NCR",
     description: "No hype. Just revenue.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -93,6 +96,8 @@ export default function RootLayout({
         <WhatsAppFloat />
         <CursorGlow />
         <MetaPixel />
+        <SiteSchema />
+        <Analytics />
       </body>
     </html>
   );
