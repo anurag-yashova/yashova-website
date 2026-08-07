@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getPost } from "@/lib/posts";
+import ProofGallery from "@/components/ProofGallery";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -67,6 +68,26 @@ export default async function BlogPost({
           className="post-body mt-10"
           dangerouslySetInnerHTML={{ __html: post.body }}
         />
+
+        {post.exhibits.length > 0 && (
+          <div className="mt-14">
+            <p className="eyebrow">Exhibits</p>
+            <ProofGallery
+              images={post.exhibits.map((e) => e.src)}
+              name={post.title}
+            />
+            <ul className="mt-4 space-y-1.5">
+              {post.exhibits.map((e, i) => (
+                <li key={e.src} className="text-xs leading-relaxed text-ink-muted">
+                  <span className="font-mono-num text-ink">
+                    Fig. {i + 1}
+                  </span>{" "}
+                  &mdash; {e.caption}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="rule mt-14" />
         <div className="mt-10">
           <p className="eyebrow">Work with us</p>

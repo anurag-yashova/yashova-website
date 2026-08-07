@@ -3,6 +3,10 @@ title: "What 11,246 Transactions Taught Us About Donor Psychology"
 excerpt: "Zero disputes, 96.99% UPI, one ₹40 refund across 11,246 donations. What those numbers reveal about how Indian donors actually decide — and what it means for anyone selling online."
 publishedAt: "2026-09-05"
 keywords: ["donor psychology India", "UPI conversion rate", "nonprofit marketing India", "online payment behaviour India"]
+exhibits:
+  - src: "/images/case-studies/hhf-5.jpg"
+    caption: "Razorpay overview — ₹30,11,507 collected, 11,246 captured payments, ₹0 disputes, 96.99% paid via UPI."
+
 ---
 
 Campaign data usually tells you about the campaign. Occasionally it tells you something about people.

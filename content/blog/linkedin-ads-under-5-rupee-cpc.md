@@ -3,6 +3,14 @@ title: "LinkedIn Ads Under ₹5 CPC: The CvolvePro Campaign Breakdown"
 excerpt: "LinkedIn is supposed to be expensive. This campaign held CPC at ₹4.69 across 386,438 impressions and 8,752 clicks. Here is the content strategy that made it possible."
 publishedAt: "2026-09-09"
 keywords: ["LinkedIn ads India", "LinkedIn ads cost", "B2B lead generation India", "LinkedIn sponsored content"]
+exhibits:
+  - src: "/images/case-studies/cvolvepro-2.jpg"
+    caption: "LinkedIn campaign spend table — ₹41,010 spent, 386,438 impressions, 8,752 clicks at 2.26% CTR."
+  - src: "/images/case-studies/cvolvepro-4.jpg"
+    caption: "Reach and clicks across the testing period."
+  - src: "/images/case-studies/cvolvepro-1.jpg"
+    caption: "The sponsored content creatives tested during the initial phase."
+
 ---
 
 LinkedIn has a reputation in India: great audience, punishing costs. Most accounts see CPCs many times higher than Meta.

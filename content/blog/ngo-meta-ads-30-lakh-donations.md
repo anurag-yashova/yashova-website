@@ -3,6 +3,16 @@ title: "₹30 Lakhs in Donations in 60 Days: An NGO Meta Ads Case Study"
 excerpt: "How a fundraising campaign produced ₹30,11,507 in Razorpay-verified donations across 11,246 payments at 4.5X ROAS — and why the tracking stack mattered more than the creative."
 publishedAt: "2026-08-29"
 keywords: ["NGO fundraising Meta ads", "donation campaign India", "nonprofit digital marketing India", "Meta CAPI setup"]
+exhibits:
+  - src: "/images/case-studies/hhf-5.jpg"
+    caption: "Razorpay dashboard — ₹30,11,507 collected from 11,246 captured payments, zero disputes, 96.99% UPI."
+  - src: "/images/case-studies/hhf-1.jpg"
+    caption: "Meta Ads Manager — reach, frequency, CTR and CPC across the full 60-day campaign period."
+  - src: "/images/case-studies/hhf-2.jpg"
+    caption: "Campaign breakdown — cost per result falling across 13 structured tests."
+  - src: "/images/case-studies/hhf-3.jpg"
+    caption: "Advantage+ campaign budget configuration at ₹15,000 daily."
+
 ---
 
 Most people assume donation campaigns fail because of budget. Spend more, reach more people, write a more emotional caption, and the money follows.

@@ -3,6 +3,16 @@ title: "How We Generated ₹1 Crore in Revenue for a Medical Coding Institute"
 excerpt: "The full breakdown of a 120-day campaign: ₹18.6L spent, 15,000 leads at ₹126, 780 admissions, ₹1.02Cr revenue and 5.5X ROAS — including what the webinar funnel actually looked like."
 publishedAt: "2026-08-26"
 keywords: ["performance marketing case study India", "education lead generation", "webinar funnel India", "Meta ads for education"]
+exhibits:
+  - src: "/images/case-studies/tal-5.jpg"
+    caption: "CRM intake pipeline — leads tracked from form submission through to payment."
+  - src: "/images/case-studies/tal-3.jpg"
+    caption: "Age and gender distribution — buying cohort concentrated in 18–34, near-identical cost per result across genders."
+  - src: "/images/case-studies/tal-4.jpg"
+    caption: "Campaign pivot table — reach and impressions by campaign and ad set."
+  - src: "/images/case-studies/tal-1.jpg"
+    caption: "One of the webinar campaign creatives that carried the funnel."
+
 ---
 
 TheAudioLearning sells a CPC medical coding certification with placement assistance. Good product, real instructor, genuine placement record. What it did not have was a way to consistently turn strangers into enrolled students.

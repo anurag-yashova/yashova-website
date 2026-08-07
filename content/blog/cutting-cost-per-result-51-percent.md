@@ -3,6 +3,12 @@ title: "Cutting Cost Per Result by 51%: What Actually Moved the Number"
 excerpt: "Cost per result fell from ₹175.61 to ₹85.48 on a live campaign. Here is the honest breakdown of what caused it — and why most of the credit goes to something nobody finds interesting."
 publishedAt: "2026-09-02"
 keywords: ["reduce cost per result Meta ads", "lower cost per lead", "Meta ads optimization India", "conversion API benefits"]
+exhibits:
+  - src: "/images/case-studies/hhf-2.jpg"
+    caption: "The cost-per-result column in sequence — ₹175.61 baseline through to ₹85.48 on the scaled campaign."
+  - src: "/images/case-studies/hhf-4.jpg"
+    caption: "Ad-level spend distribution — CBO concentrating budget on the winning ad automatically."
+
 ---
 
 Halving cost per result sounds like a creative breakthrough. It usually is not.

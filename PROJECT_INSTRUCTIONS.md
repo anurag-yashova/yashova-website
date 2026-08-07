@@ -265,6 +265,20 @@ anything: public audits of live ads, landing pages and funnels.
   in India. Every teardown also carries an honest caveat that it is an outside view.
 - The Google Drive portfolio link now lives in the footer only, labelled "Portfolio"
 
+## 8c. Imagery policy
+
+**No stock photography, ever.** It is the fastest way back to the AI-template look Anurag
+rejected repeatedly. The site currently contains zero stock imagery and that is deliberate.
+
+Engagement comes from data, not decoration:
+- **Per-post OG cards** are generated at build time via `opengraph-image.tsx` in both
+  `blog/[slug]/` and `teardowns/[slug]/`. Teardown cards render the severity chips.
+- **Exhibits**: proof-led blog posts carry real dashboard screenshots from the case study
+  PDFs, declared in frontmatter as `exhibits: [{src, caption}]` and rendered through the
+  same lightbox as case studies, captioned "Fig. 1 — ...".
+- **Never screenshot the subject of a teardown** — it de-anonymises the brand. Reconstruct
+  as a diagram instead.
+
 ## 9. Blog system
 
 - 30 posts in `content/blog/`, scheduled Aug 6 – Nov 14 2026, ~2 per week

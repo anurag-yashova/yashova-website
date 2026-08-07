@@ -3,6 +3,10 @@ title: "Meta Pixel and Conversion API Setup: The Complete Guide"
 excerpt: "Why browser-only Pixel tracking is costing you money, what Conversion API actually does, the events worth configuring, and how to verify the whole stack is working."
 publishedAt: "2026-09-23"
 keywords: ["Meta Pixel setup", "Conversion API setup", "Facebook CAPI India", "Meta pixel not tracking"]
+exhibits:
+  - src: "/images/case-studies/hhf-1.jpg"
+    caption: "What clean CAPI data looks like downstream — stable CTR and CPC across a 60-day campaign."
+
 ---
 
 This is the single highest-leverage fix available in most Indian ad accounts, and it is also the one nobody wants to do because there are no screenshots to show for it.

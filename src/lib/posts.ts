@@ -12,6 +12,7 @@ export type Post = {
   publishedAt: string;
   keywords: string[];
   readingTime: number;
+  exhibits: { src: string; caption: string }[];
   body: string;
 };
 
@@ -26,6 +27,7 @@ function parse(file: string): Post {
     publishedAt: data.publishedAt ?? "1970-01-01",
     keywords: data.keywords ?? [],
     readingTime: Math.max(1, Math.round(words / 220)),
+    exhibits: data.exhibits ?? [],
     body: marked.parse(content, { async: false }) as string,
   };
 }
