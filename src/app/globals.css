@@ -568,3 +568,21 @@ html.light .ledger::before { opacity: 0.85; }
   .pen-note { opacity: 1; transition: none; }
   .ledger-stamp.in { animation: none; opacity: 1; transform: rotate(-13deg); }
 }
+
+/* ============ TEARDOWN SEVERITY CHIPS ============ */
+.sev {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sev-critical { color: #e06450; }
+.sev-major { color: var(--gold); }
+.sev-minor { color: var(--ink-muted); }
+html.light .sev-critical { color: #b23c28; }

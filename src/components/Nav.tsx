@@ -7,7 +7,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { href: "/about", label: "About" },
-  { href: "https://drive.google.com/drive/folders/12tEDEJW1dGStX7CbmluwMPrPDaLii_WX", label: "Our Work", external: true },
+  { href: "/teardowns", label: "Teardowns" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/for-colleges", label: "For Colleges" },
   { href: "/roi-calculator", label: "ROI Calculator" },

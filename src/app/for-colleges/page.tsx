@@ -21,7 +21,7 @@ export default function ForColleges() {
       <PageHero
         eyebrow="Built for admissions teams"
         icon={MarkCampus}
-        index="03"
+        index="04"
         title={<>We partner with colleges to create <span className="hl">lasting impact</span> and new opportunities</>}
         lead="From placement marketing to certification-program enrollment, we build the acquisition systems that education institutions normally can't build in-house."
       />

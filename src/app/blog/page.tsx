@@ -19,7 +19,7 @@ export default function Blog() {
       <PageHero
         eyebrow="Field notes from live accounts"
         icon={MarkWrite}
-        index="05"
+        index="06"
         title={<>Notes on <span className="hl">growth</span></>}
         lead="Playbooks, teardowns and lessons from campaigns we actually ran — with the numbers attached."
       />

@@ -218,3 +218,13 @@ export function MarkPolicy({ className = "" }: MarkProps) {
     </svg>
   );
 }
+
+export function MarkSearch({ className = "" }: MarkProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={`${mark} ${className}`}>
+      <circle cx="6.8" cy="6.8" r="4.6" />
+      <path d="M10.2 10.2 14 14" />
+      <path d="M4.8 8V6M6.8 8V4.6M8.8 8V7" />
+    </svg>
+  );
+}

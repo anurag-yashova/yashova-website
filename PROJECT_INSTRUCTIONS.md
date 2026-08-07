@@ -118,7 +118,7 @@ src/app/
   template.tsx             per-route page transition (see GOTCHA #2)
   globals.css              THE design system — tokens, motion, light-mode overrides, article styles
   page.tsx                 homepage
-  about|case-studies|for-colleges|roi-calculator|strategy-call|blog|refund-policy/
+  about|teardowns|case-studies|for-colleges|roi-calculator|strategy-call|blog|refund-policy/
   ai-audit/                markup.html + audit.css + page.tsx (see §6)
 src/components/
   Nav, Footer, PageHero, Reveal, CountUp, LedgerHero, ProofBar, FunnelDiagram,
@@ -229,6 +229,21 @@ git remote set-url origin https://github.com/anurag-yashova/yashova-website.git 
 Vercel auto-deploys `main`. **Update this file whenever anything here changes.**
 
 ---
+
+## 8b. Teardowns (`/teardowns`)
+
+Replaced "Our Work" in the nav. Anurag does **not** want client creatives or campaign
+ideas published — those are the product. Teardowns prove competence without exposing
+anything: public audits of live ads, landing pages and funnels.
+
+- Content: `content/teardowns/*.md`, loader `src/lib/teardowns.ts`, same scheduled
+  publishing as the blog (future `publishedAt` stays hidden)
+- Frontmatter carries `subject`, `category`, `spend`, `verdict` and a `findings` array
+  (each with `severity: critical | major | minor`), rendered as a findings sheet
+- **Brands are always anonymised** ("a Delhi NCR coaching institute, ₹4L/month").
+  Naming a real non-client brand in a critical audit is a defamation and reputation risk
+  in India. Every teardown also carries an honest caveat that it is an outside view.
+- The Google Drive portfolio link now lives in the footer only, labelled "Portfolio"
 
 ## 9. Blog system
 

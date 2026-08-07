@@ -13,7 +13,7 @@ export default function RefundPolicy() {
       eyebrow="Plain terms, plainly stated"
         icon={MarkPolicy}
       title="Refund Policy"
-      index="07"
+      index="08"
     />
     <section className="mx-auto max-w-3xl px-6 py-16">
       <div className="space-y-8 text-sm leading-relaxed text-ink-muted">

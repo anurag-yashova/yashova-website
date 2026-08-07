@@ -19,7 +19,7 @@ export default function CaseStudiesIndex() {
     <PageHero
       eyebrow="Receipts, not adjectives"
         icon={MarkCase}
-      index="02"
+      index="03"
       title={<>Real campaigns. <span className="hl">Real numbers.</span></>}
       lead="We partner with ambitious businesses ready to scale profitably. No manufactured results."
     />
