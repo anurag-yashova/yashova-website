@@ -92,6 +92,13 @@ in Caveat (`--font-hand`), a signature, and a stamp — then the sheet lifts awa
 prints. The handwriting is the point: it is the human hand on the page. Fonts in use are
 Space Grotesk / Inter / IBM Plex Mono / **Caveat**.
 
+### Case study pages use the same document language
+`/case-studies/[slug]` is a **case file**: numbered file header with the index numeral
+bleeding off the right edge, particulars set as a bordered document header, headline
+figures in a hairline grid, then the full metrics table rendered through `CaseLedger.tsx`
+— the same printing statement as the hero, with dotted leaders, a signature and a
+Verified stamp. Proof screenshots are "Exhibits". Keep this language when adding pages.
+
 ### Typography
 - Display: **Space Grotesk** (`--font-display`) — 700 weight for headings
 - Body: **Inter** (`--font-body`) — 400
