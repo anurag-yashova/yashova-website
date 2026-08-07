@@ -153,9 +153,21 @@ Instructor: Aparajita Sudarshan (publicly named on their own creatives — safe 
 CPR ₹175.61 → ₹85.48 (51% reduction) · ₹0 disputes · 96.99% UPI · 13 campaigns · Pixel + CAPI
 
 **Testimonial videos** (6, in `public/videos/`, compressed 395MB → 12MB):
-Buyernest · TheAudioLearning · CvolvePro · **Knowledgeprisp** (was "Fundraising") ·
+Buyernest · TheAudioLearning · CvolvePro · **Knowledge Prism** (was "Fundraising") ·
 **Bebrainteaser** (was "Life Coach") · Student NGO
-*Remaining names still to be confirmed by Anurag.*
+
+Each card shows the company name and the **engagement type only — never a person's name**.
+Anurag was explicit about this. Roles in use:
+Buyernest = B2B lead generation, automation & nurture ·
+Knowledge Prism = end-to-end marketing ·
+Bebrainteaser = B2C funnels, WhatsApp marketing ·
+TheAudioLearning = webinar funnel, admissions ·
+CvolvePro = LinkedIn growth marketing · Student NGO = donor acquisition
+
+**Client logos** live in `public/images/clients/` (greyscale, colour on hover in the trust
+strip): theaudiolearning, cvolvepro, helping-hands, buyernest, knowledge-prism, investmate,
+tradebazarr, digital-riches, merhba-boutique. Bebrainteaser and Digiraag are wordmarks
+pending logo files. Earthling Trust was removed at Anurag's request.
 
 ---
 
