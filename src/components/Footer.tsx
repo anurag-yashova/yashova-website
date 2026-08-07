@@ -24,7 +24,6 @@ export default function Footer() {
               <li><a href="https://drive.google.com/drive/folders/12tEDEJW1dGStX7CbmluwMPrPDaLii_WX" target="_blank" rel="noopener noreferrer" className="hover:text-ink">Portfolio</a></li>
               <li><Link href="/case-studies" className="hover:text-ink">Case Studies</Link></li>
               <li><Link href="/teardowns" className="hover:text-ink">Teardowns</Link></li>
-              <li><Link href="/for-colleges" className="hover:text-ink">For Colleges</Link></li>
               <li><Link href="/blog" className="hover:text-ink">Blog</Link></li>
             </ul>
           </div>

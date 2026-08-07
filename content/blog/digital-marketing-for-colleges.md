@@ -66,4 +66,4 @@ Without that loop, you optimise for form fills during a season where form fills 
 
 If you have never run paid acquisition, do not start with core admissions. Start with a certification programme: shorter cycle, faster feedback, lower stakes, and it teaches your team the system before the season that matters.
 
-More on how we work with institutions is on the [for colleges](/for-colleges) page.
+For what this looks like on a real education account, see the [TheAudioLearning case study](/case-studies/theaudiolearning).

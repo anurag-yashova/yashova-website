@@ -14,7 +14,7 @@ export default function ROICalculatorPage() {
     <PageHero
       eyebrow="Run your own numbers"
         icon={MarkTool}
-      index="05"
+      index="04"
       title={<>ROI <span className="hl">Calculator</span></>}
       lead="Adjust the numbers to see what a given ad spend could return, based on your own click cost, conversion rate, and deal value."
     />

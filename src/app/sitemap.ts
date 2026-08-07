@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1 },
     { path: "/about", priority: 0.8 },
     { path: "/case-studies", priority: 0.9 },
-    { path: "/for-colleges", priority: 0.7 },
     { path: "/roi-calculator", priority: 0.7 },
     { path: "/ai-audit", priority: 0.8 },
     { path: "/blog", priority: 0.8 },

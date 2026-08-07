@@ -118,7 +118,7 @@ src/app/
   template.tsx             per-route page transition (see GOTCHA #2)
   globals.css              THE design system — tokens, motion, light-mode overrides, article styles
   page.tsx                 homepage
-  about|teardowns|case-studies|for-colleges|roi-calculator|strategy-call|blog|refund-policy/
+  about|teardowns|case-studies|roi-calculator|strategy-call|blog|refund-policy/
   ai-audit/                markup.html + audit.css + page.tsx (see §6)
 src/components/
   Nav, Footer, PageHero, Reveal, CountUp, LedgerHero, ProofBar, FunnelDiagram,

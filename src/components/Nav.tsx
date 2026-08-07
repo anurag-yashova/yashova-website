@@ -9,7 +9,6 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/teardowns", label: "Teardowns" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/for-colleges", label: "For Colleges" },
   { href: "/roi-calculator", label: "ROI Calculator" },
   { href: "/blog", label: "Blog" },
 ];

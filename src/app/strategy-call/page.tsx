@@ -15,7 +15,7 @@ export default function StrategyCall() {
       <PageHero
         eyebrow="A real conversation, not a pitch"
         icon={MarkTalk}
-        index="07"
+        index="06"
         title={<>Let&apos;s discuss your <span className="hl">growth</span></>}
         lead="Tell us where you're losing money on ads — we'll come back with a clear read on what to fix first."
       />
