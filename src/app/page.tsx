@@ -70,11 +70,11 @@ const caseStudies = [
     name: "CvolvePro",
     logo: "/images/case-studies/cvolvepro-logo.png",
     stats: [
-      { value: "67%", label: "Conversion ↑" },
-      { value: "45%", label: "CPL Reduction" },
-      { value: "4.2x", label: "ROAS" },
+      { value: "222,630+", label: "Professional Reach" },
+      { value: "8,752", label: "Total Clicks" },
+      { value: "₹4.69", label: "Average CPC" },
     ],
-    strategy: "Funnel optimization + retargeting",
+    strategy: "LinkedIn Sponsored Content + Video Campaigns",
   },
   {
     slug: "helping-hands-foundation",
