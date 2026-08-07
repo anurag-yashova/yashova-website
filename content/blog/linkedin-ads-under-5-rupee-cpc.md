@@ -17,6 +17,8 @@ LinkedIn has a reputation in India: great audience, punishing costs. Most accoun
 
 This campaign averaged **₹4.69**.
 
+[[figure:linkedin-cpc]]
+
 ## The numbers
 
 | Metric | Value |

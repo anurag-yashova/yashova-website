@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllTeardownSlugs, getTeardown } from "@/lib/teardowns";
+import PostBody from "@/components/PostBody";
 
 export function generateStaticParams() {
   return getAllTeardownSlugs().map((slug) => ({ slug }));
@@ -73,7 +74,9 @@ export default async function TeardownPage({
         </ol>
       </div>
 
-      <div className="post-body mt-14" dangerouslySetInnerHTML={{ __html: t.body }} />
+      <div className="mt-14">
+        <PostBody html={t.body} />
+      </div>
 
       <div className="rule mt-14" />
       <div className="mt-10">

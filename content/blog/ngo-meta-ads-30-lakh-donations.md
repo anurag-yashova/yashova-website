@@ -61,6 +61,8 @@ Nobody posts screenshots of their CAPI event configuration. It is unglamorous wo
 
 ## How the cost per result actually fell
 
+[[figure:cpr-drop]]
+
 Read the campaign sequence:
 
 | Campaign | Results | Cost per result | Note |
@@ -75,6 +77,8 @@ Campaign C looks like a failure at ₹242.34. It was not. It was the test that i
 
 That improvement is not primarily creative. It is an algorithm trained on clean CAPI data finding the donor cohort earlier tests had mapped.
 
+[[figure:campaign-sequence]]
+
 ## Budget architecture
 
 We ran Advantage+ campaign budget optimisation at ₹15,000 daily, Highest Volume bid strategy. Within the primary campaign, one ad absorbed roughly 90% of budget — ₹23,611.74 — because it outperformed the other three on every metric. The rest received ₹1,459.30, ₹639.17 and ₹541.87.
@@ -82,6 +86,8 @@ We ran Advantage+ campaign budget optimisation at ₹15,000 daily, Highest Volum
 That is CBO working correctly. You do not manually shift budget to the winner. You structure the campaign so the algorithm identifies and rewards it.
 
 ## The number that told us who the donors were
+
+[[figure:upi-share]]
 
 **96.99% paid via UPI.**
 

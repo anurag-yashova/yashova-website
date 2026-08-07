@@ -276,6 +276,11 @@ Engagement comes from data, not decoration:
 - **Exhibits**: proof-led blog posts carry real dashboard screenshots from the case study
   PDFs, declared in frontmatter as `exhibits: [{src, caption}]` and rendered through the
   same lightbox as case studies, captioned "Fig. 1 — ...".
+- **Inline data visuals**: articles place charts with a `[[figure:key]]` marker in the
+  markdown. Keys are defined in `src/lib/figures.ts` (delta bars, ranked bars, funnels,
+  big stats) and rendered by `PostBody.tsx`, which splits the HTML on the marker.
+  Add a figure by defining the key, then dropping the marker in the post. Every number
+  in `figures.ts` must trace to a verified source.
 - **Never screenshot the subject of a teardown** — it de-anonymises the brand. Reconstruct
   as a diagram instead.
 

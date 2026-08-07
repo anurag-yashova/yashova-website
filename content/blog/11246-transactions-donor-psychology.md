@@ -13,6 +13,8 @@ Campaign data usually tells you about the campaign. Occasionally it tells you so
 
 Across 11,246 donation transactions in 60 days, three numbers stood out — and each one changes how you should build a checkout.
 
+[[figure:zero-disputes]]
+
 ## 96.99% paid via UPI
 
 Not 60%. Not 80%. Essentially everyone.

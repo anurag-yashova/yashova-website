@@ -15,6 +15,8 @@ Halving cost per result sounds like a creative breakthrough. It usually is not.
 
 On the campaign below, cost per result fell 51% — ₹175.61 to ₹85.48. Here is what each factor actually contributed.
 
+[[figure:cpr-drop]]
+
 ## The four things that could have caused it
 
 When cost per result drops sharply, there are only four real explanations: better creative, better audience, better landing page, or better data. Everything else is a variation on these.

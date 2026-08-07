@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getPost } from "@/lib/posts";
 import ProofGallery from "@/components/ProofGallery";
+import PostBody from "@/components/PostBody";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -64,10 +65,7 @@ export default async function BlogPost({
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-ink-muted">{post.excerpt}</p>
         <div className="rule mt-10" />
-        <div
-          className="post-body mt-10"
-          dangerouslySetInnerHTML={{ __html: post.body }}
-        />
+        <PostBody html={post.body} />
 
         {post.exhibits.length > 0 && (
           <div className="mt-14">
