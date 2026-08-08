@@ -293,6 +293,10 @@ Engagement comes from data, not decoration:
   `sitemap.ts` all export `revalidate = 3600`. **Never remove those** — without ISR the
   date filter is frozen at build time and nothing new ever appears. This was a real bug,
   shipped and caught: 29 posts and 8 teardowns were silently unreachable.
+- A **Vercel Cron job** (`vercel.json` → `/api/cron/revalidate`) runs daily at 01:00 UTC
+  (06:30 IST) and force-revalidates `/blog`, `/teardowns`, the sitemap and every live
+  detail page. This guarantees a post dated today appears in the morning even with zero
+  traffic. Optional `CRON_SECRET` env var allows manual triggering.
 - Sanity was removed entirely (`src/lib/sanity.ts` deleted, `@sanity/client` uninstalled).
   The `NEXT_PUBLIC_SANITY_*` env vars in Vercel are dead and can be deleted.
 - Keyword clusters: local intent (Faridabad / Delhi / Gurgaon), proof-led case studies,
