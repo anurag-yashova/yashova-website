@@ -5,6 +5,11 @@ import { getAllSlugs, getPost } from "@/lib/posts";
 import ProofGallery from "@/components/ProofGallery";
 import PostBody from "@/components/PostBody";
 
+/* Scheduled publishing: content is filtered by publishedAt at request time, so this
+   page must not be frozen at build. Re-generates hourly; future-dated posts appear
+   on their own date without a deploy. */
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }

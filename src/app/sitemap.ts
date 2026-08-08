@@ -3,6 +3,9 @@ import { caseStudies } from "@/lib/case-studies";
 import { getAllPosts } from "@/lib/posts";
 import { getAllTeardowns } from "@/lib/teardowns";
 
+/* Keep the sitemap in step with scheduled publishing. */
+export const revalidate = 3600;
+
 const BASE = "https://yashova.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {

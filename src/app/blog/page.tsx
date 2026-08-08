@@ -5,6 +5,11 @@ import { MarkWrite } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 import { getAllPosts } from "@/lib/posts";
 
+/* Scheduled publishing: content is filtered by publishedAt at request time, so this
+   page must not be frozen at build. Re-generates hourly; future-dated posts appear
+   on their own date without a deploy. */
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Performance Marketing Blog",
   description:

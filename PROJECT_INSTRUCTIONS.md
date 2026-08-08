@@ -52,7 +52,7 @@ Claude implements, tests, and pushes.
 | Live preview | https://yashova-website.vercel.app |
 | Production domain | yashova.com (DNS **not yet** pointed at Vercel) |
 | Repo | github.com/anurag-yashova/yashova-website |
-| Blog | Markdown files in `content/blog/` (NOT a CMS) |
+| Blog | Markdown files in `content/blog/` (NOT a CMS — Sanity was removed) |
 | Meta Pixel | `2060709664860383` |
 | Analytics | GA4 scaffolded — set `NEXT_PUBLIC_GA_ID` in Vercel to activate |
 | Booking | Cal.com scaffolded — set `NEXT_PUBLIC_CAL_LINK` (e.g. `yashova/strategy-call`) |
@@ -287,8 +287,14 @@ Engagement comes from data, not decoration:
 ## 9. Blog system
 
 - 30 posts in `content/blog/`, scheduled Aug 6 – Nov 14 2026, ~2 per week
-- **Scheduled publishing is automatic**: `src/lib/posts.ts` hides any post whose
-  `publishedAt` is in the future — it 404s and stays out of the index until its date
+- **Scheduled publishing is automatic — but ONLY because of ISR.** `src/lib/posts.ts`
+  hides any post whose `publishedAt` is in the future. That filter runs when the page is
+  generated, so `/blog`, `/blog/[slug]`, `/teardowns`, `/teardowns/[slug]` and
+  `sitemap.ts` all export `revalidate = 3600`. **Never remove those** — without ISR the
+  date filter is frozen at build time and nothing new ever appears. This was a real bug,
+  shipped and caught: 29 posts and 8 teardowns were silently unreachable.
+- Sanity was removed entirely (`src/lib/sanity.ts` deleted, `@sanity/client` uninstalled).
+  The `NEXT_PUBLIC_SANITY_*` env vars in Vercel are dead and can be deleted.
 - Keyword clusters: local intent (Faridabad / Delhi / Gurgaon), proof-led case studies,
   high-volume commercial (Meta vs Google, costs, Pixel/CAPI), funnels & automation, verticals
 - Every post carries Article structured data and links internally to case studies / the audit tool
