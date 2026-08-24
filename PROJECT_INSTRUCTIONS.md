@@ -53,7 +53,8 @@ Claude implements, tests, and pushes.
 | Production domain | yashova.com (DNS **not yet** pointed at Vercel) |
 | Repo | github.com/anurag-yashova/yashova-website |
 | Blog | Markdown files in `content/blog/` (NOT a CMS — Sanity was removed) |
-| Meta Pixel | `2060709664860383` |
+| Meta Pixel | `2060709664860383` (browser) + **Conversions API** server-side |
+| Lead handling | `POST /api/lead` → Formspree email + CAPI, with event deduplication |
 | Analytics | GA4 scaffolded — set `NEXT_PUBLIC_GA_ID` in Vercel to activate |
 | Booking | Cal.com scaffolded — set `NEXT_PUBLIC_CAL_LINK` (e.g. `yashova/strategy-call`) |
 
@@ -318,6 +319,19 @@ Engagement comes from data, not decoration:
 - 30 blog posts with auto-scheduling
 - Favicon set from the real logo
 - Mobile responsive pass
+
+### Lead form and tracking
+The strategy-call form posts to `/api/lead`, which does two things: forwards the lead to
+Formspree for email delivery, and mirrors a `Lead` event to Meta's Conversions API.
+
+**Deduplication is the critical detail.** The browser generates one `eventId` per
+submission, passes it to `fbq` as the **fourth argument** (`{ eventID }`, NOT inside
+params — a common and silent mistake), and sends the same id to the server, which
+includes it as `event_id` in the CAPI payload. Meta then counts one lead, not two.
+
+CAPI also forwards hashed email/phone/name, client IP, user agent, and the `_fbp`/`_fbc`
+cookies — those cookies materially improve match quality. A hidden honeypot field blocks
+bots. Never log or commit `META_CAPI_TOKEN`.
 
 ### Env vars (set in Vercel → Settings → Environment Variables)
 `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET` (legacy),

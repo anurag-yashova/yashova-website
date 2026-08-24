@@ -3,21 +3,76 @@
 import { useState } from "react";
 import { track } from "@/lib/track";
 
-/** Submits straight to WhatsApp — no backend needed, matches the
- *  agency's WhatsApp-first follow-up workflow. */
+type Status = "idle" | "sending" | "sent" | "error";
+
+/** Sends the lead to our API (email + server-side CAPI), then offers
+ *  WhatsApp as a second step for people who want an immediate reply. */
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [company, setCompany] = useState(""); // honeypot
+  const [status, setStatus] = useState<Status>("idle");
 
-  function submit(e: React.FormEvent) {
+  const waText = `Hi, I'm ${name || "—"}${phone ? ` (${phone})` : ""}. I want to discuss growth: ${message || "—"}`;
+  const waHref = `https://wa.me/919818086846?text=${encodeURIComponent(waText)}`;
+
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    track("Lead", { content_name: "Strategy Call Form" });
-    const text = `Hi, I'm ${name || "—"} (${email || "no email"}). I want to discuss growth: ${message || "—"}`;
-    window.open(
-      `https://wa.me/919818086846?text=${encodeURIComponent(text)}`,
-      "_blank",
-      "noopener,noreferrer"
+    if (status === "sending") return;
+    setStatus("sending");
+
+    // one id shared by the browser Pixel and the server event, so Meta
+    // counts this lead once rather than twice
+    const eventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : String(Date.now());
+
+    track("Lead", { content_name: "Strategy Call Form" }, eventId);
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+          company,
+          eventId,
+          sourceUrl: window.location.href,
+        }),
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <div className="glass rounded-lg p-8">
+        <p className="eyebrow">Received</p>
+        <h3 className="mt-4 text-2xl font-bold tracking-tight text-ink">
+          Thanks {name ? name.split(" ")[0] : ""} — that reached us.
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+          We reply within a few working hours. If you would rather not wait, message us
+          on WhatsApp and we will pick it up there.
+        </p>
+        <a
+          href={waHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => track("Contact", { content_name: "WhatsApp after form" })}
+          className="cta-pulse mt-6 inline-block rounded-md bg-ink px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
+        >
+          Continue on WhatsApp
+        </a>
+      </div>
     );
   }
 
@@ -30,9 +85,10 @@ export default function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="mt-1.5 w-full rounded-lg border border-glass-border bg-void px-4 py-2.5 text-ink focus-ring"
+          className="mt-1.5 w-full rounded-md border border-surface-line bg-void px-4 py-2.5 text-ink focus-ring"
         />
       </div>
+
       <div>
         <label htmlFor="email" className="text-sm font-medium text-ink-muted">Email</label>
         <input
@@ -41,27 +97,68 @@ export default function ContactForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="mt-1.5 w-full rounded-lg border border-glass-border bg-void px-4 py-2.5 text-ink focus-ring"
+          className="mt-1.5 w-full rounded-md border border-surface-line bg-void px-4 py-2.5 text-ink focus-ring"
         />
       </div>
+
       <div>
-        <label htmlFor="message" className="text-sm font-medium text-ink-muted">What are you looking to grow?</label>
+        <label htmlFor="phone" className="text-sm font-medium text-ink-muted">
+          Phone <span className="text-ink-muted/70">(WhatsApp preferred)</span>
+        </label>
+        <input
+          id="phone"
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="mt-1.5 w-full rounded-md border border-surface-line bg-void px-4 py-2.5 text-ink focus-ring"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="message" className="text-sm font-medium text-ink-muted">
+          What are you looking to grow?
+        </label>
         <textarea
           id="message"
           rows={4}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="mt-1.5 w-full rounded-lg border border-glass-border bg-void px-4 py-2.5 text-ink focus-ring"
+          className="mt-1.5 w-full rounded-md border border-surface-line bg-void px-4 py-2.5 text-ink focus-ring"
         />
       </div>
+
+      {/* honeypot — hidden from people, irresistible to bots */}
+      <div className="hidden" aria-hidden>
+        <label htmlFor="company">Company</label>
+        <input
+          id="company"
+          tabIndex={-1}
+          autoComplete="off"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
+      </div>
+
       <button
         type="submit"
-        className="cta-pulse w-full rounded-md bg-ink px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
+        disabled={status === "sending"}
+        className="cta-pulse w-full rounded-md bg-ink px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring disabled:opacity-60"
       >
-        Send on WhatsApp
+        {status === "sending" ? "Sending…" : "Send it over"}
       </button>
+
+      {status === "error" && (
+        <p className="text-xs leading-relaxed text-ink-muted">
+          Something went wrong sending that.{" "}
+          <a href={waHref} target="_blank" rel="noopener noreferrer" className="link-line text-ink">
+            Message us on WhatsApp instead
+          </a>{" "}
+          and we will pick it up straight away.
+        </p>
+      )}
+
       <p className="text-xs text-ink-muted">
-        Opens WhatsApp with your message pre-filled — we reply within a few hours.
+        We reply within a few working hours. No newsletter, no reselling your details.
       </p>
     </form>
   );
