@@ -36,6 +36,14 @@ export async function POST(request: Request) {
   const phone = (body.phone ?? "").slice(0, 40);
   const message = (body.message ?? "").slice(0, 4000);
   const eventId = (body.eventId ?? crypto.randomUUID()).slice(0, 100);
+
+  /* Two very different intents, so two different Meta events.
+     Schedule = someone asking for a call. Lead = someone running the free audit.
+     Optimising both as one "Lead" would push delivery toward the cheaper action. */
+  const leadType = body.leadType === "audit" ? "audit" : "strategy-call";
+  const eventName = leadType === "audit" ? "Lead" : "Schedule";
+  const contentName =
+    leadType === "audit" ? "AI Growth Audit" : "Strategy Call Request";
   const sourceUrl = (body.sourceUrl ?? "https://yashova.com/strategy-call").slice(0, 500);
 
   // honeypot: bots fill hidden fields, humans never see them
@@ -112,14 +120,14 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             data: [
               {
-                event_name: "Lead",
+                event_name: eventName,
                 event_time: Math.floor(Date.now() / 1000),
                 // same id the browser Pixel sends, so Meta deduplicates the pair
                 event_id: eventId,
                 event_source_url: sourceUrl,
                 action_source: "website",
                 user_data: userData,
-                custom_data: { content_name: "Strategy Call Form" },
+                custom_data: { content_name: contentName, lead_type: leadType },
               },
             ],
           }),
@@ -133,5 +141,5 @@ export async function POST(request: Request) {
     results.capi = "not configured";
   }
 
-  return NextResponse.json({ ok: true, ...results });
+  return NextResponse.json({ ok: true, event: eventName, leadType, ...results });
 }

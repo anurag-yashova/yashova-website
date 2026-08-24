@@ -330,6 +330,13 @@ FormSubmit for email delivery (no account needed — but **each recipient addres
 click a one-time confirmation link** FormSubmit emails on the first submission, or
 nothing is delivered), and mirrors a `Lead` event to Meta's Conversions API.
 
+**Two distinct events, deliberately.** A strategy-call request fires **`Schedule`**
+(`content_name: "Strategy Call Request"`); an AI audit submission fires **`Lead`**
+(`content_name: "AI Growth Audit"`). Both carry `lead_type` in custom_data and both
+arrive by email with a subject prefixed `STRATEGY CALL —` or `AUDIT —`. Do not merge
+them back into one event: the audit is far easier to get, so a single blended "Lead"
+makes Meta optimise toward curiosity instead of buying intent.
+
 **Deduplication is the critical detail.** The browser generates one `eventId` per
 submission, passes it to `fbq` as the **fourth argument** (`{ eventID }`, NOT inside
 params — a common and silent mistake), and sends the same id to the server, which

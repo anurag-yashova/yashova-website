@@ -691,6 +691,10 @@ function sendLead(d){
       ' | scores: '+(payload.Scores||'')+' | industry: '+(payload.Industry||'')+
       ' | budget: '+(payload.Budget||'')+' | goal: '+(payload.Goal||'');
     payload.sourceUrl=location.href;
+    payload.leadType='audit';
+    var _eid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now());
+    payload.eventId=_eid;
+    if(window.fbq){fbq('track','Lead',{content_name:'AI Growth Audit'},{eventID:_eid});}
     fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify(payload)}).catch(function(){});
   }catch(e){}

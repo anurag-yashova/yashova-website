@@ -30,7 +30,7 @@ export default function ContactForm() {
         ? crypto.randomUUID()
         : String(Date.now());
 
-    track("Lead", { content_name: "Strategy Call Form" }, eventId);
+    track("Schedule", { content_name: "Strategy Call Request" }, eventId);
 
     try {
       const res = await fetch("/api/lead", {
@@ -42,6 +42,7 @@ export default function ContactForm() {
           phone,
           message,
           company,
+          leadType: "strategy-call",
           eventId,
           sourceUrl: window.location.href,
         }),
