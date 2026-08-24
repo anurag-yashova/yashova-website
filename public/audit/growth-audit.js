@@ -683,7 +683,16 @@ function sendLead(d){
     body.append('File',FILEREF); body.append('Overall',S.overall);
     body.append('Scores','perf '+S.perf+' / seo '+S.seo+' / conv '+S.conv+' / ux '+S.ux);
     body.append('Source',d.source);
-    fetch('https://formsubmit.co/'+LEAD_EMAIL,{method:'POST',body:body,mode:'no-cors'}).catch(function(){});
+    var payload={};body.forEach(function(v,k){payload[k]=v;});
+    payload.name=payload.Name||payload.name||'';
+    payload.email=payload.Email||payload.email||'';
+    payload.phone=payload.Phone||payload.phone||'';
+    payload.message='Growth audit request — '+(payload.Website||payload.website||'')+
+      ' | scores: '+(payload.Scores||'')+' | industry: '+(payload.Industry||'')+
+      ' | budget: '+(payload.Budget||'')+' | goal: '+(payload.Goal||'');
+    payload.sourceUrl=location.href;
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)}).catch(function(){});
   }catch(e){}
 }
 

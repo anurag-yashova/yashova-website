@@ -54,7 +54,7 @@ Claude implements, tests, and pushes.
 | Repo | github.com/anurag-yashova/yashova-website |
 | Blog | Markdown files in `content/blog/` (NOT a CMS — Sanity was removed) |
 | Meta Pixel | `2060709664860383` (browser) + **Conversions API** server-side |
-| Lead handling | `POST /api/lead` → Formspree email + CAPI, with event deduplication |
+| Lead handling | `POST /api/lead` → FormSubmit email (no account) + CAPI, deduplicated |
 | Analytics | GA4 scaffolded — set `NEXT_PUBLIC_GA_ID` in Vercel to activate |
 | Booking | Cal.com scaffolded — set `NEXT_PUBLIC_CAL_LINK` (e.g. `yashova/strategy-call`) |
 
@@ -321,8 +321,14 @@ Engagement comes from data, not decoration:
 - Mobile responsive pass
 
 ### Lead form and tracking
+**The AI audit tool also posts through `/api/lead`**, so audit requests and strategy-call
+requests arrive by the same route and both fire CAPI. The audit's old direct
+`formsubmit.co` fire-and-forget call was replaced.
+
 The strategy-call form posts to `/api/lead`, which does two things: forwards the lead to
-Formspree for email delivery, and mirrors a `Lead` event to Meta's Conversions API.
+FormSubmit for email delivery (no account needed — but **each recipient address must
+click a one-time confirmation link** FormSubmit emails on the first submission, or
+nothing is delivered), and mirrors a `Lead` event to Meta's Conversions API.
 
 **Deduplication is the critical detail.** The browser generates one `eventId` per
 submission, passes it to `fbq` as the **fourth argument** (`{ eventID }`, NOT inside

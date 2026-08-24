@@ -4,7 +4,12 @@ import crypto from "node:crypto";
 /** Receives a form submission, forwards it to Formspree for email delivery,
  *  and mirrors the conversion to Meta's Conversions API server-side. */
 
-const FORMSPREE_ID = process.env.FORMSPREE_FORM_ID;
+/* FormSubmit needs no account — it just emails the address you post to.
+   Each address must confirm once, via a link it sends on the first submission. */
+const LEAD_EMAILS = (process.env.LEAD_EMAILS ?? "anurag@yashova.com,akhil.sharma323@gmail.com")
+  .split(",")
+  .map((e) => e.trim())
+  .filter(Boolean);
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "2060709664860383";
 const CAPI_TOKEN = process.env.META_CAPI_TOKEN;
 
@@ -44,28 +49,34 @@ export async function POST(request: Request) {
 
   const results: Record<string, unknown> = {};
 
-  /* ---------- 1. Email the lead via Formspree ---------- */
-  if (FORMSPREE_ID) {
-    try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          message,
-          _subject: `New lead from yashova.com — ${name || email || phone}`,
-          page: sourceUrl,
-        }),
-      });
-      results.email = res.ok ? "sent" : `failed:${res.status}`;
-    } catch {
-      results.email = "failed";
-    }
-  } else {
-    results.email = "not configured";
-  }
+  /* ---------- 1. Email the lead ---------- */
+  const payload = {
+    name,
+    email,
+    phone,
+    message,
+    page: sourceUrl,
+    _subject: `New lead from yashova.com — ${name || email || phone}`,
+    _template: "table",
+    _captcha: "false",
+  };
+
+  const delivered = await Promise.all(
+    LEAD_EMAILS.map(async (to) => {
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        return res.ok;
+      } catch {
+        return false;
+      }
+    })
+  );
+  results.email = delivered.some(Boolean) ? "sent" : "failed";
+  results.recipients = LEAD_EMAILS.length;
 
   /* ---------- 2. Mirror to Meta Conversions API ---------- */
   if (CAPI_TOKEN) {
