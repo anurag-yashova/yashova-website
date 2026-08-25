@@ -675,28 +675,24 @@ function animateReport(){
 function sendLead(d){
   try{
     var f=d.form, S=d.scores;
-    var body=new FormData();
-    body.append('_subject','New Growth Audit lead — '+f.biz+' ('+S.overall+'/100)');
-    body.append('Name',f.name); body.append('Business',f.biz); body.append('Email',f.email);
-    body.append('Phone',f.phone||'—'); body.append('Website',f.url);
-    body.append('Industry',f.industry); body.append('Goal',f.goal); body.append('Budget',f.budget);
-    body.append('File',FILEREF); body.append('Overall',S.overall);
-    body.append('Scores','perf '+S.perf+' / seo '+S.seo+' / conv '+S.conv+' / ux '+S.ux);
-    body.append('Source',d.source);
-    var payload={};body.forEach(function(v,k){payload[k]=v;});
-    payload.name=payload.Name||payload.name||'';
-    payload.email=payload.Email||payload.email||'';
-    payload.phone=payload.Phone||payload.phone||'';
-    payload.message='Growth audit request — '+(payload.Website||payload.website||'')+
-      ' | scores: '+(payload.Scores||'')+' | industry: '+(payload.Industry||'')+
-      ' | budget: '+(payload.Budget||'')+' | goal: '+(payload.Goal||'');
-    payload.sourceUrl=location.href;
-    payload.leadType='audit';
-    var _eid=(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now());
-    payload.eventId=_eid;
-    if(window.fbq){fbq('track','Lead',{content_name:'AI Growth Audit'},{eventID:_eid});}
-    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload)}).catch(function(){});
+    var LEAD_EMAILS=['anurag@yashova.com','akhil.sharma323@gmail.com'];
+    var payload={
+      name:f.name,email:f.email,phone:f.phone||'—',
+      Business:f.biz,Website:f.url,Industry:f.industry,Goal:f.goal,Budget:f.budget,
+      Overall:S.overall,
+      Scores:'perf '+S.perf+' / seo '+S.seo+' / conv '+S.conv+' / ux '+S.ux,
+      Source:d.source,
+      _subject:'AUDIT — '+f.biz+' ('+S.overall+'/100)',
+      _template:'table',_captcha:'false'
+    };
+    LEAD_EMAILS.forEach(function(to){
+      fetch('https://formsubmit.co/ajax/'+encodeURIComponent(to),{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(payload)
+      }).catch(function(){});
+    });
+    if(window.fbq){fbq('track','Lead',{content_name:'AI Growth Audit'});}
   }catch(e){}
 }
 

@@ -5,8 +5,11 @@ import { track } from "@/lib/track";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-/** Sends the lead to our API (email + server-side CAPI), then offers
- *  WhatsApp as a second step for people who want an immediate reply. */
+const LEAD_EMAILS = ["anurag@yashova.com", "akhil.sharma323@gmail.com"];
+
+/** Sends straight from the browser to both inboxes. No account, no API key,
+ *  nothing to configure — the only one-time step is that each address must
+ *  click the confirmation link FormSubmit sends the very first time. */
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,43 +18,38 @@ export default function ContactForm() {
   const [company, setCompany] = useState(""); // honeypot
   const [status, setStatus] = useState<Status>("idle");
 
-  const waText = `Hi, I'm ${name || "—"}${phone ? ` (${phone})` : ""}. I want to discuss growth: ${message || "—"}`;
-  const waHref = `https://wa.me/919818086846?text=${encodeURIComponent(waText)}`;
-
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (status === "sending") return;
+    if (company) return; // bot filled the hidden field
     setStatus("sending");
 
-    // one id shared by the browser Pixel and the server event, so Meta
-    // counts this lead once rather than twice
-    const eventId =
-      typeof crypto !== "undefined" && "randomUUID" in crypto
-        ? crypto.randomUUID()
-        : String(Date.now());
+    track("Schedule", { content_name: "Strategy Call Request" });
 
-    track("Schedule", { content_name: "Strategy Call Request" }, eventId);
+    const results = await Promise.allSettled(
+      LEAD_EMAILS.map((to) =>
+        fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            message,
+            _subject: `STRATEGY CALL — ${name || email || phone}`,
+            _template: "table",
+            _captcha: "false",
+          }),
+        })
+      )
+    );
 
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          message,
-          company,
-          leadType: "strategy-call",
-          eventId,
-          sourceUrl: window.location.href,
-        }),
-      });
-      setStatus(res.ok ? "sent" : "error");
-    } catch {
-      setStatus("error");
-    }
+    const anySent = results.some((r) => r.status === "fulfilled" && r.value.ok);
+    setStatus(anySent ? "sent" : "error");
   }
+
+  const waText = `Hi, I'm ${name || "—"}${phone ? ` (${phone})` : ""}. I want to discuss growth: ${message || "—"}`;
+  const waHref = `https://wa.me/919818086846?text=${encodeURIComponent(waText)}`;
 
   if (status === "sent") {
     return (
@@ -68,7 +66,6 @@ export default function ContactForm() {
           href={waHref}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => track("Contact", { content_name: "WhatsApp after form" })}
           className="cta-pulse mt-6 inline-block rounded-md bg-ink px-6 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
         >
           Continue on WhatsApp
@@ -128,7 +125,6 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* honeypot — hidden from people, irresistible to bots */}
       <div className="hidden" aria-hidden>
         <label htmlFor="company">Company</label>
         <input
