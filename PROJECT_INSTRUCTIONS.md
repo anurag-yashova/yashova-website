@@ -54,7 +54,7 @@ Claude implements, tests, and pushes.
 | Repo | github.com/anurag-yashova/yashova-website |
 | Blog | Markdown files in `content/blog/` (NOT a CMS — Sanity was removed) |
 | Meta Pixel | `2060709664860383` (browser) + **Conversions API** server-side |
-| Lead handling | `POST /api/lead` → FormSubmit email (no account) + CAPI, deduplicated |
+| Lead handling | `POST /api/lead` → Brevo transactional email (primary) + FormSubmit (backup) + CAPI |
 | Analytics | GA4 scaffolded — set `NEXT_PUBLIC_GA_ID` in Vercel to activate |
 | Booking | Cal.com scaffolded — set `NEXT_PUBLIC_CAL_LINK` (e.g. `yashova/strategy-call`) |
 
@@ -321,6 +321,18 @@ Engagement comes from data, not decoration:
 - Mobile responsive pass
 
 ### Lead form and tracking
+**Email delivery is dual-channel**, because FormSubmit's `/ajax/` endpoint is designed
+for direct browser submissions and silently under-delivers when called server-to-server
+(no browser Referer, and/or the recipient never clicked FormSubmit's one-time
+confirmation link) — this caused a real incident where zero lead emails arrived for
+days with no visible error. Brevo's transactional REST API (`BREVO_API_KEY`) is now
+primary and returns real HTTP errors; FormSubmit still runs as a backup. The response
+JSON reports `brevo`, `formsubmit` and `capi` status individually plus a combined
+`emailDelivered` boolean — check Vercel function logs (`console.error` lines prefixed
+`[lead]`) if delivery ever silently fails again, do not assume success from `ok: true`.
+`LEAD_FROM_EMAIL` must be a sender verified in Brevo → Senders, Domains & Dedicated IPs,
+or Brevo will reject the send.
+
 **The AI audit tool also posts through `/api/lead`**, so audit requests and strategy-call
 requests arrive by the same route and both fire CAPI. The audit's old direct
 `formsubmit.co` fire-and-forget call was replaced.
