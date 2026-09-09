@@ -110,11 +110,11 @@ export default async function CaseStudyPage({
         <div className="mx-auto max-w-4xl px-6 py-14">
           <div className="grid gap-px border border-surface-line bg-surface-line sm:grid-cols-3">
             {cs.stats.map((s) => (
-              <div key={s.label} className="bg-void p-6">
+              <div key={s.label} className="min-w-0 bg-void p-6">
                 <div className="font-mono-num text-3xl font-semibold text-gold md:text-4xl">
                   <CountUp value={s.value} />
                   {buildNote(s.value, ccy, rates) && (
-                    <span className="ccy-note text-base md:text-lg">{buildNote(s.value, ccy, rates)}</span>
+                    <span className="ccy-note text-sm md:text-base">{buildNote(s.value, ccy, rates)}</span>
                   )}
                 </div>
                 <div className="mt-2 text-sm leading-snug text-ink-muted">{s.label}</div>

@@ -50,7 +50,10 @@ export default async function TeardownPage({
 
       <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono-num text-[11px] uppercase tracking-[0.18em] text-ink-muted">
         <span>{t.category}</span>
-        <span>{t.spend}{spendNote && <span className="ccy-note">{spendNote}</span>}</span>
+        <span className="inline-flex flex-col">
+          {t.spend}
+          {spendNote && <span className="ccy-note">{spendNote}</span>}
+        </span>
         <span>{t.readingTime} min</span>
       </div>
 

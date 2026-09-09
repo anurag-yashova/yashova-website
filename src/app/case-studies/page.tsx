@@ -44,7 +44,7 @@ export default async function CaseStudiesIndex() {
             <p className="mt-2 text-sm text-ink-muted">{cs.industry}</p>
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {cs.stats.slice(0, 3).map((s) => (
-                <div key={s.label}>
+                <div key={s.label} className="min-w-0">
                   <div className="font-mono-num text-lg font-semibold text-gold">
                     <CountUp value={s.value} />
                     {buildNote(s.value, ccy, rates) && (
