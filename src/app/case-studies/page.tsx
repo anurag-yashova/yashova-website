@@ -6,6 +6,8 @@ import CountUp from "@/components/CountUp";
 import PageHero from "@/components/PageHero";
 import { MarkCase } from "@/components/icons";
 import Reveal from "@/components/Reveal";
+import { buildNote } from "@/lib/currency";
+import { getCurrency, getRates } from "@/lib/currency-server";
 
 
 export const metadata: Metadata = {
@@ -13,7 +15,9 @@ export const metadata: Metadata = {
   description: "Real campaigns, real numbers. No manufactured results.",
 };
 
-export default function CaseStudiesIndex() {
+export default async function CaseStudiesIndex() {
+  const ccy = await getCurrency();
+  const rates = await getRates();
   return (
     <>
     <PageHero
@@ -41,7 +45,12 @@ export default function CaseStudiesIndex() {
             <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {cs.stats.slice(0, 3).map((s) => (
                 <div key={s.label}>
-                  <div className="font-mono-num text-lg font-semibold text-gold"><CountUp value={s.value} /></div>
+                  <div className="font-mono-num text-lg font-semibold text-gold">
+                    <CountUp value={s.value} />
+                    {buildNote(s.value, ccy, rates) && (
+                      <span className="ccy-note">{buildNote(s.value, ccy, rates)}</span>
+                    )}
+                  </div>
                   <div className="text-[11px] leading-tight text-ink-muted">{s.label}</div>
                 </div>
               ))}

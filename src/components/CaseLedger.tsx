@@ -10,7 +10,7 @@ export default function CaseLedger({
   client,
   period,
 }: {
-  metrics: { metric: string; value: string }[];
+  metrics: { metric: string; value: string; note?: string | null }[];
   fileNo: string;
   client: string;
   period: string;
@@ -71,7 +71,10 @@ export default function CaseLedger({
         {metrics.map((m, i) => (
           <li key={m.metric} className={`ledger-line ${shown > i ? "in" : ""}`}>
             <span>{m.metric}</span>
-            <span className="ledger-amount">{m.value}</span>
+            <span className="ledger-amount">
+              {m.value}
+              {m.note && <span className="ccy-note">{m.note}</span>}
+            </span>
           </li>
         ))}
       </ol>

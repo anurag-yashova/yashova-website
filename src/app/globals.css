@@ -643,3 +643,43 @@ html.light .sev-critical { color: #b23c28; }
   color: var(--ink-muted);
 }
 .fig-stat { text-align: center; padding: 2rem 1.5rem; }
+
+/* ============ CURRENCY LOCALISATION ============ */
+.ccy-note {
+  display: inline-block;
+  margin-left: 0.4em;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78em;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+.ccy-note::before { content: ""; }
+
+/* the ledger's own rows already sit in a mono table — keep the note inline
+   with the figure rather than wrapping */
+.ledger-amount .ccy-note,
+.fig .ccy-note {
+  font-size: 0.7em;
+  opacity: 0.85;
+}
+
+.ccy-switch {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--surface-line);
+  border-radius: 6px;
+  color: var(--ink-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.6rem 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 12px) center, calc(100% - 8px) center;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+}
+.ccy-switch:hover { border-color: var(--gold); color: var(--ink); }
+.ccy-switch:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }

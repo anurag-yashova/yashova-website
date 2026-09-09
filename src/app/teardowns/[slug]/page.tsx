@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllTeardownSlugs, getTeardown } from "@/lib/teardowns";
 import PostBody from "@/components/PostBody";
+import { localizeInrInHtml, buildNote } from "@/lib/currency";
+import { getCurrency, getRates } from "@/lib/currency-server";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
@@ -35,6 +37,11 @@ export default async function TeardownPage({
   const t = getTeardown(slug);
   if (!t) notFound();
 
+  const ccy = await getCurrency();
+  const rates = await getRates();
+  const localizedBody = localizeInrInHtml(t.body, ccy, rates);
+  const spendNote = buildNote(t.spend, ccy, rates);
+
   return (
     <article className="mx-auto max-w-4xl px-6 py-20">
       <Link href="/teardowns" className="link-line font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted">
@@ -43,7 +50,7 @@ export default async function TeardownPage({
 
       <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono-num text-[11px] uppercase tracking-[0.18em] text-ink-muted">
         <span>{t.category}</span>
-        <span>{t.spend}</span>
+        <span>{t.spend}{spendNote && <span className="ccy-note">{spendNote}</span>}</span>
         <span>{t.readingTime} min</span>
       </div>
 
@@ -80,7 +87,7 @@ export default async function TeardownPage({
       </div>
 
       <div className="mt-14">
-        <PostBody html={t.body} />
+        <PostBody html={localizedBody} />
       </div>
 
       <div className="rule mt-14" />

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
+import CurrencySwitcher from "@/components/CurrencySwitcher";
 
 const links = [
   { href: "/about", label: "About" },
@@ -73,6 +74,7 @@ export default function Nav() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <CurrencySwitcher />
           <ThemeToggle />
           <Link
             href="/strategy-call"
@@ -83,6 +85,7 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
+          <CurrencySwitcher />
           <ThemeToggle />
           <button
             className="text-ink focus-ring rounded p-1"

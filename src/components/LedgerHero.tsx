@@ -1,19 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useReducer, useRef, useState } from "react";
+import { buildNoteForBareAmount, type Currency } from "@/lib/currency";
 
 /** A working desk, not a hero image.
  *  Statements roll off one after another; a hand marks each one up in pen,
  *  then the page is pulled away and the next one starts printing. */
 
-type Row = { label: string; value: string; debit?: boolean; sub?: boolean };
+type Row = { label: string; value: string; debit?: boolean; sub?: boolean; money?: boolean };
 
+type Total = { label: string; value: string; money?: boolean };
 type Statement = {
   no: string;
   client: string;
   period: string;
   rows: Row[];
-  total: { label: string; value: string };
+  total: Total;
   ratio: { label: string; value: string };
   /** pen note scrawled in the margin once the figures land */
   note: string;
@@ -26,13 +28,13 @@ const statements: Statement[] = [
     client: "TheAudioLearning",
     period: "120 days · Meta + webinar funnel",
     rows: [
-      { label: "Ad spend", value: "18,60,000", debit: true },
+      { label: "Ad spend", value: "18,60,000", debit: true, money: true },
       { label: "Clicks", value: "1,86,000" },
       { label: "Leads captured", value: "15,000" },
       { label: "of which unqualified", value: "(9,200)", sub: true },
       { label: "Admissions", value: "780" },
     ],
-    total: { label: "Revenue generated", value: "1,02,00,000" },
+    total: { label: "Revenue generated", value: "1,02,00,000", money: true },
     ratio: { label: "Return on ad spend", value: "5.5X" },
     note: "₹126 a lead. 780 seats filled.",
     stamp: "Verified",
@@ -42,13 +44,13 @@ const statements: Statement[] = [
     client: "Helping Hands Foundation",
     period: "60 days · Meta Ads + CAPI",
     rows: [
-      { label: "Cost per result, start", value: "175.61", debit: true },
-      { label: "Cost per result, scaled", value: "85.48" },
+      { label: "Cost per result, start", value: "175.61", debit: true, money: true },
+      { label: "Cost per result, scaled", value: "85.48", money: true },
       { label: "Donor transactions", value: "11,246" },
       { label: "Disputes raised", value: "(0)", sub: true },
       { label: "Paid via UPI", value: "96.99%" },
     ],
-    total: { label: "Donations collected", value: "30,11,507" },
+    total: { label: "Donations collected", value: "30,11,507", money: true },
     ratio: { label: "Return on ad spend", value: "4.5X" },
     note: "Razorpay verified. Zero chargebacks.",
     stamp: "Verified",
@@ -58,13 +60,13 @@ const statements: Statement[] = [
     client: "CvolvePro",
     period: "Initial phase · LinkedIn",
     rows: [
-      { label: "Ad spend", value: "41,010", debit: true },
+      { label: "Ad spend", value: "41,010", debit: true, money: true },
       { label: "Impressions", value: "3,86,438" },
       { label: "Professional reach", value: "2,22,630" },
-      { label: "Best ad set CPC", value: "4.28", sub: true },
+      { label: "Best ad set CPC", value: "4.28", sub: true, money: true },
       { label: "Clicks", value: "8,752" },
     ],
-    total: { label: "Cost per click", value: "4.69" },
+    total: { label: "Cost per click", value: "4.69", money: true },
     ratio: { label: "Click-through rate", value: "2.26%" },
     note: "Under ₹5 a click, all through testing.",
     stamp: "Live",
@@ -120,7 +122,7 @@ function ringPath(x: number, y: number, w: number, h: number): string {
   ].join(" ");
 }
 
-export default function LedgerHero() {
+export default function LedgerHero({ ccy, rates }: { ccy: Currency; rates: Record<string, number> }) {
   const ref = useRef<HTMLDivElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
   const ratioRef = useRef<HTMLSpanElement>(null);
@@ -247,6 +249,9 @@ export default function LedgerHero() {
               <span className={`ledger-amount ${r.debit ? "is-debit" : ""}`}>
                 {r.debit ? "\u2212 " : ""}
                 {r.value}
+                {r.money && buildNoteForBareAmount(r.value, ccy, rates) && (
+                  <span className="ccy-note">{buildNoteForBareAmount(r.value, ccy, rates)}</span>
+                )}
               </span>
             </li>
           ))}
@@ -255,7 +260,12 @@ export default function LedgerHero() {
 
           <li className={`ledger-line ledger-total ${state.printed > TOTAL_ROWS ? "in" : ""}`}>
             <span>{s.total.label}</span>
-            <span ref={totalRef} className="ledger-amount">{s.total.value}</span>
+            <span ref={totalRef} className="ledger-amount">
+              {s.total.value}
+              {s.total.money && buildNoteForBareAmount(s.total.value, ccy, rates) && (
+                <span className="ccy-note">{buildNoteForBareAmount(s.total.value, ccy, rates)}</span>
+              )}
+            </span>
           </li>
           <li className={`ledger-line ledger-ratio ${state.printed > TOTAL_ROWS + 1 ? "in" : ""}`}>
             <span>{s.ratio.label}</span>

@@ -8,6 +8,8 @@ import ProofBar from "@/components/ProofBar";
 import FunnelDiagram from "@/components/FunnelDiagram";
 import LeakFunnel from "@/components/LeakFunnel";
 import BeforeAfter from "@/components/BeforeAfter";
+import { buildNote } from "@/lib/currency";
+import { getCurrency, getRates } from "@/lib/currency-server";
 import {
   CoachIcon,
   HealthIcon,
@@ -149,7 +151,9 @@ const clients: { name: string; logo?: string }[] = [
   { name: "Digiraag" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const ccy = await getCurrency();
+  const rates = await getRates();
   return (
     <>
       {/* ===== Hero ===== */}
@@ -195,6 +199,9 @@ export default function Home() {
                 <div>
                   <div className="font-mono-num text-2xl font-semibold text-ink">
                     <CountUp value="₹2.5Cr+" />
+                    {buildNote("₹2.5Cr+", ccy, rates) && (
+                      <span className="ccy-note text-sm">{buildNote("₹2.5Cr+", ccy, rates)}</span>
+                    )}
                   </div>
                   <div className="text-xs text-ink-muted">ad spend managed profitably</div>
                 </div>
@@ -202,7 +209,7 @@ export default function Home() {
             </div>
 
             <div className="rise-3 relative">
-              <LedgerHero />
+              <LedgerHero ccy={ccy} rates={rates} />
             </div>
           </div>
         </div>
@@ -293,6 +300,9 @@ export default function Home() {
                     <div key={s.label}>
                       <div className="font-mono-num text-lg font-semibold text-gold">
                         <CountUp value={s.value} />
+                        {buildNote(s.value, ccy, rates) && (
+                          <span className="ccy-note">{buildNote(s.value, ccy, rates)}</span>
+                        )}
                       </div>
                       <div className="text-[11px] leading-tight text-ink-muted">{s.label}</div>
                     </div>
@@ -319,7 +329,7 @@ export default function Home() {
             </p>
           </Reveal>
           <div className="mt-12">
-            <BeforeAfter />
+            <BeforeAfter ccy={ccy} rates={rates} />
           </div>
         </div>
       </section>

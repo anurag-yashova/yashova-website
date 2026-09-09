@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { buildNote, type Currency } from "@/lib/currency";
 
 /** Real before/after numbers from accounts we took over. */
 const rows = [
@@ -9,7 +10,7 @@ const rows = [
   { metric: "Cost per lead, best batch", before: "₹126 avg", after: "₹11.40", client: "TheAudioLearning", ratio: 0.09 },
 ];
 
-export default function BeforeAfter() {
+export default function BeforeAfter({ ccy, rates }: { ccy: Currency; rates: Record<string, number> }) {
   const ref = useRef<HTMLDivElement>(null);
   const [on, setOn] = useState(false);
 
@@ -46,6 +47,9 @@ export default function BeforeAfter() {
               </span>
               <span className="font-mono-num text-2xl font-semibold text-gold md:text-3xl">
                 {r.after}
+                {buildNote(r.after, ccy, rates) && (
+                  <span className="ccy-note text-sm">{buildNote(r.after, ccy, rates)}</span>
+                )}
               </span>
             </div>
             <div className="mt-3 h-[3px] w-full bg-surface-line/40">

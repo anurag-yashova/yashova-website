@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { getAllSlugs, getPost } from "@/lib/posts";
 import ProofGallery from "@/components/ProofGallery";
 import PostBody from "@/components/PostBody";
+import { localizeInrInHtml } from "@/lib/currency";
+import { getCurrency, getRates } from "@/lib/currency-server";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
@@ -39,6 +41,10 @@ export default async function BlogPost({
   const post = getPost(slug);
   if (!post) notFound();
 
+  const ccy = await getCurrency();
+  const rates = await getRates();
+  const localizedBody = localizeInrInHtml(post.body, ccy, rates);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -70,7 +76,7 @@ export default async function BlogPost({
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-ink-muted">{post.excerpt}</p>
         <div className="rule mt-10" />
-        <PostBody html={post.body} />
+        <PostBody html={localizedBody} />
 
         {post.exhibits.length > 0 && (
           <div className="mt-14">

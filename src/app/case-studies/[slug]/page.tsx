@@ -7,6 +7,8 @@ import CountUp from "@/components/CountUp";
 import ProofGallery from "@/components/ProofGallery";
 import Reveal from "@/components/Reveal";
 import CaseLedger from "@/components/CaseLedger";
+import { buildNote } from "@/lib/currency";
+import { getCurrency, getRates } from "@/lib/currency-server";
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -31,6 +33,13 @@ export default async function CaseStudyPage({
   const { slug } = await params;
   const cs = getCaseStudy(slug);
   if (!cs) notFound();
+
+  const ccy = await getCurrency();
+  const rates = await getRates();
+  const localizedMetrics = cs.metrics.map((m) => ({
+    ...m,
+    note: buildNote(m.value, ccy, rates),
+  }));
 
   const fileNo = String(caseStudies.findIndex((c) => c.slug === cs.slug) + 1).padStart(3, "0");
 
@@ -104,6 +113,9 @@ export default async function CaseStudyPage({
               <div key={s.label} className="bg-void p-6">
                 <div className="font-mono-num text-3xl font-semibold text-gold md:text-4xl">
                   <CountUp value={s.value} />
+                  {buildNote(s.value, ccy, rates) && (
+                    <span className="ccy-note text-base md:text-lg">{buildNote(s.value, ccy, rates)}</span>
+                  )}
                 </div>
                 <div className="mt-2 text-sm leading-snug text-ink-muted">{s.label}</div>
               </div>
@@ -122,7 +134,7 @@ export default async function CaseStudyPage({
         </Reveal>
         <div className="mt-10">
           <CaseLedger
-            metrics={cs.metrics}
+            metrics={localizedMetrics}
             fileNo={fileNo}
             client={cs.client}
             period={cs.program}

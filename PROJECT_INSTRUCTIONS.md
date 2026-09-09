@@ -266,6 +266,71 @@ anything: public audits of live ads, landing pages and funnels.
   in India. Every teardown also carries an honest caveat that it is an outside view.
 - The Google Drive portfolio link now lives in the footer only, labelled "Portfolio"
 
+
+## 11. Demographic currency localisation
+
+Every ₹ figure on the site can show a secondary, localised conversion beside it —
+"₹30.1L ≈ AED 132,440" — for visitors outside India. Zero configuration: no API key,
+no signup, no Vercel env var.
+
+**Trust rule, non-negotiable:** the original ₹ figure is ALWAYS the primary, verified
+number. A conversion is only ever appended beside it as a small "≈" note — never a
+replacement. This is what keeps the site's "every figure traces to a verified source"
+claim (see the self-audit teardown) true even with localisation on.
+
+### How detection works
+- `middleware.ts` reads Vercel's automatic `x-vercel-ip-country` header (no geo-IP
+  service, nothing to configure — this header exists on every Vercel request) and sets
+  a `ccy` cookie **only if one doesn't already exist**. India → `INR` (no notes shown
+  anywhere). No header (local dev, or Vercel ever stops sending it) → no cookie is set,
+  which safely defaults everything to INR.
+- The nav currency switcher (`CurrencySwitcher.tsx`) lets a visitor override the guess
+  manually (VPN, travelling, corporate network). Their choice is written to the same
+  cookie and is never overwritten by geo-detection again.
+- Supported currencies: INR, USD, GBP, AED, AUD, NGN, CAD, SGD, EUR — see
+  `COUNTRY_TO_CCY` in `src/lib/currency.ts` to add more.
+
+### How conversion works
+- Rates come from `https://open.er-api.com/v6/latest/INR` — free, no key, 161
+  currencies, updated daily. Cached 12h via Next's fetch cache
+  (`getRates()` in `currency-server.ts`). If the API is ever unreachable,
+  `FALLBACK_RATES` (a static approximate table) keeps the feature working rather than
+  breaking the page.
+- `buildNote(raw, ccy, rates)` parses a ₹-prefixed display string ("₹1.02Cr+", "₹30.1L",
+  "₹85.48") and returns a formatted note, or `null` if there's nothing to convert
+  (INR visitor, or the string isn't money — percentages and "5.5X" multipliers are
+  correctly left alone). Ranges like "₹80–₹100" are deliberately skipped rather than
+  converting only the first number and mislabelling it.
+- `buildNoteForBareAmount(raw, ccy, rates)` is for values that ARE money but are shown
+  without a ₹ prefix because the surrounding UI already implies it — currently only
+  `LedgerHero.tsx`'s rows, which sit under an "Amount (₹)" column header. Each money row
+  in that component is explicitly tagged `money: true` in the data; **do not use this
+  helper to guess** — only ever apply it to a field you've confirmed is currency.
+- `localizeInrInHtml(html, ccy, rates)` runs server-side over already-rendered article
+  HTML (blog posts, teardowns) and appends a note after every ₹ figure it finds. This is
+  how all 30+ articles get localisation without editing a single one by hand.
+
+### ⚠️ CRITICAL: module split — do not recombine
+`src/lib/currency.ts` is **pure logic only** (constants, parsing, formatting) and is
+safe to import from `middleware.ts` (Edge Runtime), Client Components, AND Server
+Components. `src/lib/currency-server.ts` holds `getCurrency()` and `getRates()`, which
+use `next/headers`/`fetch` and **must only be imported from Server Components**
+(page.tsx files). This split exists because of a real build failure: `next/headers`
+transitively broke the Edge Middleware bundle and every client component that touched
+the file. If you add a new currency helper, put pure functions in `currency.ts` and
+anything touching cookies/fetch in `currency-server.ts` — never merge them back into
+one file.
+
+### Wired into
+Homepage hero stats, `LedgerHero.tsx` (props: `ccy`, `rates`), `BeforeAfter.tsx` (props:
+`ccy`, `rates`), case study preview cards, the full case study pages (headline stats +
+`CaseLedger.tsx`, via a `note` field added per metric), every blog post body, every
+teardown body + its `spend` field. **Not** wired: ROI Calculator (it's a user-input
+tool modelling the visitor's own numbers, not a verified claim — converting it would be
+misleading rather than helpful) and teardown `findings[].detail` text (rendered as
+plain React text, not HTML, so the injected `<span>` note wouldn't work without changing
+that render path — left as a known gap).
+
 ## 8c. Imagery policy
 
 **No stock photography, ever.** It is the fastest way back to the AI-template look Anurag
@@ -518,6 +583,71 @@ anything: public audits of live ads, landing pages and funnels.
   Naming a real non-client brand in a critical audit is a defamation and reputation risk
   in India. Every teardown also carries an honest caveat that it is an outside view.
 - The Google Drive portfolio link now lives in the footer only, labelled "Portfolio"
+
+
+## 11. Demographic currency localisation
+
+Every ₹ figure on the site can show a secondary, localised conversion beside it —
+"₹30.1L ≈ AED 132,440" — for visitors outside India. Zero configuration: no API key,
+no signup, no Vercel env var.
+
+**Trust rule, non-negotiable:** the original ₹ figure is ALWAYS the primary, verified
+number. A conversion is only ever appended beside it as a small "≈" note — never a
+replacement. This is what keeps the site's "every figure traces to a verified source"
+claim (see the self-audit teardown) true even with localisation on.
+
+### How detection works
+- `middleware.ts` reads Vercel's automatic `x-vercel-ip-country` header (no geo-IP
+  service, nothing to configure — this header exists on every Vercel request) and sets
+  a `ccy` cookie **only if one doesn't already exist**. India → `INR` (no notes shown
+  anywhere). No header (local dev, or Vercel ever stops sending it) → no cookie is set,
+  which safely defaults everything to INR.
+- The nav currency switcher (`CurrencySwitcher.tsx`) lets a visitor override the guess
+  manually (VPN, travelling, corporate network). Their choice is written to the same
+  cookie and is never overwritten by geo-detection again.
+- Supported currencies: INR, USD, GBP, AED, AUD, NGN, CAD, SGD, EUR — see
+  `COUNTRY_TO_CCY` in `src/lib/currency.ts` to add more.
+
+### How conversion works
+- Rates come from `https://open.er-api.com/v6/latest/INR` — free, no key, 161
+  currencies, updated daily. Cached 12h via Next's fetch cache
+  (`getRates()` in `currency-server.ts`). If the API is ever unreachable,
+  `FALLBACK_RATES` (a static approximate table) keeps the feature working rather than
+  breaking the page.
+- `buildNote(raw, ccy, rates)` parses a ₹-prefixed display string ("₹1.02Cr+", "₹30.1L",
+  "₹85.48") and returns a formatted note, or `null` if there's nothing to convert
+  (INR visitor, or the string isn't money — percentages and "5.5X" multipliers are
+  correctly left alone). Ranges like "₹80–₹100" are deliberately skipped rather than
+  converting only the first number and mislabelling it.
+- `buildNoteForBareAmount(raw, ccy, rates)` is for values that ARE money but are shown
+  without a ₹ prefix because the surrounding UI already implies it — currently only
+  `LedgerHero.tsx`'s rows, which sit under an "Amount (₹)" column header. Each money row
+  in that component is explicitly tagged `money: true` in the data; **do not use this
+  helper to guess** — only ever apply it to a field you've confirmed is currency.
+- `localizeInrInHtml(html, ccy, rates)` runs server-side over already-rendered article
+  HTML (blog posts, teardowns) and appends a note after every ₹ figure it finds. This is
+  how all 30+ articles get localisation without editing a single one by hand.
+
+### ⚠️ CRITICAL: module split — do not recombine
+`src/lib/currency.ts` is **pure logic only** (constants, parsing, formatting) and is
+safe to import from `middleware.ts` (Edge Runtime), Client Components, AND Server
+Components. `src/lib/currency-server.ts` holds `getCurrency()` and `getRates()`, which
+use `next/headers`/`fetch` and **must only be imported from Server Components**
+(page.tsx files). This split exists because of a real build failure: `next/headers`
+transitively broke the Edge Middleware bundle and every client component that touched
+the file. If you add a new currency helper, put pure functions in `currency.ts` and
+anything touching cookies/fetch in `currency-server.ts` — never merge them back into
+one file.
+
+### Wired into
+Homepage hero stats, `LedgerHero.tsx` (props: `ccy`, `rates`), `BeforeAfter.tsx` (props:
+`ccy`, `rates`), case study preview cards, the full case study pages (headline stats +
+`CaseLedger.tsx`, via a `note` field added per metric), every blog post body, every
+teardown body + its `spend` field. **Not** wired: ROI Calculator (it's a user-input
+tool modelling the visitor's own numbers, not a verified claim — converting it would be
+misleading rather than helpful) and teardown `findings[].detail` text (rendered as
+plain React text, not HTML, so the injected `<span>` note wouldn't work without changing
+that render path — left as a known gap).
 
 ## 8c. Imagery policy
 
