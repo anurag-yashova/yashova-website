@@ -1,6 +1,7 @@
 "use client";
 
 import { bookingEmbedSrc } from "@/lib/booking";
+import { useEffect } from "react";
 import { whatsappUrl } from "@/lib/region";
 import { track } from "@/lib/track";
 
@@ -10,6 +11,19 @@ import { track } from "@/lib/track";
  *  no calendar link exists: the form. */
 export default function BookingEmbed({ fallback, country }: { fallback: React.ReactNode; country: string }) {
   const src = bookingEmbedSrc();
+
+  /* Calendly tells the parent page when a booking is completed. Count it as a
+     Schedule event in Meta, so booked calls show up in ad reporting. */
+  useEffect(() => {
+    if (!src) return;
+    function onMessage(e: MessageEvent) {
+      if (typeof e.origin === "string" && e.origin.includes("calendly.com") && e.data?.event === "calendly.event_scheduled") {
+        track("Schedule", { content_name: "Calendly Strategy Call" });
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [src]);
 
   if (country === "IN") {
     return (
