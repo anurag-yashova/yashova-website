@@ -4,17 +4,19 @@ import PageHero from "@/components/PageHero";
 import { MarkWrite } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 import { getAllPosts } from "@/lib/posts";
+import { pageMeta } from "@/lib/seo";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
    on their own date without a deploy. */
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Performance Marketing Blog",
   description:
-    "Playbooks, teardowns and real campaign data on Meta Ads, Google Ads, funnels, WhatsApp automation and lead generation — from a Delhi NCR performance marketing agency.",
-};
+    "Playbooks, teardowns and real campaign data on Meta Ads, Google Ads, funnels, WhatsApp automation and lead generation, from a Delhi NCR performance marketing agency.",
+  path: "/blog",
+});
 
 export default function Blog() {
   const posts = getAllPosts();

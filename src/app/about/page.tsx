@@ -3,11 +3,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { MarkAbout } from "@/components/icons";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Why Yashova exists, and the person behind it.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "About Anurag Sharma and Yashova",
+  description:
+    "Yashova is a performance marketing agency in Faridabad, Delhi NCR, run by founder Anurag Sharma. Meta Ads, funnels and WhatsApp automation built around revenue, not vanity metrics.",
+  path: "/about",
+});
 
 const differentiators = [
   "Full-service execution — strategy, social, ads, funnels, all in one place",

@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import ROICalculator from "./ROICalculator";
 import PageHero from "@/components/PageHero";
 import { MarkTool } from "@/components/icons";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "ROI Calculator",
-  description: "Estimate your ad spend ROI based on your own numbers.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Ad Spend ROI Calculator",
+  description:
+    "Enter your monthly ad spend, cost per click, landing page conversion rate and order value to estimate clicks, conversions and projected revenue.",
+  path: "/roi-calculator",
+});
 
 export default function ROICalculatorPage() {
   return (

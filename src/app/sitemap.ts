@@ -21,19 +21,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/refund-policy", priority: 0.3 },
   ].map((r) => ({
     url: `${BASE}${r.path}`,
-    lastModified: new Date(),
     priority: r.priority,
   }));
 
   const caseRoutes = caseStudies.map((cs) => ({
     url: `${BASE}/case-studies/${cs.slug}`,
-    lastModified: new Date(),
     priority: 0.8,
   }));
 
   const teardownRoutes = getAllTeardowns().map((t) => ({
     url: `${BASE}/teardowns/${t.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(t.publishedAt),
     priority: 0.7,
   }));
 

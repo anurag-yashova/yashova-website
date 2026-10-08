@@ -4,11 +4,14 @@ import { MarkTalk } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import BookingEmbed from "@/components/BookingEmbed";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Strategy Call",
-  description: "Book a free strategy call with Yashova.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Book a Free Strategy Call",
+  description:
+    "Talk to Yashova about your ads, funnel and lead quality. A real conversation about what is leaking and what to fix first, not a sales pitch.",
+  path: "/strategy-call",
+});
 
 export default function StrategyCall() {
   return (

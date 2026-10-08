@@ -13,6 +13,18 @@ const wordpressRedirects = [
   { source: "/for-colleges", destination: "/case-studies/theaudiolearning" },
   { source: "/design", destination: "/teardowns" },
   { source: "/successful", destination: "/strategy-call" },
+  // Old WordPress/Rank Math sitemap and feed addresses that Google may still hold
+  { source: "/sitemap_index.xml", destination: "/sitemap.xml" },
+  { source: "/page-sitemap.xml", destination: "/sitemap.xml" },
+  { source: "/post-sitemap.xml", destination: "/sitemap.xml" },
+  { source: "/wp-sitemap.xml", destination: "/sitemap.xml" },
+  { source: "/feed", destination: "/blog" },
+  { source: "/comments/feed", destination: "/blog" },
+  // Old WordPress archive pages
+  { source: "/category/:path*", destination: "/blog" },
+  { source: "/tag/:path*", destination: "/blog" },
+  { source: "/author/:path*", destination: "/about" },
+  { source: "/index.php/:path*", destination: "/" },
 ];
 
 const nextConfig: NextConfig = {

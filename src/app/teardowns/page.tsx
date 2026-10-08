@@ -4,17 +4,19 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { MarkSearch } from "@/components/icons";
 import { getAllTeardowns } from "@/lib/teardowns";
+import { pageMeta } from "@/lib/seo";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
    on their own date without a deploy. */
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Teardowns",
+export const metadata: Metadata = pageMeta({
+  title: "Ad and Funnel Teardowns",
   description:
-    "Public audits of live ads, landing pages and funnels — what is leaking, why, and what we would change first. Real diagnoses, brands anonymised.",
-};
+    "Public audits of live ads, landing pages and funnels: what is leaking, why, and what we would change first. Real diagnoses, brands anonymised.",
+  path: "/teardowns",
+});
 
 const severityLabel = { critical: "Critical", major: "Major", minor: "Minor" } as const;
 

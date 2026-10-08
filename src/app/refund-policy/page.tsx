@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { MarkPolicy } from "@/components/icons";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Refund Policy",
-};
+  description: "Yashova's refund policy in plain terms: refunds can be requested within 7 days of signing or service start, and payments are non-refundable after that.",
+  path: "/refund-policy",
+});
 
 export default function RefundPolicy() {
   return (

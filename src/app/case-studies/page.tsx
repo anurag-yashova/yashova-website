@@ -8,12 +8,15 @@ import { MarkCase } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 import { buildNote } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
+import { pageMeta } from "@/lib/seo";
 
 
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description: "Real campaigns, real numbers. No manufactured results.",
-};
+export const metadata: Metadata = pageMeta({
+  title: "Performance Marketing Case Studies",
+  description:
+    "Real campaigns with real numbers from Yashova: medical coding admissions, an AI resume tool and an NGO donation funnel. Spend, leads, revenue and what drove them.",
+  path: "/case-studies",
+});
 
 export default async function CaseStudiesIndex() {
   const ccy = await getCurrency();

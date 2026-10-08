@@ -9,6 +9,8 @@ import FunnelDiagram from "@/components/FunnelDiagram";
 import LeakFunnel from "@/components/LeakFunnel";
 import BeforeAfter from "@/components/BeforeAfter";
 import FounderBlock from "@/components/FounderBlock";
+import { pageMeta } from "@/lib/seo";
+import type { Metadata } from "next";
 import { buildNote } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
 import {
@@ -137,6 +139,20 @@ const testimonials = [
     quote: "We used to struggle for five or six decent leads a day. Now it is consistently 20–25, and a good share of them actually convert.",
   },
 ];
+
+const homeTitle = "Yashova | Performance Marketing Agency in Delhi NCR";
+const homeMeta = pageMeta({
+  title: homeTitle,
+  description:
+    "No hype. Just revenue. Yashova builds Meta Ads, funnel and WhatsApp automation systems that track spend, qualify leads and maximise ROI. Based in Faridabad, Delhi NCR.",
+  path: "/",
+});
+export const metadata: Metadata = {
+  ...homeMeta,
+  title: { absolute: homeTitle },
+  openGraph: { ...homeMeta.openGraph, title: homeTitle },
+  twitter: { ...homeMeta.twitter, title: homeTitle },
+};
 
 const clients: { name: string; logo?: string }[] = [
   { name: "TheAudioLearning", logo: "/images/clients/theaudiolearning.jpg" },

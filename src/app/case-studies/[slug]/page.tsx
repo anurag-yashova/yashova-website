@@ -9,6 +9,8 @@ import Reveal from "@/components/Reveal";
 import CaseLedger from "@/components/CaseLedger";
 import { buildNote } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
+import { pageMeta, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -22,7 +24,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const cs = getCaseStudy(slug);
   if (!cs) return {};
-  return { title: cs.name, description: cs.summary };
+  return pageMeta({
+    title: `${cs.name} Case Study`,
+    description: cs.summary.length > 200 ? `${cs.summary.slice(0, 197).trimEnd()}...` : cs.summary,
+    path: `/case-studies/${cs.slug}`,
+  });
 }
 
 export default async function CaseStudyPage({
@@ -43,8 +49,22 @@ export default async function CaseStudyPage({
 
   const fileNo = String(caseStudies.findIndex((c) => c.slug === cs.slug) + 1).padStart(3, "0");
 
+  const ld = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: `${cs.name} case study`,
+      description: cs.summary,
+      url: `${SITE_URL}/case-studies/${cs.slug}`,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    breadcrumbLd([["Case Studies", "/case-studies"], [cs.name, `/case-studies/${cs.slug}`]]),
+  ];
+
   return (
     <>
+      <JsonLd data={ld} />
       {/* ===== File header ===== */}
       <section className="relative overflow-hidden border-b border-surface-line">
         <div className="dot-grid pointer-events-none absolute inset-0" />

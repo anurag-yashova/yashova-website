@@ -6,6 +6,8 @@ import ProofGallery from "@/components/ProofGallery";
 import PostBody from "@/components/PostBody";
 import { localizeInrInHtml } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
+import { pageMeta, breadcrumbLd, SITE_URL } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
@@ -24,12 +26,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return { title: "Not found" };
-  return {
+  return pageMeta({
     title: post.title,
     description: post.excerpt,
+    path: `/blog/${post.slug}`,
     keywords: post.keywords,
-    openGraph: { title: post.title, description: post.excerpt, type: "article" },
-  };
+    type: "article",
+    publishedTime: post.publishedAt,
+    defaultImage: false, // each post has its own opengraph-image
+  });
 }
 
 export default async function BlogPost({
@@ -51,16 +56,17 @@ export default async function BlogPost({
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt,
-    author: { "@type": "Organization", name: "Yashova" },
-    publisher: { "@type": "Organization", name: "Yashova" },
+    dateModified: post.publishedAt,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${post.slug}` },
+    image: `${SITE_URL}/blog/${post.slug}/opengraph-image`,
+    author: { "@type": "Organization", name: "Yashova", url: SITE_URL },
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
+  const crumbs = breadcrumbLd([["Blog", "/blog"], [post.title, `/blog/${post.slug}`]]);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={[jsonLd, crumbs]} />
       <article className="mx-auto max-w-3xl px-6 py-20">
         <Link href="/blog" className="link-line font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted">
           Back to blog
