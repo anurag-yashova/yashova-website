@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllTeardownSlugs, getTeardown } from "@/lib/teardowns";
+import { getAllTeardownSlugs, getTeardown, spendLabel } from "@/lib/teardowns";
 import PostBody from "@/components/PostBody";
 import { localizeInrInHtml, buildNote } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
 import { pageMeta, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import PrimaryCta from "@/components/PrimaryCta";
+import CcyFootnote from "@/components/CcyFootnote";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
@@ -77,7 +79,7 @@ export default async function TeardownPage({
       <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono-num text-[11px] uppercase tracking-[0.18em] text-ink-muted">
         <span>{t.category}</span>
         <span className="inline-flex flex-col">
-          {t.spend}
+          {spendLabel(t.spend)}
           {spendNote && <span className="ccy-note">{spendNote}</span>}
         </span>
         <span>{t.readingTime} min</span>
@@ -116,6 +118,7 @@ export default async function TeardownPage({
       </div>
 
       <div className="mt-14">
+        <CcyFootnote ccy={ccy} className="mb-6" />
         <PostBody html={localizedBody} />
       </div>
 
@@ -125,12 +128,13 @@ export default async function TeardownPage({
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink">
           Same teardown, your account, in private.
         </h2>
-        <Link
-          href="/strategy-call"
+        <PrimaryCta
+          whatsappLabel="Ask for a teardown on WhatsApp"
+          message="Hi, I would like a teardown of my ads or funnel."
           className="cta-pulse mt-6 inline-block rounded-md bg-ink px-7 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
         >
           Book a teardown call
-        </Link>
+        </PrimaryCta>
       </div>
     </article>
   );

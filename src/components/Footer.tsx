@@ -34,6 +34,8 @@ export default function Footer() {
               <li><Link href="/roi-calculator" className="hover:text-ink">ROI Calculator</Link></li>
               <li><Link href="/ai-audit" className="hover:text-ink">Free Growth Audit</Link></li>
               <li><Link href="/refund-policy" className="hover:text-ink">Refund Policy</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-ink">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-ink">Terms of Use</Link></li>
             </ul>
           </div>
 

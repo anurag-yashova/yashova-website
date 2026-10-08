@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 const stages = [
   { label: "Impressions", value: "12.4M", width: 100, note: "₹18.6L spend" },
   { label: "Clicks", value: "186,000", width: 74, note: "4.1% CTR · ₹10 CPC" },
-  { label: "Leads", value: "15,000", width: 52, note: "₹126 cost per lead" },
+  { label: "Leads", value: "15,000", width: 52, note: "₹126 average cost per lead" },
   { label: "Qualified", value: "5,800", width: 33, note: "Form-qualified by intent" },
   { label: "Admissions", value: "780", width: 18, note: "₹1.02Cr revenue · 5.5X ROAS" },
 ];

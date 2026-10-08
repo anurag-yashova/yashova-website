@@ -9,6 +9,7 @@ import Reveal from "@/components/Reveal";
 import { buildNote } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
 import { pageMeta } from "@/lib/seo";
+import CcyFootnote from "@/components/CcyFootnote";
 
 
 export const metadata: Metadata = pageMeta({
@@ -31,6 +32,7 @@ export default async function CaseStudiesIndex() {
       lead="We partner with ambitious businesses ready to scale profitably. No manufactured results."
     />
     <section className="mx-auto max-w-6xl px-6 py-16">
+      <CcyFootnote ccy={ccy} className="mb-6 mt-0" />
       <div className="grid gap-6 lg:grid-cols-3">
         {caseStudies.map((cs, i) => (
           <Reveal key={cs.slug} delay={i * 110}>

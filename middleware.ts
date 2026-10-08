@@ -1,23 +1,28 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { COUNTRY_TO_CCY } from "@/lib/currency";
+import { COUNTRY_COOKIE } from "@/lib/region";
 
-/** Sets a currency cookie from the visitor's country on their first visit.
- *  Vercel adds `x-vercel-ip-country` to every request automatically — no
- *  geo-IP service, no API key, nothing to configure. If the person later
- *  picks a currency manually (nav switcher), that cookie is never overwritten. */
+const SIX_MONTHS = 60 * 60 * 24 * 180;
+
+/** Runs once per visitor and remembers two things in cookies:
+ *   ccy  - default currency: India INR, USA USD, UK GBP, UAE AED, Australia AUD,
+ *          everywhere else USD. If the person later picks a currency in the nav
+ *          switcher, that choice is never overwritten.
+ *   ctry - the country code, used only to choose the main contact button
+ *          (WhatsApp for India, booking calendar elsewhere).
+ *  Vercel adds `x-vercel-ip-country` to every request automatically: no geo-IP
+ *  service, no API key, nothing to configure. With no header (local dev) nothing
+ *  is set and the site behaves as India/INR. */
 export function middleware(request: NextRequest) {
   const res = NextResponse.next();
+  const country = request.headers.get("x-vercel-ip-country");
 
-  if (!request.cookies.get("ccy")) {
-    const country = request.headers.get("x-vercel-ip-country");
-    const ccy = (country && COUNTRY_TO_CCY[country]) || "USD";
-    // India (and anywhere geo can't be read, e.g. local dev) stays on INR —
-    // only set a non-INR cookie when we're reasonably sure it's warranted.
-    if (country) {
-      res.cookies.set("ccy", country === "IN" ? "INR" : ccy, {
-        path: "/",
-        maxAge: 60 * 60 * 24 * 180,
-      });
+  if (country) {
+    if (!request.cookies.get("ccy")) {
+      res.cookies.set("ccy", COUNTRY_TO_CCY[country] ?? "USD", { path: "/", maxAge: SIX_MONTHS });
+    }
+    if (!request.cookies.get(COUNTRY_COOKIE)) {
+      res.cookies.set(COUNTRY_COOKIE, country, { path: "/", maxAge: SIX_MONTHS });
     }
   }
 

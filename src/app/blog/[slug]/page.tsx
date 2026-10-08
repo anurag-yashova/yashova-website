@@ -8,6 +8,8 @@ import { localizeInrInHtml } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
 import { pageMeta, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import PrimaryCta from "@/components/PrimaryCta";
+import CcyFootnote from "@/components/CcyFootnote";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
@@ -82,6 +84,7 @@ export default async function BlogPost({
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-ink-muted">{post.excerpt}</p>
         <div className="rule mt-10" />
+        <CcyFootnote ccy={ccy} className="mb-6" />
         <PostBody html={localizedBody} />
 
         {post.exhibits.length > 0 && (
@@ -109,12 +112,11 @@ export default async function BlogPost({
           <h2 className="mt-4 text-2xl font-bold tracking-tight text-ink">
             Want this run on your account?
           </h2>
-          <Link
-            href="/strategy-call"
+          <PrimaryCta
             className="cta-pulse mt-6 inline-block rounded-md bg-ink px-7 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
           >
             Book a free strategy call
-          </Link>
+          </PrimaryCta>
         </div>
       </article>
     </>

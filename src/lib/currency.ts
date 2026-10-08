@@ -3,16 +3,14 @@
  *  currency-server.ts and must never be imported from this file or from
  *  middleware.ts / any client component. */
 
+/** Default currency by country. Anywhere not listed gets USD. The nav switcher
+ *  (any currency in SUPPORTED_CCY) always overrides this. */
 export const COUNTRY_TO_CCY: Record<string, string> = {
   IN: "INR",
-  AE: "AED",
-  GB: "GBP",
   US: "USD",
+  GB: "GBP",
+  AE: "AED",
   AU: "AUD",
-  NG: "NGN",
-  CA: "CAD",
-  SG: "SGD",
-  DE: "EUR", FR: "EUR", ES: "EUR", IT: "EUR", NL: "EUR", IE: "EUR", PT: "EUR",
 };
 
 export const SUPPORTED_CCY = ["INR", "USD", "GBP", "AED", "AUD", "NGN", "CAD", "SGD", "EUR"] as const;

@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { MarkAbout } from "@/components/icons";
 import { pageMeta } from "@/lib/seo";
+import PrimaryCta from "@/components/PrimaryCta";
 
 export const metadata: Metadata = pageMeta({
   title: "About Anurag Sharma and Yashova",
@@ -59,7 +59,7 @@ export default function About() {
           </p>
         </div>
 
-        <h3 className="mt-14 text-xl font-semibold text-ink">How We&apos;re Different</h3>
+        <h2 className="mt-14 text-xl font-semibold text-ink">How We&apos;re Different</h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {differentiators.map((d) => (
             <li key={d} className="glass card-hover flex gap-3 rounded-lg p-5 text-sm leading-relaxed text-ink-muted">
@@ -119,12 +119,11 @@ export default function About() {
         <h2 className="text-2xl font-semibold text-ink">
           If you value clarity, consistency, and long-term partnerships — let&apos;s talk.
         </h2>
-        <Link
-          href="/strategy-call"
+        <PrimaryCta
           className="mt-8 inline-block rounded-md bg-ink px-8 py-3.5 text-sm font-semibold text-void transition-colors hover:bg-gold focus-ring"
         >
           Book a Strategy Call
-        </Link>
+        </PrimaryCta>
       </section>
     </>
   );

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ThemeToggle from "@/components/ThemeToggle";
 import CurrencySwitcher from "@/components/CurrencySwitcher";
+import PrimaryCta from "@/components/PrimaryCta";
 
 const links = [
   { href: "/about", label: "About" },
@@ -76,12 +77,11 @@ export default function Nav() {
         <div className="hidden items-center gap-3 lg:flex">
           <CurrencySwitcher />
           <ThemeToggle />
-          <Link
-            href="/strategy-call"
+          <PrimaryCta
             className="rounded-md bg-ink px-5 py-2.5 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
           >
             Book a Strategy Call
-          </Link>
+          </PrimaryCta>
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -130,13 +130,12 @@ export default function Nav() {
                 </Link>
               )
             )}
-            <Link
-              href="/strategy-call"
+            <PrimaryCta
               onClick={() => setOpen(false)}
               className="mt-2 rounded-md bg-ink px-5 py-2.5 text-center text-sm font-medium text-void"
             >
               Book a Strategy Call
-            </Link>
+            </PrimaryCta>
           </nav>
         </div>
       )}

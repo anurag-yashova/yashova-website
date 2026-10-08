@@ -147,9 +147,11 @@ strong, b { font-weight: 600; }
 /* ============ MOTION — THE CAMPAIGN ROOM ============ */
 
 /* page transition (template.tsx remounts per route) */
+/* Slide only, no fade: content is never invisible, so the first paint of the
+   page text counts as the largest contentful paint straight away. */
 @keyframes pageIn {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { transform: translateY(14px); }
+  to { transform: translateY(0); }
 }
 .page-enter { animation: pageIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 
@@ -690,3 +692,12 @@ html.light .sev-critical { color: #b23c28; }
 }
 .ccy-switch:hover { border-color: var(--gold); color: var(--ink); }
 .ccy-switch:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.ccy-foot {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}

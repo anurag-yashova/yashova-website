@@ -29,6 +29,8 @@ import {
   MarkCase,
   MarkTool,
 } from "@/components/icons";
+import PrimaryCta from "@/components/PrimaryCta";
+import CcyFootnote from "@/components/CcyFootnote";
 
 const audiences = [
   { icon: CoachIcon, title: "Coaches & Course Creators", body: "Scale your knowledge business with high-converting funnels." },
@@ -225,6 +227,7 @@ export default async function Home() {
                   <div className="text-xs text-ink-muted">ad spend managed profitably</div>
                 </div>
               </div>
+              <CcyFootnote ccy={ccy} className="max-w-xs" />
             </div>
 
             <div className="rise-3 relative">
@@ -363,16 +366,16 @@ export default async function Home() {
           </Reveal>
           <ol className="mt-12 grid gap-10 md:grid-cols-4">
             {process.map((p, i) => (
-              <Reveal key={p.n} delay={i * 120}>
-                <li className="relative h-full">
+              <li key={p.n} className="relative">
+                <Reveal delay={i * 120} className="h-full">
                   <div className="flex items-center gap-3">
                     <p.icon className="text-gold" />
                     <span className="font-mono-num text-sm text-gold/70">{p.n}</span>
                   </div>
                   <h3 className="mt-3 text-lg font-semibold text-ink">{p.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-muted">{p.body}</p>
-                </li>
-              </Reveal>
+                </Reveal>
+              </li>
             ))}
           </ol>
         </div>
@@ -459,12 +462,11 @@ export default async function Home() {
             If you are looking for structured marketing execution rather than
             shortcuts, let&apos;s start with a discussion.
           </p>
-          <Link
-            href="/strategy-call"
+          <PrimaryCta
             className="cta-pulse mt-8 inline-block rounded-md bg-ink px-8 py-3.5 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
           >
             Book My Free Strategy Call
-          </Link>
+          </PrimaryCta>
         </Reveal>
       </section>
 

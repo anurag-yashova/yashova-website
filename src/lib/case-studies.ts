@@ -40,7 +40,7 @@ export const caseStudies: CaseStudy[] = [
       { metric: "Average CPC", value: "₹10" },
       { metric: "CTR", value: "4.1%" },
       { metric: "Leads Generated", value: "15,000+" },
-      { metric: "Cost Per Lead", value: "₹126" },
+      { metric: "Cost Per Lead (overall average)", value: "₹126" },
       { metric: "Qualified Leads", value: "5,800+" },
       { metric: "Admissions", value: "780+" },
       { metric: "Revenue Generated", value: "₹1.02Cr+" },

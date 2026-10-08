@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 /** Shared across all testimonial cards: pausing any other playing video
@@ -8,6 +9,11 @@ function pauseOthers(current: HTMLVideoElement) {
   document.querySelectorAll<HTMLVideoElement>("video[data-testimonial]").forEach((v) => {
     if (v !== current && !v.paused) v.pause();
   });
+}
+
+/** Thumbnail path for a video: /videos/x.mp4 -> /videos/posters/x.webp (about 10 KB). */
+function posterFor(src: string) {
+  return src.replace("/videos/", "/videos/posters/").replace(/\.mp4$/, ".webp");
 }
 
 export default function VideoTestimonial({
@@ -22,59 +28,66 @@ export default function VideoTestimonial({
   quote: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const wrapRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(false); // true once the visitor has pressed play
   const [playing, setPlaying] = useState(false);
-  const [near, setNear] = useState(false);
 
-  /* Six videos on one page is a lot of bytes. Nothing is fetched until the
-     card is within a screen of the viewport. */
+  /* The video file (1 to 3 MB each) is not requested at all until the visitor
+     presses play. Until then the card is a ~10 KB thumbnail that loads lazily
+     when scrolled into view. */
   useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setNear(true);
-          obs.disconnect();
-        }
-      },
-      { rootMargin: "600px" }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  function toggle() {
+    if (!active) return;
     const v = videoRef.current;
     if (!v) return;
-    if (!near) setNear(true);
+    pauseOthers(v);
+    v.play().catch(() => {});
+  }, [active]);
+
+  function toggle() {
+    if (!active) {
+      setActive(true);
+      return;
+    }
+    const v = videoRef.current;
+    if (!v) return;
     if (v.paused) {
       pauseOthers(v);
-      v.play();
+      v.play().catch(() => {});
     } else {
       v.pause();
     }
   }
 
   return (
-    <figure ref={wrapRef} className="glass card-hover flex h-full flex-col overflow-hidden rounded-lg">
+    <figure className="glass card-hover flex h-full flex-col overflow-hidden rounded-lg">
       <button
         type="button"
         onClick={toggle}
         className="group relative aspect-[9/16] max-h-80 w-full overflow-hidden bg-black focus-ring"
         aria-label={playing ? `Pause ${label} testimonial` : `Play ${label} testimonial`}
       >
-        <video
-          ref={videoRef}
-          data-testimonial
-          src={near ? src : undefined}
-          preload={near ? "metadata" : "none"}
-          playsInline
-          onPlay={() => setPlaying(true)}
-          onPause={() => setPlaying(false)}
-          onEnded={() => setPlaying(false)}
-          className="h-full w-full object-cover"
-        />
+        {!active && (
+          <Image
+            src={posterFor(src)}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
+            loading="lazy"
+            className="object-cover"
+          />
+        )}
+        {active && (
+          <video
+            ref={videoRef}
+            data-testimonial
+            src={src}
+            preload="auto"
+            playsInline
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+            onEnded={() => setPlaying(false)}
+            className="h-full w-full object-cover"
+          />
+        )}
         {!playing && (
           <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors group-hover:bg-black/15">
             <span className="flex h-14 w-14 items-center justify-center rounded-md bg-ink shadow-lg">

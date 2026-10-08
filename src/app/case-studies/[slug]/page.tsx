@@ -11,6 +11,8 @@ import { buildNote } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
 import { pageMeta, breadcrumbLd, SITE_URL } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import PrimaryCta from "@/components/PrimaryCta";
+import CcyFootnote from "@/components/CcyFootnote";
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -152,6 +154,7 @@ export default async function CaseStudyPage({
             The account, <span className="hl">line by line.</span>
           </h2>
         </Reveal>
+        <CcyFootnote ccy={ccy} className="mt-4" />
         <div className="mt-10">
           <CaseLedger
             metrics={localizedMetrics}
@@ -213,12 +216,11 @@ export default async function CaseStudyPage({
             We would open a file <span className="hl">like this on your account.</span>
           </h2>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/strategy-call"
+            <PrimaryCta
               className="cta-pulse rounded-md bg-ink px-7 py-3 text-sm font-medium text-void transition-colors hover:bg-gold focus-ring"
             >
               Book a strategy call
-            </Link>
+            </PrimaryCta>
             <Link
               href="/case-studies"
               className="pill px-7 py-3 text-ink transition-colors hover:border-gold hover:text-gold focus-ring"

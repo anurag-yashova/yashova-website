@@ -3,8 +3,9 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import { MarkSearch } from "@/components/icons";
-import { getAllTeardowns } from "@/lib/teardowns";
+import { getAllTeardowns, spendLabel } from "@/lib/teardowns";
 import { pageMeta } from "@/lib/seo";
+import PrimaryCta from "@/components/PrimaryCta";
 
 /* Scheduled publishing: content is filtered by publishedAt at request time, so this
    page must not be frozen at build. Re-generates hourly; future-dated posts appear
@@ -49,7 +50,7 @@ export default function Teardowns() {
                       {t.category}
                     </span>
                     <p className="mt-2 text-sm text-ink-muted">{t.subject}</p>
-                    <p className="mt-3 font-mono-num text-xs text-ink">{t.spend}</p>
+                    <p className="mt-3 font-mono-num text-xs text-ink">{spendLabel(t.spend)}</p>
                     <div className="mt-4 flex flex-wrap gap-1.5">
                       {(["critical", "major", "minor"] as const).map((sev) => {
                         const n = t.findings.filter((f) => f.severity === sev).length;
@@ -96,12 +97,13 @@ export default function Teardowns() {
               >
                 Run the free scan
               </Link>
-              <Link
-                href="/strategy-call"
+              <PrimaryCta
+          whatsappLabel="Ask for a teardown on WhatsApp"
+          message="Hi, I would like a teardown of my ads or funnel."
                 className="pill px-6 py-3 text-ink transition-colors hover:border-gold hover:text-gold focus-ring"
               >
                 Book a teardown call
-              </Link>
+              </PrimaryCta>
             </div>
           </div>
         </Reveal>

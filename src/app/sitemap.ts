@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/blog", priority: 0.8 },
     { path: "/strategy-call", priority: 0.9 },
     { path: "/refund-policy", priority: 0.3 },
+    { path: "/privacy-policy", priority: 0.3 },
+    { path: "/terms", priority: 0.3 },
   ].map((r) => ({
     url: `${BASE}${r.path}`,
     priority: r.priority,

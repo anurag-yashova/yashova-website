@@ -63,3 +63,9 @@ export function getTeardown(slug: string): Teardown | null {
 export function getAllTeardownSlugs(): string[] {
   return getAllTeardowns().map((t) => t.slug);
 }
+
+/** Teardown ad-spend figures are outside-in estimates, never client data.
+ *  Any figure with digits is labelled as such; plain-text values pass through. */
+export function spendLabel(spend: string): string {
+  return /\d/.test(spend) ? `Est. ad spend ${spend}` : spend;
+}
