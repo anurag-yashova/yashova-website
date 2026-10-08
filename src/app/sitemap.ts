@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/ai-audit", priority: 0.8 },
     { path: "/blog", priority: 0.8 },
     { path: "/strategy-call", priority: 0.9 },
+    { path: "/performance-marketing-agency-for-coaches-uae", priority: 0.7 },
+    { path: "/performance-marketing-agency-for-coaches-uk", priority: 0.7 },
     { path: "/refund-policy", priority: 0.3 },
     { path: "/privacy-policy", priority: 0.3 },
     { path: "/terms", priority: 0.3 },

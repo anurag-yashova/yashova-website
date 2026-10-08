@@ -5,7 +5,7 @@
  *  While this is empty, those visitors see the normal strategy-call form
  *  instead, so nothing breaks. NEXT_PUBLIC_CAL_LINK (a Cal.com path such as
  *  "yashova/strategy-call") still works as a fallback. */
-export const BOOKING_URL = "";
+export const BOOKING_URL = "https://calendly.com/akhil-sharma323/30min";
 
 export function bookingEmbedSrc(): string | null {
   const envPath = process.env.NEXT_PUBLIC_CAL_LINK;

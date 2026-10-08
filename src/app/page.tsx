@@ -114,13 +114,13 @@ const testimonials = [
     video: "/videos/theaudiolearning.mp4",
     label: "TheAudioLearning",
     role: "Webinar funnel · admissions",
-    quote: "We were paying ₹80–₹100 per lead. It settled around ₹25–₹35. The real win was conversions almost doubling in the same month.",
+    quote: "From a free webinar to a paid admission, the journey now runs without anyone chasing people by hand. 780 admissions in 120 days is what that looks like.",
   },
   {
     video: "/videos/cvolvepro.mp4",
     label: "CvolvePro",
     role: "LinkedIn growth marketing",
-    quote: "2.7x more conversions in 30 days on the same budget. Better targeting, better creative. It finally felt like the ads were working with us instead of against us.",
+    quote: "We wanted to reach job seekers and early-career professionals without LinkedIn-sized costs. 8,752 clicks at ₹4.69 each told us the content was landing.",
   },
   {
     video: "/videos/fundraising.mp4",

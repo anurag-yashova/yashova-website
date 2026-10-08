@@ -21,11 +21,11 @@ export const figures: Record<string, Spec> = {
   "cpl-drop": {
     kind: "delta",
     props: {
-      label: "Cost per lead · best webinar batch",
-      before: "₹126 average",
-      after: "₹11.40",
-      ratio: 0.09,
-      note: "Campaign-level cost per lead ranged from ₹11.40 to ₹41.16 across webinar batches. Averages hide the range, and the range is where optimisation lives.",
+      label: "Cost per lead · two webinar campaigns",
+      before: "₹41.16 (20 Dec)",
+      after: "₹11.40 (12 Jan)",
+      ratio: 0.28,
+      note: "Single webinar campaigns ranged from ₹11.40 to ₹41.16 per lead. The average across the whole 120-day programme was ₹126. Averages hide the range, and the range is where optimisation lives.",
     },
   },
   "campaign-sequence": {

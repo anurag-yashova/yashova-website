@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 
 /** Founder introduction. Only facts supplied by Anurag: name, role, and
  *  8 years in performance marketing. No invented numbers or claims. */
-export default function FounderBlock() {
+export default function FounderBlock({ showLink = true }: { showLink?: boolean }) {
   return (
     <section className="border-y border-surface-line bg-surface/40">
       <div className="mx-auto max-w-6xl px-6 py-20">
@@ -32,12 +32,14 @@ export default function FounderBlock() {
                 involvement in strategy, so your budget is never handed to
                 someone learning on the job.
               </p>
-              <Link
-                href="/about"
-                className="mt-8 inline-block border-b border-gold pb-0.5 font-mono-num text-xs uppercase tracking-[0.18em] text-ink transition-colors hover:text-gold focus-ring"
-              >
-                Read my story
-              </Link>
+              {showLink && (
+                <Link
+                  href="/about"
+                  className="mt-8 inline-block border-b border-gold pb-0.5 font-mono-num text-xs uppercase tracking-[0.18em] text-ink transition-colors hover:text-gold focus-ring"
+                >
+                  Read my story
+                </Link>
+              )}
             </div>
           </div>
         </Reveal>

@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-glass-border pt-6 text-xs text-ink-muted md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Yashova. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Yashova · 741, Sector-23, Faridabad, Haryana, India. All rights reserved.</p>
           <div className="flex gap-5">
             <a href="https://www.linkedin.com/company/yashova/" className="hover:text-ink" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.facebook.com/yashova.in" className="hover:text-ink" target="_blank" rel="noopener noreferrer">Facebook</a>

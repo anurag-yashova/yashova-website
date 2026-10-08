@@ -3,11 +3,24 @@
 import { useEffect, useRef, useState } from "react";
 import { buildNote, type Currency } from "@/lib/currency";
 
-/** Real before/after numbers from accounts we took over. */
+/** Real before/after numbers. Each row says what it measures, so an average is never mistaken for a best batch. */
 const rows = [
-  { metric: "Cost per donation", before: "₹175.61", after: "₹85.48", client: "Helping Hands Foundation", ratio: 0.49 },
-  { metric: "Cost per lead", before: "₹80–₹100", after: "₹25–₹35", client: "Client account", ratio: 0.33 },
-  { metric: "Cost per lead, best batch", before: "₹126 avg", after: "₹11.40", client: "TheAudioLearning", ratio: 0.09 },
+  {
+    metric: "Cost per donation",
+    before: "₹175.61",
+    after: "₹85.48",
+    client: "Helping Hands Foundation",
+    measures: "First campaign against the scaled campaign, same account, 60 days.",
+    ratio: 0.49,
+  },
+  {
+    metric: "Cost per lead, webinar campaigns",
+    before: "₹41.16",
+    after: "₹11.40",
+    client: "TheAudioLearning",
+    measures: "Two single webinar campaigns, 20 Dec against 12 Jan. The average over the whole 120 days was ₹126.",
+    ratio: 0.28,
+  },
 ];
 
 export default function BeforeAfter({ ccy, rates }: { ccy: Currency; rates: Record<string, number> }) {
@@ -39,6 +52,7 @@ export default function BeforeAfter({ ccy, rates }: { ccy: Currency; rates: Reco
               {r.client}
             </p>
             <p className="mt-1.5 text-lg font-semibold text-ink">{r.metric}</p>
+            <p className="mt-2 max-w-xs text-xs leading-relaxed text-ink-muted">{r.measures}</p>
           </div>
           <div>
             <div className="flex items-baseline justify-between gap-6">

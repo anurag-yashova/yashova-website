@@ -81,7 +81,7 @@ Age and gender breakdown showed 18–24 and 25–34 dominating, with women at 49
 
 Nearly identical cost, but the qualitative signal mattered more: a large share of leads listed themselves as doctors, nurses, and allied health professionals looking to move into coding. That is a very different message than "start a career in healthcare" — these people were already in healthcare and wanted out of clinical hours.
 
-Creative shifted accordingly, and CTR held at 4.1% across the full period.
+Creative shifted accordingly.
 
 ## What actually produced the revenue
 

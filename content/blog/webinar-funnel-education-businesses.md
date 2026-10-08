@@ -61,7 +61,7 @@ Cold-traffic direct-sale campaigns for education burn money. Warm retargeting to
 | Stage | Volume |
 | --- | --- |
 | Impressions | 12.4M |
-| Clicks | 186,000 (4.1% CTR) |
+| Clicks | 186,000 at ₹10 CPC |
 | Leads | 15,000+ at ₹126 |
 | Qualified | 5,800+ |
 | Admissions | 780+ |
