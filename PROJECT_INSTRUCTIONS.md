@@ -106,9 +106,9 @@ Verified stamp. Proof screenshots are "Exhibits". Keep this language when adding
 - Numbers & UI labels: **IBM Plex Mono** (`--font-mono`) — uppercase, wide tracking
 
 ### Two themes (both matter equally)
-- **Dark = "the campaign room"** (default). Motion on: cursor spotlight, live-ops KPI chips,
+- **Dark = "the campaign room"** (optional, via the toggle). Motion on: cursor spotlight, live-ops KPI chips,
   scan lines, drifting dot grids, breathing glow, kinetic headline masks, directional reveals.
-- **Light = "the printed report"**. A *different design language*, not an inverted dark mode.
+- **Light = "the printed report"** (DEFAULT for new visitors; the choice is saved in the browser). A *different design language*, not an inverted dark mode.
   Every decoration is switched off (`html.light` rules in globals.css): no chips, no glow,
   no grids, no scan lines, no hover lifts. Hairlines on paper, lighter heading weight,
   motion reduced to fades.
@@ -123,7 +123,7 @@ with a no-flash restore script in `layout.tsx`.
 ```
 content/blog/*.md          30 SEO posts (frontmatter: title, excerpt, publishedAt, keywords)
 src/app/
-  layout.tsx               fonts, metadata, icons, Nav/Footer/Pixel/CursorGlow/WhatsAppFloat
+  layout.tsx               fonts, metadata, icons, Nav/Footer/Pixel/CursorGlow
   template.tsx             per-route page transition (see GOTCHA #2)
   globals.css              THE design system — tokens, motion, light-mode overrides, article styles
   page.tsx                 homepage
@@ -132,7 +132,7 @@ src/app/
 src/components/
   Nav, Footer, PageHero, Reveal, CountUp, LedgerHero, ProofBar, FunnelDiagram,
   LeakFunnel, BeforeAfter, VideoTestimonial, ProofGallery, ContactForm,
-  ThemeToggle, CursorGlow, MetaPixel, WhatsAppFloat, icons.tsx
+  ThemeToggle, CursorGlow, MetaPixel, icons.tsx
   (HeroChart / LiveOpsFeed are retired — see the hero rule below)
 src/lib/
   case-studies.ts          all case study data + metrics (source of truth)
@@ -424,9 +424,9 @@ Verified stamp. Proof screenshots are "Exhibits". Keep this language when adding
 - Numbers & UI labels: **IBM Plex Mono** (`--font-mono`) — uppercase, wide tracking
 
 ### Two themes (both matter equally)
-- **Dark = "the campaign room"** (default). Motion on: cursor spotlight, live-ops KPI chips,
+- **Dark = "the campaign room"** (optional, via the toggle). Motion on: cursor spotlight, live-ops KPI chips,
   scan lines, drifting dot grids, breathing glow, kinetic headline masks, directional reveals.
-- **Light = "the printed report"**. A *different design language*, not an inverted dark mode.
+- **Light = "the printed report"** (DEFAULT for new visitors; the choice is saved in the browser). A *different design language*, not an inverted dark mode.
   Every decoration is switched off (`html.light` rules in globals.css): no chips, no glow,
   no grids, no scan lines, no hover lifts. Hairlines on paper, lighter heading weight,
   motion reduced to fades.
@@ -441,7 +441,7 @@ with a no-flash restore script in `layout.tsx`.
 ```
 content/blog/*.md          30 SEO posts (frontmatter: title, excerpt, publishedAt, keywords)
 src/app/
-  layout.tsx               fonts, metadata, icons, Nav/Footer/Pixel/CursorGlow/WhatsAppFloat
+  layout.tsx               fonts, metadata, icons, Nav/Footer/Pixel/CursorGlow
   template.tsx             per-route page transition (see GOTCHA #2)
   globals.css              THE design system — tokens, motion, light-mode overrides, article styles
   page.tsx                 homepage
@@ -450,7 +450,7 @@ src/app/
 src/components/
   Nav, Footer, PageHero, Reveal, CountUp, LedgerHero, ProofBar, FunnelDiagram,
   LeakFunnel, BeforeAfter, VideoTestimonial, ProofGallery, ContactForm,
-  ThemeToggle, CursorGlow, MetaPixel, WhatsAppFloat, icons.tsx
+  ThemeToggle, CursorGlow, MetaPixel, icons.tsx
   (HeroChart / LiveOpsFeed are retired — see the hero rule below)
 src/lib/
   case-studies.ts          all case study data + metrics (source of truth)
@@ -796,3 +796,11 @@ bots. Never log or commit `META_CAPI_TOKEN`.
 - Security headers are set in `next.config.ts`. No CSP yet (it would need care with Calendly and the Meta Pixel).
 - No arrows (→ or ←) anywhere, including blog markdown. Check with `grep -rn "→" content src` before every commit.
 - Audit result: 43 pages crawled in dark and light, mobile and desktop, with zero broken links, images, console errors or sideways scroll.
+
+## Latest round (UK/UAE pages, About, theme)
+- Floating WhatsApp button REMOVED (do not add it back). WhatsApp stays only as the India CTA.
+- Light mode is the DEFAULT theme (`light` class set on <html> in layout.tsx; the inline script removes it only when `yashova-theme` = "dark").
+- Real market clients (use these exact facts): TheAudioLearning is a UK-based client; CvolvePro is a UAE-based client. Show company names only, no owner names. Do NOT claim campaigns targeted UK or UAE audiences unless Anurag says so.
+- Never publish prices (they differ per client). Niches are already covered.
+- UK page leads with the TheAudioLearning case study; UAE page leads with CvolvePro (LinkedIn awareness-phase numbers, labelled as not revenue). Both built from `src/components/MarketPage.tsx` using data in `src/lib/case-studies.ts`, plus `TimeClock.tsx` (live local times).
+- About page redesigned: founder photo hero, numbers band, story, timeline, "where the work happens" (India / UK / UAE), principles, process.

@@ -3,7 +3,6 @@ import { Space_Grotesk, Inter, IBM_Plex_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import CursorGlow from "@/components/CursorGlow";
 import MetaPixel from "@/components/MetaPixel";
 import SiteSchema from "@/components/SiteSchema";
@@ -82,18 +81,17 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} ${caveat.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable} ${caveat.variable} light h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-void text-ink">
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem("yashova-theme")==="light")document.documentElement.classList.add("light")}catch(e){}try{var m=document.cookie.match(/(?:^|; )ctry=([^;]*)/);if(m)document.documentElement.setAttribute("data-ctry",decodeURIComponent(m[1]))}catch(e){}`,
+            __html: `try{if(localStorage.getItem("yashova-theme")==="dark")document.documentElement.classList.remove("light")}catch(e){}try{var m=document.cookie.match(/(?:^|; )ctry=([^;]*)/);if(m)document.documentElement.setAttribute("data-ctry",decodeURIComponent(m[1]))}catch(e){}`,
           }}
         />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
-        <WhatsAppFloat />
         <CursorGlow />
         <MetaPixel />
         <SiteSchema />
