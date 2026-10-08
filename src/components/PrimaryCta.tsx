@@ -1,19 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
 import { track } from "@/lib/track";
-import { COUNTRY_COOKIE, whatsappUrl } from "@/lib/region";
-
-function readCountry(): string {
-  const m = document.cookie.match(new RegExp(`(?:^|; )${COUNTRY_COOKIE}=([^;]*)`));
-  return m ? decodeURIComponent(m[1]) : "";
-}
+import { whatsappUrl } from "@/lib/region";
 
 /** The main "talk to us" button.
- *  India: opens WhatsApp. Everywhere else (and until the country is known, and
- *  with JavaScript off): goes to /strategy-call, which shows the booking
- *  calendar once a link is set in src/lib/booking.ts. The page content itself
+ *  Both versions are in the page; a tiny script in the layout stamps the
+ *  visitor's country on <html data-ctry>, and CSS (globals.css, .cta-wa and
+ *  .cta-default) shows only the right one. That means India sees WhatsApp from
+ *  the very first paint, with no flash and no hydration mismatch.
+ *  India: opens WhatsApp. Everywhere else, and with JavaScript off: goes to
+ *  /strategy-call, which shows the booking calendar. The page content itself
  *  never changes by country. */
 export default function PrimaryCta({
   className,
@@ -28,14 +25,11 @@ export default function PrimaryCta({
   message?: string;
   onClick?: () => void;
 }) {
-  const country = useSyncExternalStore(
-    () => () => {},
-    readCountry,
-    () => "" // server snapshot: the neutral strategy-call button
-  );
-
-  if (country === "IN") {
-    return (
+  return (
+    <>
+      <Link href="/strategy-call" onClick={onClick} className={`cta-default ${className ?? ""}`}>
+        {children}
+      </Link>
       <a
         href={whatsappUrl(message)}
         target="_blank"
@@ -44,15 +38,10 @@ export default function PrimaryCta({
           track("Contact", { content_name: "WhatsApp Primary CTA" });
           onClick?.();
         }}
-        className={className}
+        className={`cta-wa ${className ?? ""}`}
       >
         {whatsappLabel}
       </a>
-    );
-  }
-  return (
-    <Link href="/strategy-call" onClick={onClick} className={className}>
-      {children}
-    </Link>
+    </>
   );
 }

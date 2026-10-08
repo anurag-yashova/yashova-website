@@ -87,7 +87,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-void text-ink">
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(localStorage.getItem("yashova-theme")==="light")document.documentElement.classList.add("light")}catch(e){}`,
+            __html: `try{if(localStorage.getItem("yashova-theme")==="light")document.documentElement.classList.add("light")}catch(e){}try{var m=document.cookie.match(/(?:^|; )ctry=([^;]*)/);if(m)document.documentElement.setAttribute("data-ctry",decodeURIComponent(m[1]))}catch(e){}`,
           }}
         />
         <Nav />

@@ -48,15 +48,15 @@ That reframes the decision entirely. The prospect is not evaluating a purchase; 
 
 [[figure:tal-funnel]]
 
-**Ad → registration.** Creative led with the career-change anxiety directly: *Career restart? It's never too late.* No age barrier, joining certificate, placement guarantee. Registration through a native lead form, not a landing page — fewer steps, better mobile completion.
+**Ad to registration.** Creative led with the career-change anxiety directly: *Career restart? It's never too late.* No age barrier, joining certificate, placement guarantee. Registration through a native lead form, not a landing page — fewer steps, better mobile completion.
 
-**Registration → WhatsApp confirmation.** An automated message fired immediately: seat confirmed, date and time, instructor name and credentials, joining link to follow, please confirm availability. This single automation did more for attendance than any creative change.
+**Registration to WhatsApp confirmation.** An automated message fired immediately: seat confirmed, date and time, instructor name and credentials, joining link to follow, please confirm availability. This single automation did more for attendance than any creative change.
 
 **Qualification inside the form.** Four questions sorted the list before anyone spent sales time: did you attend the webinar, preferred language, science background or not, and how soon do you want to enrol — right away, this week, this month, or just exploring.
 
 That last question is the sales team's entire prioritisation system.
 
-**Webinar → enrolment.** The session taught genuinely useful material and closed with the offer. Direct conversion campaigns then retargeted attendees who had not yet enrolled — warm audiences only, never cold.
+**Webinar to enrolment.** The session taught genuinely useful material and closed with the offer. Direct conversion campaigns then retargeted attendees who had not yet enrolled — warm audiences only, never cold.
 
 ## What the campaign-level numbers showed
 

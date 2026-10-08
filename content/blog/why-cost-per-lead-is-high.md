@@ -19,7 +19,7 @@ If your campaign objective is traffic or link clicks, Meta will find people who 
 
 Browser-side Pixel alone misses a substantial share of conversions. The algorithm then optimises toward a biased sample of converters.
 
-**Check:** Events Manager → is Conversion API active, or only the Pixel? Compare reported conversions against your CRM or payment gateway.
+**Check:** in Events Manager, is Conversion API active, or only the Pixel? Compare reported conversions against your CRM or payment gateway.
 
 **Fix:** implement CAPI with deduplication. On one account this alone contributed most of a 51% cost reduction.
 
@@ -75,6 +75,6 @@ The problem is not the lead price. It is that a lead submitted at 3pm and called
 
 ## Diagnostic order
 
-Optimisation event → tracking → landing page → frequency → audience → offer → benchmark → follow-up speed.
+Optimisation event, then tracking, landing page, frequency, audience, offer, benchmark and follow-up speed.
 
 Most accounts find their answer in the first three, and none of the fixes require spending more.

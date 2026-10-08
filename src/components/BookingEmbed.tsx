@@ -1,24 +1,14 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { bookingEmbedSrc } from "@/lib/booking";
-import { COUNTRY_COOKIE, whatsappUrl } from "@/lib/region";
+import { whatsappUrl } from "@/lib/region";
 import { track } from "@/lib/track";
 
-function readCountry(): string {
-  const m = document.cookie.match(new RegExp(`(?:^|; )${COUNTRY_COOKIE}=([^;]*)`));
-  return m ? decodeURIComponent(m[1]) : "";
-}
-
-/** India: WhatsApp first, then the form. US/UK/UAE/Australia: the booking
+/** `country` is decided on the server (from Vercel's country header), so there is no flash
+ *  of the wrong block. India: WhatsApp first, then the form. US/UK/UAE/Australia: the booking
  *  calendar (once a link is set in src/lib/booking.ts). Anyone else, or while
  *  no calendar link exists: the form. */
-export default function BookingEmbed({ fallback }: { fallback: React.ReactNode }) {
-  const country = useSyncExternalStore(
-    () => () => {},
-    readCountry,
-    () => ""
-  );
+export default function BookingEmbed({ fallback, country }: { fallback: React.ReactNode; country: string }) {
   const src = bookingEmbedSrc();
 
   if (country === "IN") {
@@ -42,8 +32,16 @@ export default function BookingEmbed({ fallback }: { fallback: React.ReactNode }
   if (!src) return <>{fallback}</>;
 
   return (
-    <div className="overflow-hidden rounded-lg border border-surface-line">
-      <iframe src={src} title="Book a strategy call" loading="lazy" className="h-[660px] w-full" />
+    <div className="space-y-6">
+      <div className="overflow-hidden rounded-lg border border-surface-line">
+        <iframe src={src} title="Book a strategy call" loading="lazy" className="h-[660px] w-full" />
+      </div>
+      <details className="rounded-lg border border-surface-line p-5">
+        <summary className="cursor-pointer text-sm font-medium text-ink focus-ring">
+          Prefer to write instead of booking a time?
+        </summary>
+        <div className="mt-5">{fallback}</div>
+      </details>
     </div>
   );
 }

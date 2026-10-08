@@ -15,6 +15,8 @@ export default function ContactForm() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
+  const [budget, setBudget] = useState("");
   const [company, setCompany] = useState(""); // honeypot
   const [status, setStatus] = useState<Status>("idle");
 
@@ -36,6 +38,8 @@ export default function ContactForm() {
             email,
             phone,
             message,
+            website,
+            monthly_ad_budget: budget,
             _subject: `STRATEGY CALL — ${name || email || phone}`,
             _template: "table",
             _captcha: "false",
@@ -110,6 +114,34 @@ export default function ContactForm() {
           onChange={(e) => setPhone(e.target.value)}
           className="mt-1.5 w-full rounded-md border border-surface-line bg-void px-4 py-2.5 text-ink focus-ring"
         />
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="website" className="text-sm font-medium text-ink-muted">
+            Website or Instagram <span className="text-ink-muted/70">(optional)</span>
+          </label>
+          <input
+            id="website"
+            type="text"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            autoComplete="url"
+            className="mt-1.5 w-full rounded-md border border-surface-line bg-void px-4 py-2.5 text-ink focus-ring"
+          />
+        </div>
+        <div>
+          <label htmlFor="budget" className="text-sm font-medium text-ink-muted">
+            Monthly ad budget <span className="text-ink-muted/70">(any currency, optional)</span>
+          </label>
+          <input
+            id="budget"
+            type="text"
+            value={budget}
+            onChange={(e) => setBudget(e.target.value)}
+            className="mt-1.5 w-full rounded-md border border-surface-line bg-void px-4 py-2.5 text-ink focus-ring"
+          />
+        </div>
       </div>
 
       <div>

@@ -67,7 +67,7 @@ Whichever path, you need event deduplication configured, or a single conversion 
 
 ## How to verify it is actually working
 
-1. **Events Manager → Test Events.** Fire a real conversion and confirm it appears.
+1. **Events Manager, then Test Events.** Fire a real conversion and confirm it appears.
 2. **Check the Event Match Quality score.** Below about 5.0 means you are sending insufficient customer parameters — add email, phone, and external ID where you have consent.
 3. **Look for deduplication warnings.** If Meta reports duplicate events, your event IDs are not matching.
 4. **Compare against your payment gateway.** This is the real test. If Razorpay says 11,246 payments and Meta says 6,000, you have a tracking gap, not a campaign problem.

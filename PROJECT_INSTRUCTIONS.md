@@ -787,3 +787,12 @@ bots. Never log or commit `META_CAPI_TOKEN`.
 - **About page** is written from verified facts only: in performance marketing since 2018, started as a freelancer, ₹4Cr+ ad spend, 5.5X programme, 51% lower cost per donation. Footer carries the business name and address.
 - **Market pages**: `/performance-marketing-agency-for-coaches-uae` and `-uk`, built from one template (`MarketPage`). They use only the real TheAudioLearning case study and say plainly that it ran for an India audience. Never add UAE or UK results unless Anurag provides real ones.
 - Testimonial captions on the homepage are written summaries; the TheAudioLearning and CvolvePro captions now use only verified figures. Other captions (Buyernest 120 to 340+, Knowledge Prism 200 to 600+, Bebrainteaser nearly 60%) have no source in the repo; check them against the videos.
+
+### Added Oct 2026 (audit round)
+
+- **Country button is flash-free**: `PrimaryCta` renders BOTH the WhatsApp and booking buttons; an inline script in `layout.tsx` copies the `ctry` cookie to `<html data-ctry>` and CSS in `globals.css` (`.cta-wa` / `.cta-default`) shows the right one. Do not go back to reading the cookie in React (it flashes the wrong button for India).
+- **/strategy-call** decides the booking block on the SERVER from Vercel's `x-vercel-ip-country` header (`BookingEmbed` takes a `country` prop). India: WhatsApp + form. Everyone else: Calendly plus a "write instead" form under it.
+- The lead form now also collects optional website and monthly ad budget (sent to both lead inboxes).
+- Security headers are set in `next.config.ts`. No CSP yet (it would need care with Calendly and the Meta Pixel).
+- No arrows (→ or ←) anywhere, including blog markdown. Check with `grep -rn "→" content src` before every commit.
+- Audit result: 43 pages crawled in dark and light, mobile and desktop, with zero broken links, images, console errors or sideways scroll.

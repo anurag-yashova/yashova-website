@@ -22,7 +22,7 @@ If your current setup does all four, do not change it.
 
 Keep it to five or six. More stages means nobody updates them.
 
-**New** → **Contacted** → **Qualified** → **Proposal** → **Won / Lost**
+**New**, then **Contacted**, then **Qualified**, then **Proposal**, then **Won** or **Lost**
 
 The critical discipline is that a lead cannot sit in "New" for more than a few hours. If it can, your pipeline is a list, not a system.
 

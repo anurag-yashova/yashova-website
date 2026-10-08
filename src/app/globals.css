@@ -701,3 +701,7 @@ html.light .sev-critical { color: #b23c28; }
   line-height: 1.5;
   color: var(--ink-muted);
 }
+
+/* Country-based main button: India sees WhatsApp, everyone else the booking link. */
+html:not([data-ctry="IN"]) .cta-wa { display: none !important; }
+html[data-ctry="IN"] .cta-default { display: none !important; }

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { cookies, headers } from "next/headers";
+import { COUNTRY_COOKIE } from "@/lib/region";
 import PageHero from "@/components/PageHero";
 import { MarkTalk } from "@/components/icons";
 import Reveal from "@/components/Reveal";
@@ -13,7 +15,10 @@ export const metadata: Metadata = pageMeta({
   path: "/strategy-call",
 });
 
-export default function StrategyCall() {
+export default async function StrategyCall() {
+  const h = await headers();
+  const jar = await cookies();
+  const country = h.get("x-vercel-ip-country") ?? jar.get(COUNTRY_COOKIE)?.value ?? "";
   return (
     <>
       <PageHero
@@ -28,6 +33,14 @@ export default function StrategyCall() {
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal>
             <div className="space-y-8">
+              <div className="glass rounded-lg p-6">
+                <h3 className="eyebrow">What happens next</h3>
+                <ol className="mt-4 space-y-3 text-sm leading-relaxed text-ink-muted">
+                  <li><span className="font-mono-num text-gold">01</span> You pick a 30-minute slot, or message us.</li>
+                  <li><span className="font-mono-num text-gold">02</span> We look at your ads, page and follow-up before we talk, if you share your site.</li>
+                  <li><span className="font-mono-num text-gold">03</span> You get a clear read on what is leaking and what to fix first.</li>
+                </ol>
+              </div>
               <div className="glass card-hover rounded-lg p-6">
                 <h3 className="eyebrow">Call Anytime</h3>
                 <a href="tel:+919818086846" className="mt-1 block text-xl font-medium text-ink hover:text-gold">
@@ -47,7 +60,7 @@ export default function StrategyCall() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <BookingEmbed fallback={<ContactForm />} />
+            <BookingEmbed fallback={<ContactForm />} country={country} />
           </Reveal>
         </div>
       </section>
