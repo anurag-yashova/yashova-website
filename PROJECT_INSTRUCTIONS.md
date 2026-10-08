@@ -759,3 +759,14 @@ bots. Never log or commit `META_CAPI_TOKEN`.
 ---
 
 *Last updated: commit following `033c6c4`.*
+
+---
+
+## 12. Standing rules from Anurag (added Oct 2026)
+
+- Never invent numbers, clients, reviews or logos. If a fact is missing, ask him.
+- One task at a time. After each task, say what changed and how he can check it, in simple words.
+- Keep the design and the tone: "No hype. Just revenue."
+- Facts he has supplied: hero ad spend is **₹4Cr+** (was ₹2.5Cr+); founder is Anurag Sharma, **8 years in performance marketing**; new clients in the logo strip: **Chote News** and **Angels for Animals** (logo files in `public/images/clients/`).
+- Founder photo: `public/images/anurag-founder.webp` (cutout baked onto a studio-black backdrop so it looks right in both themes). Component: `src/components/FounderBlock.tsx`, used on the homepage before the final CTA.
+- Open items waiting on him: real brand count to replace "150+", legal business details for Privacy/Terms/footer, About page story and numbers, a Cal.com/Calendly link for the booking CTA, and what to include in the UAE/UK market pages.

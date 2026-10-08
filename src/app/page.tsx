@@ -8,6 +8,7 @@ import ProofBar from "@/components/ProofBar";
 import FunnelDiagram from "@/components/FunnelDiagram";
 import LeakFunnel from "@/components/LeakFunnel";
 import BeforeAfter from "@/components/BeforeAfter";
+import FounderBlock from "@/components/FounderBlock";
 import { buildNote } from "@/lib/currency";
 import { getCurrency, getRates } from "@/lib/currency-server";
 import {
@@ -147,6 +148,8 @@ const clients: { name: string; logo?: string }[] = [
   { name: "Tradebazarr", logo: "/images/clients/tradebazarr.jpg" },
   { name: "Digital Riches", logo: "/images/clients/digital-riches.jpg" },
   { name: "Merhba Boutique", logo: "/images/clients/merhba-boutique.jpg" },
+  { name: "Chote News", logo: "/images/clients/chote-news.png" },
+  { name: "Angels for Animals", logo: "/images/clients/angels-for-animals.png" },
   { name: "Bebrainteaser" },
   { name: "Digiraag" },
 ];
@@ -198,9 +201,9 @@ export default async function Home() {
                 </div>
                 <div>
                   <div className="font-mono-num text-2xl font-semibold text-ink">
-                    <CountUp value="₹2.5Cr+" />
-                    {buildNote("₹2.5Cr+", ccy, rates) && (
-                      <span className="ccy-note text-sm">{buildNote("₹2.5Cr+", ccy, rates)}</span>
+                    <CountUp value="₹4Cr+" />
+                    {buildNote("₹4Cr+", ccy, rates) && (
+                      <span className="ccy-note text-sm">{buildNote("₹4Cr+", ccy, rates)}</span>
                     )}
                   </div>
                   <div className="text-xs text-ink-muted">ad spend managed profitably</div>
@@ -425,6 +428,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== Founder ===== */}
+      <FounderBlock />
 
       {/* ===== Final CTA ===== */}
       <section className="relative mx-auto max-w-6xl overflow-hidden px-6 py-20 text-center">

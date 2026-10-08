@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 /** Swiss grid stat band — replaces decorative marquee with substance.
  *  Four numbers that a prospect actually weighs, on hairline rules. */
 const stats = [
-  { value: "₹2.5Cr+", label: "Ad spend managed profitably", note: "Across 150+ brands" },
+  { value: "₹4Cr+", label: "Ad spend managed profitably", note: "Across 150+ brands" },
   { value: "5.5X", label: "Best campaign ROAS", note: "TheAudioLearning, 120 days" },
   { value: "51%", label: "Cost-per-result reduction", note: "₹175.61 to ₹85.48" },
   { value: "11,246", label: "Payments captured", note: "Razorpay verified, zero disputes" },
