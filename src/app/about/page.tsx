@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import CountUp from "@/components/CountUp";
+import ServiceGrid from "@/components/ServiceGrid";
+import { clients } from "@/lib/clients";
 import PrimaryCta from "@/components/PrimaryCta";
 import CcyFootnote from "@/components/CcyFootnote";
 import JsonLd from "@/components/JsonLd";
@@ -14,7 +16,7 @@ import { getCurrency, getRates } from "@/lib/currency-server";
 export const metadata: Metadata = pageMeta({
   title: "About Anurag Sharma and Yashova",
   description:
-    "Yashova is a performance marketing agency in Faridabad, Delhi NCR, run by founder Anurag Sharma, in performance marketing since 2018. Meta Ads, funnels and WhatsApp automation measured by revenue, not reach.",
+    "Yashova is a growth and performance marketing agency in Faridabad, Delhi NCR, run by founder Anurag Sharma, in performance marketing since 2018. Strategy, funnels, landing pages, AI integration and ads, measured by revenue, not reach.",
   path: "/about",
 });
 
@@ -76,6 +78,16 @@ const places = [
   },
 ];
 
+const ribbonItems = [
+  "Strategy",
+  "Ideation",
+  "Funnels",
+  "Landing pages",
+  "AI integration",
+  "WhatsApp automation",
+  "Performance marketing",
+];
+
 const timeline = [
   {
     when: "2018",
@@ -105,7 +117,7 @@ const principles = [
     body: "We measure cost per qualified lead and cost per customer, not cost per lead. A cheap lead who never answers the phone is the most expensive lead there is.",
   },
   {
-    title: "Follow-up is part of the ad",
+    title: "Follow-up is part of the system",
     body: "WhatsApp confirmations, qualification and follow-ups run automatically, so the lead you paid for is contacted while they still remember you.",
   },
   {
@@ -123,10 +135,12 @@ const principles = [
 ];
 
 const process = [
-  { n: "01", title: "Diagnose", body: "We read your ad account, landing page and follow-up end to end, and find where money is leaking before we spend more of it." },
-  { n: "02", title: "Build the system", body: "Tracking, funnel, creative and WhatsApp follow-up are built to work as one, not as four separate jobs." },
-  { n: "03", title: "Launch and read the data", body: "We run structured tests, one hypothesis at a time, and let the numbers decide what scales." },
-  { n: "04", title: "Scale what pays", body: "Budget moves only to what is returning revenue. Everything else is cut or rebuilt." },
+  { n: "01", title: "Diagnose", body: "We read your offer, ad account, landing page and follow-up end to end, and find where money is leaking before we spend more of it." },
+  { n: "02", title: "Strategy and ideas", body: "We shape the offer, the audience and the campaign ideas, and agree a roadmap you can read in plain words." },
+  { n: "03", title: "Build the system", body: "Funnel, landing page, tracking and WhatsApp or AI follow-up are built to work as one, not as four separate jobs." },
+  { n: "04", title: "Launch and test", body: "We run structured tests, one hypothesis at a time, and let the numbers decide what stays." },
+  { n: "05", title: "Scale what pays", body: "Budget moves only to what is returning revenue. Everything else is cut or rebuilt." },
+  { n: "06", title: "Report in revenue", body: "Weekly updates say what was spent, what came back and what we will change next." },
 ];
 
 export default async function About() {
@@ -165,12 +179,12 @@ export default async function About() {
               About Anurag Sharma and Yashova
             </p>
             <h1 className="rise-2 mt-6 text-4xl font-bold leading-[1.05] tracking-tighter text-ink sm:text-5xl lg:text-6xl">
-              I fix the part of marketing that <span className="hl">loses money.</span>
+              I build marketing systems that <span className="hl">earn.</span>
             </h1>
             <p className="rise-3 mt-6 max-w-xl text-base leading-relaxed text-ink-muted md:text-lg">
-              I am Anurag, founder of Yashova. I have worked in performance marketing since 2018, and today I build
-              ads, funnels and WhatsApp follow-up for clients in six countries. Everything we do is judged by what it
-              earns.
+              I am Anurag, founder of Yashova. I have worked in performance marketing since 2018. Today we handle
+              strategy, funnels, landing pages, AI integration and ads for clients in six countries, and we judge all
+              of it by what it earns.
             </p>
             <dl className="rise-4 mt-9 grid max-w-xl grid-cols-3 gap-px border border-surface-line bg-surface-line">
               {[
@@ -216,6 +230,18 @@ export default async function About() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===== Services ribbon ===== */}
+      <section className="overflow-hidden border-b border-surface-line bg-void py-5" aria-label="What we do">
+        <div className="marquee-track items-center gap-10 pr-10">
+          {[...ribbonItems, ...ribbonItems].map((t, i) => (
+            <span key={`${t}-${i}`} className="flex shrink-0 items-center gap-10 font-display text-2xl font-semibold tracking-tight text-ink md:text-4xl">
+              {t}
+              <span className="h-2 w-2 shrink-0 bg-gold" aria-hidden />
+            </span>
+          ))}
         </div>
       </section>
 
@@ -276,10 +302,28 @@ export default async function About() {
                 That is how we work. We build the whole system around the ad, we measure it in revenue, and we show
                 you every number, including the ones that are not flattering.
               </p>
-              <p className="font-mono-num text-xs uppercase tracking-[0.14em] text-ink">Anurag Sharma, founder</p>
+              <p className="font-hand text-4xl text-ink" style={{ fontFamily: "var(--font-hand), cursive" }}>
+                Anurag Sharma
+              </p>
+              <p className="-mt-3 font-mono-num text-xs uppercase tracking-[0.14em] text-ink-muted">Founder, Yashova</p>
             </div>
           </Reveal>
         </div>
+      </section>
+
+      {/* ===== What we do ===== */}
+      <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <Reveal>
+          <p className="eyebrow text-gold">What we do</p>
+          <h2 className="mt-5 max-w-3xl text-3xl font-bold leading-[1.08] tracking-tighter text-ink md:text-5xl">
+            Ads are one part. We build <span className="hl">the whole system.</span>
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink-muted">
+            Most agencies sell you one piece and leave the rest to you. We plan it, build it, connect it and run it, so
+            the strategy, the page, the follow-up and the campaign all pull the same way.
+          </p>
+        </Reveal>
+        <ServiceGrid />
       </section>
 
       {/* ===== Timeline ===== */}
@@ -377,7 +421,7 @@ export default async function About() {
       {/* ===== Process ===== */}
       <section className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <p className="eyebrow text-gold">How we work</p>
-        <ol className="mt-10 grid gap-px border border-surface-line bg-surface-line sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-10 grid gap-px border border-surface-line bg-surface-line sm:grid-cols-2 lg:grid-cols-3">
           {process.map((p) => (
             <li key={p.n} className="bg-void p-6">
               <div className="font-mono-num text-sm text-gold">{p.n}</div>
@@ -388,11 +432,34 @@ export default async function About() {
         </ol>
       </section>
 
+      {/* ===== Clients ===== */}
+      <section className="border-t border-surface-line bg-surface/40">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="eyebrow text-gold">People who trust us with their budgets</p>
+          <ul className="mt-10 flex flex-wrap justify-center gap-3">
+            {clients.map((c) => (
+              <li key={c.name} className="flex h-24 w-[calc(50%-0.375rem)] items-center justify-center gap-3 border border-surface-line bg-void px-4 sm:w-[calc(33.333%-0.5rem)] lg:w-[calc(20%-0.6rem)]">
+                {c.logo ? (
+                  <>
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-surface-line bg-white p-1">
+                      <Image src={c.logo} alt="" width={44} height={44} className="h-full w-full object-contain" />
+                    </span>
+                    <span className="text-xs font-medium leading-snug text-ink">{c.name}</span>
+                  </>
+                ) : (
+                  <span className="text-xs font-medium text-ink">{c.name}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* ===== Closing band ===== */}
       <section className="bg-ink text-void">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center md:py-24">
           <h2 className="text-3xl font-bold leading-[1.08] tracking-tighter md:text-5xl">
-            Want to know where your ad money is going? Let&apos;s look at it together.
+            Want to know where your marketing money is going? Let&apos;s look at it together.
           </h2>
           <PrimaryCta className="cta-pulse mt-10 inline-block rounded-md bg-void px-8 py-4 text-sm font-semibold text-ink transition-colors hover:bg-gold hover:text-on-gold focus-ring">
             Book a Strategy Call

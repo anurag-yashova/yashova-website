@@ -804,3 +804,8 @@ bots. Never log or commit `META_CAPI_TOKEN`.
 - Never publish prices (they differ per client). Niches are already covered.
 - UK page leads with the TheAudioLearning case study; UAE page leads with CvolvePro (LinkedIn awareness-phase numbers, labelled as not revenue). Both built from `src/components/MarketPage.tsx` using data in `src/lib/case-studies.ts`, plus `TimeClock.tsx` (live local times).
 - About page redesigned: founder photo hero, numbers band, story, timeline, "where the work happens" (India / UK / UAE), principles, process.
+
+## Positioning rule (added Oct 9)
+- Yashova is NOT only an ads agency. Services, in this order: strategy and ideation, funnels, landing pages, AI integration, WhatsApp automation, performance marketing (Meta, Google, LinkedIn). Do not write copy that makes the site sound ads-only.
+- Single source for the six services: `src/components/ServiceGrid.tsx` (used on Home and About). Client logos: `src/lib/clients.ts`.
+- Home title is now "Funnels, Strategy and Performance Marketing Agency in Delhi NCR". "Trusted by 150+ brands globally" stays (Anurag's instruction).

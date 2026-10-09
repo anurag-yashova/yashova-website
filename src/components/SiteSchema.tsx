@@ -9,7 +9,7 @@ const schema = {
       logo: "https://yashova.com/icon-512.png",
       image: "https://yashova.com/og-image.png",
       description:
-        "Performance marketing agency in Faridabad, Delhi NCR. Meta Ads, Google Ads, funnel building, WhatsApp automation and lead generation.",
+        "Growth and performance marketing agency in Faridabad, Delhi NCR. Strategy, funnels, landing pages, AI integration, WhatsApp automation, Meta Ads, Google Ads and lead generation.",
       slogan: "Not Loud. Unignorable.",
       email: "anurag@yashova.com",
       telephone: "+91-98180-86846",
@@ -36,6 +36,10 @@ const schema = {
       ],
       knowsAbout: [
         "Performance marketing",
+        "Marketing strategy",
+        "Funnel building",
+        "Landing pages",
+        "AI integration",
         "Meta Ads",
         "Google Ads",
         "Lead generation",

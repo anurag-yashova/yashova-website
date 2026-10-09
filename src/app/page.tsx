@@ -18,9 +18,6 @@ import {
   HealthIcon,
   BuildingIcon,
   RocketIcon,
-  TargetIcon,
-  FunnelIcon,
-  StrategyIcon,
   SearchInsightIcon,
   MapIcon,
   TeamIcon,
@@ -30,6 +27,8 @@ import {
   MarkTool,
 } from "@/components/icons";
 import PrimaryCta from "@/components/PrimaryCta";
+import ServiceGrid from "@/components/ServiceGrid";
+import { clients } from "@/lib/clients";
 import CcyFootnote from "@/components/CcyFootnote";
 
 const audiences = [
@@ -39,26 +38,6 @@ const audiences = [
   { icon: RocketIcon, title: "Startups & D2C Brands", body: "Accelerate growth with data-driven acquisition." },
 ];
 
-const capabilities = [
-  {
-    icon: TargetIcon,
-    title: "Performance Marketing",
-    body: "We don't run ads. We build systems that convert clicks into paying customers.",
-    tags: ["Meta Ads", "Google Ads", "Programmatic"],
-  },
-  {
-    icon: FunnelIcon,
-    title: "Lead Generation Funnels",
-    body: "Landing pages + WhatsApp automation + follow-ups = higher conversions.",
-    tags: ["Landing Pages", "WhatsApp Automation", "CRM"],
-  },
-  {
-    icon: StrategyIcon,
-    title: "Growth Strategy",
-    body: "We don't guess. We analyze, test, and scale what works.",
-    tags: ["A/B Testing", "Analytics", "Scaling"],
-  },
-];
 
 const caseStudies = [
   {
@@ -142,11 +121,11 @@ const testimonials = [
   },
 ];
 
-const homeTitle = "Yashova | Performance Marketing Agency in Delhi NCR";
+const homeTitle = "Yashova | Funnels, Strategy and Performance Marketing Agency in Delhi NCR";
 const homeMeta = pageMeta({
   title: homeTitle,
   description:
-    "No hype. Just revenue. Yashova builds Meta Ads, funnel and WhatsApp automation systems that track spend, qualify leads and maximise ROI. Based in Faridabad, Delhi NCR.",
+    "No hype. Just revenue. Yashova builds strategy, funnels, landing pages, AI integration, WhatsApp automation and ad campaigns that track spend, qualify leads and maximise ROI. Based in Faridabad, Delhi NCR.",
   path: "/",
 });
 export const metadata: Metadata = {
@@ -156,21 +135,6 @@ export const metadata: Metadata = {
   twitter: { ...homeMeta.twitter, title: homeTitle },
 };
 
-const clients: { name: string; logo?: string }[] = [
-  { name: "TheAudioLearning", logo: "/images/clients/theaudiolearning.jpg" },
-  { name: "CvolvePro", logo: "/images/clients/cvolvepro.jpg" },
-  { name: "Helping Hands Foundation", logo: "/images/clients/helping-hands.jpg" },
-  { name: "Buyernest", logo: "/images/clients/buyernest.jpg" },
-  { name: "Knowledge Prism", logo: "/images/clients/knowledge-prism.jpg" },
-  { name: "Investmate", logo: "/images/clients/investmate.jpg" },
-  { name: "Tradebazarr", logo: "/images/clients/tradebazarr.jpg" },
-  { name: "Digital Riches", logo: "/images/clients/digital-riches.jpg" },
-  { name: "Merhba Boutique", logo: "/images/clients/merhba-boutique.jpg" },
-  { name: "Chote News", logo: "/images/clients/chote-news.png" },
-  { name: "Angels for Animals", logo: "/images/clients/angels-for-animals.png" },
-  { name: "Bebrainteaser" },
-  { name: "Digiraag" },
-];
 
 export default async function Home() {
   const ccy = await getCurrency();
@@ -189,12 +153,11 @@ export default async function Home() {
                 <span className="clip-line"><span>Just <span className="hl">Revenue.</span></span></span>
               </h1>
               <p className="rise-2 mt-5 text-lg font-medium text-ink">
-                Trusted by 150+ brands globally to cut ad waste.
+                Trusted by 150+ brands globally.
               </p>
               <p className="rise-2 mt-4 max-w-md text-base leading-relaxed text-ink-muted">
-                Most ad spend gets wasted on non-converting clicks. We design
-                end-to-end marketing systems that track spend, qualify leads,
-                and maximize ROI.
+                Strategy, funnels, landing pages, AI and ads, designed as one
+                system that tracks spend, qualifies leads and maximises ROI.
               </p>
               <div className="rise-3 mt-8 flex flex-wrap gap-4">
                 <Link
@@ -246,7 +209,7 @@ export default async function Home() {
             Who We <span className="hl">Work With</span>
           </h2>
           <p className="mt-3 max-w-lg text-ink-muted">
-            If you&apos;re spending money on ads and not getting predictable returns, you&apos;re in the right place.
+            If you want predictable growth from your marketing, not just more clicks, you&apos;re in the right place.
           </p>
         </Reveal>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -269,23 +232,11 @@ export default async function Home() {
             <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
               What We Actually Do <span className="hl">(That Gets Results)</span>
             </h2>
+            <p className="mt-3 max-w-xl text-ink-muted">
+              Strategy, funnels, landing pages, AI and ads, built to work as one system instead of six separate jobs.
+            </p>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {capabilities.map((c, i) => (
-              <Reveal key={c.title} delay={i * 110} from={i === 0 ? "left" : i === 2 ? "right" : "up"}>
-                <div className="card-hover h-full rounded-lg border border-surface-line/60 bg-void p-7">
-                  <c.icon className="text-gold" />
-                  <h3 className="mt-4 text-xl font-semibold text-ink">{c.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink-muted">{c.body}</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {c.tags.map((t) => (
-                      <span key={t} className="pill px-3 py-1 text-xs text-ink-muted">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <ServiceGrid />
         </div>
       </section>
 
@@ -456,7 +407,7 @@ export default async function Home() {
         <div className="dot-grid pointer-events-none absolute inset-0" />
         <Reveal className="relative">
           <h2 className="text-3xl font-semibold tracking-tight text-ink md:text-4xl">
-            Your ads should be making you money, <span className="hl">Let&apos;s make that happen.</span>
+            Your marketing should be making you money. <span className="hl">Let&apos;s make that happen.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-ink-muted">
             If you are looking for structured marketing execution rather than

@@ -12,8 +12,8 @@ export default function Footer() {
               Systems over shortcuts.
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-muted">
-              Performance marketing systems that track spend, qualify leads,
-              and maximize ROI. Faridabad, Delhi NCR.
+              Strategy, funnels, landing pages, AI and performance marketing
+              that track spend, qualify leads and maximise ROI. Faridabad, Delhi NCR.
             </p>
           </div>
 

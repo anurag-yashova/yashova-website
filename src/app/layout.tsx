@@ -37,11 +37,11 @@ export const metadata: Metadata = {
   icons: { icon: "/icon-512.png", apple: "/apple-touch-icon.png" },
   alternates: { canonical: "/" },
   title: {
-    default: "Yashova — Performance Marketing Agency in Delhi NCR",
+    default: "Yashova — Funnels, Strategy and Performance Marketing Agency in Delhi NCR",
     template: "%s | Yashova",
   },
   description:
-    "Most ad spend gets wasted on non-converting clicks. We build end-to-end marketing systems that track spend, qualify leads, and maximize ROI. Meta Ads, Google Ads, funnels and WhatsApp automation.",
+    "Strategy, funnels, landing pages, AI integration and ad campaigns built as one system that tracks spend, qualifies leads and maximises ROI. Meta Ads, Google Ads, WhatsApp automation.",
   keywords: [
     "performance marketing agency",
     "performance marketing Faridabad",
@@ -51,6 +51,9 @@ export const metadata: Metadata = {
     "lead generation India",
     "WhatsApp automation",
     "funnel building agency",
+    "landing page design agency",
+    "marketing strategy agency Delhi NCR",
+    "AI integration for marketing",
   ],
   authors: [{ name: "Yashova" }],
   openGraph: {
@@ -58,14 +61,14 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://yashova.com",
     siteName: "Yashova",
-    title: "Yashova — Performance Marketing Agency in Delhi NCR",
+    title: "Yashova — Funnels, Strategy and Performance Marketing Agency in Delhi NCR",
     description:
       "No hype. Just revenue. Marketing systems that track spend, qualify leads, and maximize ROI.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Yashova — Not Loud. Unignorable." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yashova — Performance Marketing Agency in Delhi NCR",
+    title: "Yashova — Funnels, Strategy and Performance Marketing Agency in Delhi NCR",
     description: "No hype. Just revenue.",
     images: ["/og-image.png"],
   },
